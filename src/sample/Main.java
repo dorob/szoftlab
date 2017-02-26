@@ -42,7 +42,7 @@ public class Main extends Application {
         Group root = new Group();
         Scene palya = new Scene(root,800,600);
 
-        mozdony2.setFill(Color.YELLOW);
+        mozdony2.setFill(Color.YELLOW); //
 
         Point2D p1 = new Point2D(500,300);
         Point2D p2 = new Point2D(300,270);
