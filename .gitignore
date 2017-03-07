@@ -1,1 +1,5 @@
 .idea
+szoftlab.iml
+out
+src/sample/sample.fxml
+
