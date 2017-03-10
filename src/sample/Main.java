@@ -1,5 +1,5 @@
 package sample;
-
+//
 import javafx.scene.paint.Color;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
