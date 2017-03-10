@@ -30,8 +30,8 @@ import javafx.event.EventHandler;
 
 public class tmp extends Application {
 
-  public Rectangle mozdony = new Rectangle(60,20);
-  public Rectangle mozdony2 = new Rectangle(60,20);
+  public Rectangle mozdony = new Rectangle(20, 50, 60,20, Color.AZURE);
+  public Rectangle mozdony2 = new Rectangle(500, 600, 60,20, Color.ORANGE);
 
   public PathTransition mozdony_mozditas = new PathTransition();
   public PathTransition mozdony2_mozditas = new PathTransition();
@@ -65,7 +65,7 @@ public class tmp extends Application {
     	PathTransition moz1Anim = new PathTransition(Duration.seconds(8),moz1);
     	moz1Anim.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
     	moz1Anim.setPath(path);
-    	moz1Anim.setNode(moz1);
+    	moz1Anim.setNode(mozdony);
     	moz1Anim.setAutoReverse(true);
     	moz1Anim.play();
     	
@@ -117,15 +117,19 @@ public class tmp extends Application {
 
         coll.addListener((obs, wasColl, isNowColl) -> {
         	if(isNowColl){
-        		System.out.println("utk");
+        		System.out.println("ssutk");
         	}
         });
         
         moz2Anim.play();
-        root.getChildren().add(moz1);
-        root.getChildren().add(moz2);
+        
         root.getChildren().add(path);
-        root.getChildren().add(path2);
+        
+        root.getChildren().add(mozdony);
+        root.getChildren().add(moz2);
+        root.getChildren().add(sin);
+        root.getChildren().add(sin2);
+        
         
 
         primaryStage.setTitle("Vonat");
