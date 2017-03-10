@@ -3,6 +3,8 @@ package sample;
 import javafx.scene.paint.Color;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.*;
@@ -18,22 +20,15 @@ import javafx.event.EventHandler;
 
 public class Main extends Application {
 
-    Rectangle mozdony = new Rectangle(60,20);
-    Rectangle mozdony2 = new Rectangle(60,20);
+  public Rectangle mozdony = new Rectangle(60,20);
+  public Rectangle mozdony2 = new Rectangle(60,20);
 
-    PathTransition mozdony_mozditas = new PathTransition();
-    PathTransition mozdony2_mozditas = new PathTransition();
+  public PathTransition mozdony_mozditas = new PathTransition();
+  public PathTransition mozdony2_mozditas = new PathTransition();
 
     public class Collision implements Runnable {
         public void run() {
-            //System.out.println("X koord: "+mozdony.getBoundsInLocal().+"\nY koord: "+mozdony.getY());
-            /*while (mozdony_mozditas) {
-                if (mozdony.getBoundsInLocal().intersects(mozdony2.getBoundsInLocal())) {
-                    System.out.println("Ütközés!");
-                    //mozdony_mozditas.stop();
-                    //mozdony2_mozditas.stop();
-                }
-            }*/
+        	
         }
     }
 
@@ -78,25 +73,18 @@ public class Main extends Application {
         mozdony2_utvonal.getElements().add(mozdony2_sin2);
 
 
-        mozdony2_mozditas.setDuration(Duration.seconds(11));
+        mozdony2_mozditas.setDuration(Duration.seconds(6));
         mozdony2_mozditas.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
         mozdony2_mozditas.setPath(mozdony2_utvonal);
         mozdony2_mozditas.setNode(mozdony2);
         mozdony2_mozditas.setAutoReverse(true);
-        mozdony_mozditas.setDuration(Duration.seconds(11));
+        mozdony_mozditas.setDuration(Duration.seconds(6));
         mozdony_mozditas.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
         mozdony_mozditas.setPath(mozdony_utvonal);
         mozdony_mozditas.setNode(mozdony);
         mozdony2_mozditas.play();
         mozdony_mozditas.play();
 
-
-        root.getChildren().add(poly);
-        root.getChildren().add(mozdony_utvonal);
-        root.getChildren().add(mozdony2_utvonal);
-        root.getChildren().add(mozdony);
-        root.getChildren().add(mozdony2);
-        root.getChildren().add(megallo);
 
         palya.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
@@ -118,8 +106,28 @@ public class Main extends Application {
                 });
             }
         });
+//true at collision
+        BooleanBinding coll = Bindings.createBooleanBinding(() -> {
+        	Point2D moz1Poz = mozdony.localToParent(20, 20); //starts from 20.20
+        	Point2D moz2Poz = mozdony2.localToParent(450, 500); //starts from 450 .500
+        	return (moz1Poz.distance(moz2Poz) < 20 ); //width is 20
+        	
+        }, mozdony.translateXProperty(), mozdony.translateYProperty());
 
+        coll.addListener((obs, wasColl, isNowColl) -> {
+        	if(isNowColl){
+        		System.out.println("utk");
+        	}
+        });
 
+        root.getChildren().add(poly);
+        root.getChildren().add(mozdony_utvonal);
+        root.getChildren().add(mozdony2_utvonal);
+        root.getChildren().add(mozdony);
+        root.getChildren().add(mozdony2);
+        root.getChildren().add(megallo);
+        
+        
 
         primaryStage.setTitle("Vonat");
         primaryStage.setScene(palya);
