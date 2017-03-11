@@ -19,6 +19,7 @@ public class Alagut extends Switcher{
 	public Alagut(Shape shape, Point2D tmp) {
 		super(shape, tmp);
 		// TODO Auto-generated constructor stub
+		System.out.println("		-called: Alagut constructor");
 	}
 	
 	

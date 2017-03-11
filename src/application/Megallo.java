@@ -11,7 +11,7 @@ public class Megallo extends ControlPoint{
 	
 	public Megallo(Shape al, Point2D pos, Color col) {
 		super(al, pos);
-		System.out.println("called: megallo constructor");
+		System.out.println("	-called: megallo constructor");
 		color=col;
 	}
 	

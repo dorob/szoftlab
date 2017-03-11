@@ -9,6 +9,13 @@ public class Vagon {
 	private Color color;
 	private boolean isEmpty;
 	
+	
+	/**
+	 * Vagon contructor
+	 */
+	public Vagon(){
+		System.out.println("called: vagon constructor");
+	}
 	public void move(){}
 	public void getDown(Color c){}
 }

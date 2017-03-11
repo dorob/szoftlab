@@ -8,6 +8,15 @@ public class Sin {
 	public ControlPoint controlpoint1;
 	public ControlPoint controlpoint2;
 	public Mozdony mozdony;
-	public void giveNext(){}
 	
+	/**
+	 * Sin konstruktor
+	 */
+	public Sin(){
+		System.out.println("called: sin constructor");
+	}
+	
+	public void giveNext(){}
 }
+	
+	

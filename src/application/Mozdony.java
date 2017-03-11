@@ -12,11 +12,19 @@ public class Mozdony {
 	private ArrayList<Sin> utvonal;
 	private boolean isDone;
 	
+	public Mozdony(){
+		System.out.println("called: mozdony constructor");
+		vagonok = new ArrayList<Vagon>();
+		ways = new ArrayList<Sin>();
+		vagonok.add(new Vagon());
+		ways.add(new Sin());
+	}
+	
 	public void move(){}
 	public boolean CollisionDetection(){ return false;}
 	public void doneMoving(){}
 	public void addWay(Sin s){}
 	public void stationArrive(Color c){}
 	
-
+	
 }

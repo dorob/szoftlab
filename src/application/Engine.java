@@ -6,6 +6,17 @@ public class Engine {
 	private String nev;
 	private int time;
 	
+	/**
+	 * Engine konstruktora
+	 */
+	public Engine(){
+		System.out.println("called Engine constructor");
+		level = new Palya();
+		toplista = new Scoreboard();
+		
+	}
+	
+	
 	public void run(){
 		System.out.println("called: run");
 	}
@@ -18,6 +29,7 @@ public class Engine {
 	}
 	public void showScores(){
 		System.out.println("called: showScores");
+		toplista.load();
 	}
 	public void collisionDetection(){
 		System.out.println("called: collisionDetection");
