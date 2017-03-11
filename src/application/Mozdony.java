@@ -20,7 +20,10 @@ public class Mozdony {
 		ways.add(new Sin());
 	}
 	
-	public void move(){}
+	public void move(){
+		System.out.println("called: mozdony move");
+		vagonok.get(0).move(); //javafx-be mar nm igy lesz
+	}
 	public boolean CollisionDetection(){ return false;}
 	public void doneMoving(){}
 	public void addWay(Sin s){}

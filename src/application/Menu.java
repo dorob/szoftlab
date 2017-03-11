@@ -9,7 +9,7 @@ public class Menu {
 private Engine jatek;
 
 	public Menu(){
-		System.out.println("called: menu constructor");
+		System.out.println("called: Menu constructor");
 	}
 
 	public static void main(String[] args){
@@ -18,9 +18,10 @@ private Engine jatek;
 	}
 	public void Init(){
 		System.out.println("called: engine init");
-		ArrayList<String> commands= new ArrayList<String>();
+		ArrayList<String> commands= new ArrayList<String>(); // ebbe basszatok bele az uj parancsokat
 		commands.add("scores");
 		commands.add("init");
+		commands.add("move");
 		try{
 			jatek = new Engine();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -35,6 +36,9 @@ private Engine jatek;
 					jatek.showScores();
 				else if (parts[0].equals("init"))
 					jatek.getLevel().init();
+				else if (parts[0].equals("move"))
+					jatek.run();
+				
 				else
 					System.err.println("Unknow command. Commands list is:" + commands);
 			}

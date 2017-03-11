@@ -10,7 +10,7 @@ public class Engine {
 	 * Engine konstruktora
 	 */
 	public Engine(){
-		System.out.println("called Engine constructor");
+		System.out.println("called: Engine constructor");
 		level = new Palya();
 		toplista = new Scoreboard();
 		
@@ -18,7 +18,8 @@ public class Engine {
 	
 	
 	public void run(){
-		System.out.println("called: run");
+		System.out.println("called: Engine run");
+		level.run();
 	}
 	public boolean nextLevel(){ 
 		System.out.println("called: nextLevel");

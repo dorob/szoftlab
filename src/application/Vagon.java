@@ -16,6 +16,8 @@ public class Vagon {
 	public Vagon(){
 		System.out.println("called: vagon constructor");
 	}
-	public void move(){}
+	public void move(){
+		System.out.println("called: vagon move");
+	}
 	public void getDown(Color c){}
 }

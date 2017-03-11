@@ -43,6 +43,9 @@ public class Palya {
 		return new ControlPoint(s, tmp);
 		}
 	public boolean checkCompleted(){return false;}
-	public void run(){}
+	public void run(){
+		System.out.println("called: Palya run");
+		vehicles.get(0).move(); //ez egy for-each lesz vegigmenve vonatokon
+	}
 	
 }
