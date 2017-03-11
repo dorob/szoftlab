@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.scene.paint.Color;
+import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
@@ -22,7 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /**
- * jelenleg annyit tud h 2 szar megy egymasnak es konzolba kiirja h utk ha utkoznek
+ * jelenleg annyit tud h 2 mozdony megy egymasnak es konzolba kiirja h utk ha utkoznek ez megy vegtelensegig odavissza
  * @author DANI
  *
  */
@@ -35,11 +36,15 @@ public class lkjh extends Application {
 
   public PathTransition mozdony_mozditas = new PathTransition();
   public PathTransition mozdony2_mozditas = new PathTransition();
-
+  public static int nm = 0;
   
     @Override
     public void start(Stage primaryStage) throws Exception{
-        final double wid = 800;
+        mozdony.setFill(Color.AQUA);
+        mozdony2.setFill(Color.ORANGE);
+    	
+    	
+    	final double wid = 800;
         final double heig = 800;
     	
         final double moz1Rad = 10;
@@ -56,21 +61,22 @@ public class lkjh extends Application {
     	Circle moz1 = new Circle(20, 50, moz1Rad, Color.RED);
     	//moz2 starts from 500, 600
   //  	Circle moz2 = new Circle(500, 600, moz2Rad, Color.GREEN);
-    	//curve with controlpoint on 300, 200
-    	CubicCurveTo sin = new CubicCurveTo(20, 50, 300, 200, 500, 600);
+    	//curve with controlpoint on 600, 200
+    	CubicCurveTo sin = new CubicCurveTo(20, 50, 600, 200, 500, 600);
     	
     	Path path = new Path();
     	path.getElements().add(new MoveTo(20, 50));
     	path.getElements().add(sin);
-    	PathTransition moz1Anim = new PathTransition(Duration.seconds(8),moz1);
+    	PathTransition moz1Anim = new PathTransition(Duration.seconds(8),mozdony);
     	moz1Anim.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
     	moz1Anim.setPath(path);
-    	moz1Anim.setNode(moz1);
+    	moz1Anim.setNode(mozdony);
     	moz1Anim.setAutoReverse(true);
+    	moz1Anim.setCycleCount(Animation.INDEFINITE);
     	moz1Anim.play();
     	
         Scene palya = new Scene(root,wid,heig);
-
+/*
         palya.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
                 Path tmp = new Path();
@@ -91,41 +97,45 @@ public class lkjh extends Application {
                 });
             }
         });
-        
+  */      
       Circle moz2 = new Circle(500, 600, moz2Rad, Color.GREEN);
-    	//curve with controlpoint on 300, 200
-    	CubicCurveTo sin2 = new CubicCurveTo(500, 600, 300, 200, 20, 50);
+    	//curve with controlpoint on 600, 200
+    	CubicCurveTo sin2 = new CubicCurveTo(500, 600, 600, 200, 20, 50);
     	
     	Path path2 = new Path();
     	path2.getElements().add(new MoveTo(500, 600));
     	path2.getElements().add(sin2);
-    	PathTransition moz2Anim = new PathTransition(Duration.seconds(8),moz2);
+    	PathTransition moz2Anim = new PathTransition(Duration.seconds(8),mozdony2);
     	moz2Anim.setOrientation(OrientationType.ORTHOGONAL_TO_TANGENT);
     	moz2Anim.setPath(path2);
-    	moz2Anim.setNode(moz2);
+    	moz2Anim.setNode(mozdony2);
     	moz2Anim.setAutoReverse(true);
+    	moz2Anim.setCycleCount(Animation.INDEFINITE);
     	
         
         
 //true at collision
         BooleanBinding coll = Bindings.createBooleanBinding(() -> {
-        	Point2D moz1Poz = moz1.localToParent(20, 50); //starts from 20.20
-        	Point2D moz2Poz = moz2.localToParent(500, 600); //starts from 450 .500
-        	return (moz1Poz.distance(moz2Poz) < moz1Rad + moz2Rad ); //width is 20
+        	Point2D moz1Poz = mozdony.localToParent(20, 50); //starts from 20.20
+        	Point2D moz2Poz = mozdony2.localToParent(500, 600); //starts from 450 .500
+        	return (moz1Poz.distance(moz2Poz) < 50 ); //width is 20
         	
-        }, moz1.translateXProperty(), moz1.translateYProperty());
-
+        }, mozdony.translateXProperty(), mozdony.translateYProperty());
+       
         coll.addListener((obs, wasColl, isNowColl) -> {
+        	
         	if(isNowColl){
-        		System.out.println("bbsutk");
+        		
+        		System.out.println("bbsutk" + " " +nm);
+        		nm++;
         	}
         });
         
         moz2Anim.play();
         
         root.getChildren().add(path);
-        root.getChildren().add(moz1);
-        root.getChildren().add(moz2);
+        root.getChildren().add(mozdony);
+        root.getChildren().add(mozdony2);
      
         
         
