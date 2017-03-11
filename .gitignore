@@ -3,3 +3,6 @@ szoftlab.iml
 out
 src/sample/sample.fxml
 .idea/workspace.xml
+.project
+.classpath
+bin
