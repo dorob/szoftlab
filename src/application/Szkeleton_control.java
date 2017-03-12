@@ -20,8 +20,9 @@ public class Szkeleton_control {
 		commands.add("scores");
 		commands.add("init");
 		commands.add("move");
-		commands.add("megall");
+		commands.add("megall" + " " + "-leszall");
 		commands.add("exit");
+		commands.add("win");
 		try{
 			menu.Init();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -51,6 +52,9 @@ public class Szkeleton_control {
 				}
 				else if (parts[0].equals("exit")){
 					break;
+					}
+				else if (parts[0].equals("win")){
+					menu.getJatek().win();
 					}
 				
 				else

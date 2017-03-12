@@ -26,7 +26,9 @@ public class Engine {
 		return false;
 		}
 	public void win(){
-		System.out.println("called: win");
+		System.out.println("called: Engine win");
+		toplista.addHelyezes(nev, time);
+		toplista.save();
 	}
 	public void showScores(){
 		System.out.println("called: showScores");

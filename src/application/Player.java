@@ -15,6 +15,7 @@ public class Player implements Comparable{
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
+		System.out.println("players compared");
 		return 0;
 	}
 	public String getName() {
