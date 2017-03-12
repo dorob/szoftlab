@@ -36,8 +36,12 @@ private Engine jatek;
 					jatek.showScores();
 				else if (parts[0].equals("init"))
 					jatek.getLevel().init();
-				else if (parts[0].equals("move"))
+				else if (parts[0].equals("move")){
 					jatek.run();
+					}
+				else if	(parts[0].equals("megall")){
+					jatek.getLevel().getVehicles().get(0).doneMoving();
+				}
 				
 				else
 					System.err.println("Unknow command. Commands list is:" + commands);

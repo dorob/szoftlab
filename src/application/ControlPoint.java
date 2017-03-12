@@ -23,7 +23,7 @@ public class ControlPoint {
 	}
 	
 	public Sin giveDirection(Sin a){ 
-		System.out.println("called: giveDirection");
+		System.out.println("called: controlpoint giveDirection");
 		return a;
 		}
 	public void perform(){

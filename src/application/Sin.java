@@ -16,7 +16,11 @@ public class Sin {
 		System.out.println("called: sin constructor");
 	}
 	
-	public void giveNext(){}
+	public void giveNext(){
+		System.out.println("called: sin giveNext");
+		controlpoint1 = new ControlPoint(null, null);
+		controlpoint1.giveDirection(this);
+	}
 }
 	
 	

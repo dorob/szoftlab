@@ -25,7 +25,7 @@ public class Palya {
 	}
 	public void init(){
 		//itt lesz am fajlbol beolvassa egesz palyat ahelyett mostmeg csak bemutatja construktorokat
-		
+		System.out.println("called: palya init");
 		cp.add(new ControlPoint(null, null));
 		cp.add(new Megallo(null, null, null));
 		cp.add(new Switcher(null, null));
@@ -35,7 +35,6 @@ public class Palya {
 		
 	}
 	
-	public ArrayList<Mozdony> getVehicles(){ return new ArrayList<Mozdony>();}
 	public ControlPoint findCP(){
 		System.out.println("called: findCP");
 		Point2D tmp = new Point2D(0, 0);
@@ -45,7 +44,33 @@ public class Palya {
 	public boolean checkCompleted(){return false;}
 	public void run(){
 		System.out.println("called: Palya run");
-		vehicles.get(0).move(); //ez egy for-each lesz vegigmenve vonatokon
+		vehicles.get(0).move(); 	//ez egy for-each lesz vegigmenve vonatokon
 	}
+	public Image getHatter() {
+		return hatter;
+	}
+	public void setHatter(Image hatter) {
+		this.hatter = hatter;
+	}
+	public ArrayList<ControlPoint> getCp() {
+		return cp;
+	}
+	public void setCp(ArrayList<ControlPoint> cp) {
+		this.cp = cp;
+	}
+	public Point2D getOpenAlagut() {
+		return openAlagut;
+	}
+	public void setOpenAlagut(Point2D openAlagut) {
+		this.openAlagut = openAlagut;
+	}
+	public void setVehicles(ArrayList<Mozdony> vehicles) {
+		this.vehicles = vehicles;
+	}
+	public ArrayList<Mozdony> getVehicles(){
+		return vehicles;
+	}
+	
+	
 	
 }

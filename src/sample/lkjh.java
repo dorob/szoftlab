@@ -76,7 +76,7 @@ public class lkjh extends Application {
     	moz1Anim.play();
     	
         Scene palya = new Scene(root,wid,heig);
-/*
+//eza resz meg nincs
         palya.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
                 Path tmp = new Path();
@@ -97,7 +97,7 @@ public class lkjh extends Application {
                 });
             }
         });
-  */      
+        
       Circle moz2 = new Circle(500, 600, moz2Rad, Color.GREEN);
     	//curve with controlpoint on 600, 200
     	CubicCurveTo sin2 = new CubicCurveTo(500, 600, 600, 200, 20, 50);
@@ -117,7 +117,7 @@ public class lkjh extends Application {
 //true at collision
         BooleanBinding coll = Bindings.createBooleanBinding(() -> {
         	Point2D moz1Poz = mozdony.localToParent(20, 50); //starts from 20.20
-        	Point2D moz2Poz = mozdony2.localToParent(500, 600); //starts from 450 .500
+        	Point2D moz2Poz = mozdony2.localToParent(500, 600); //starts from 500 .600
         	return (moz1Poz.distance(moz2Poz) < 50 ); //width is 20
         	
         }, mozdony.translateXProperty(), mozdony.translateYProperty());
@@ -130,7 +130,6 @@ public class lkjh extends Application {
         		nm++;
         	}
         });
-        
         moz2Anim.play();
         
         root.getChildren().add(path);
@@ -138,8 +137,6 @@ public class lkjh extends Application {
         root.getChildren().add(mozdony2);
      
         
-        
-
         primaryStage.setTitle("Vonat");
         primaryStage.setScene(palya);
         primaryStage.show();
