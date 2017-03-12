@@ -21,12 +21,12 @@ public class Engine {
 	
 	public void run(){
 		System.out.println("called: Engine run");
-		
+	
 		if(level==null){
 			System.out.println("  level = null");
 			nextLevel();
 		}
-		
+		if(level!=null)
 		level.run();
 	}
 	public boolean nextLevel(){ 
