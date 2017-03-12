@@ -19,10 +19,13 @@ public class Szkeleton_control {
 		ArrayList<String> commands= new ArrayList<String>(); // ebbe basszatok bele az uj parancsokat
 		commands.add("scores");
 		commands.add("init");
+		commands.add("start");
 		commands.add("move");
 		commands.add("megall" + " " + "-leszall");
 		commands.add("exit");
 		commands.add("win");
+		commands.add("collide");
+		
 		try{
 			menu.Init();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,7 +39,9 @@ public class Szkeleton_control {
 				if (parts[0].equals("scores"))
 					menu.getJatek().showScores();
 				else if (parts[0].equals("init"))
-					menu.getJatek().getLevel().init();
+					if(menu.getJatek().getLevel()==null)
+						System.out.println("start first");
+					else menu.getJatek().getLevel().init();
 				else if (parts[0].equals("move")){
 					menu.getJatek().run();
 					}
@@ -51,19 +56,29 @@ public class Szkeleton_control {
 					}else continue;
 				}
 				else if (parts[0].equals("exit")){
+					menu.getJatek().exit();
 					break;
 					}
 				else if (parts[0].equals("win")){
 					menu.getJatek().win();
+					return;
 					}
-				
+				else if (parts[0].equals("collide")){
+					menu.getJatek().collisionDetection();
+					break;
+					}
+				else if (parts[0].equals("start")){
+					Engine e = menu.getJatek();
+					e.run();
+					}
 				else
 					System.err.println("Unknow command. Commands list is:" + commands);
 			}
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+		System.err.println("Szkeleton control ended");
 		
 		
 	}

@@ -11,7 +11,6 @@ public class Engine {
 	 */
 	public Engine(){
 		System.out.println("called: Engine constructor");
-		level = new Palya();
 		toplista = new Scoreboard();
 		
 	}
@@ -19,26 +18,36 @@ public class Engine {
 	
 	public void run(){
 		System.out.println("called: Engine run");
+		
+		if(level==null){
+			System.out.println("  levlel = null");
+			nextLevel();
+		}
+		
 		level.run();
 	}
 	public boolean nextLevel(){ 
 		System.out.println("called: nextLevel");
+		level = new Palya();
+		level.init();
 		return false;
 		}
 	public void win(){
 		System.out.println("called: Engine win");
 		toplista.addHelyezes(nev, time);
 		toplista.save();
+		this.exit();
 	}
 	public void showScores(){
-		System.out.println("called: showScores");
+		System.out.println("called: Engine showScores");
 		toplista.load();
 	}
 	public void collisionDetection(){
-		System.out.println("called: collisionDetection");
+		System.out.println("called: Engine collisionDetection");
+		this.exit();
 	}
 	public void exit(){
-		System.out.println("called: exit");
+		System.out.println("called: Engine exit");
 	}
 	
 	

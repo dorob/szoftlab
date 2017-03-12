@@ -41,7 +41,11 @@ public class Palya {
 		Shape s = new Rectangle(0, 0);
 		return new ControlPoint(s, tmp);
 		}
-	public boolean checkCompleted(){return false;}
+	public boolean checkCompleted(){
+		System.out.println("called: level checkCompleted");
+		
+		return false;
+		}
 	public void run(){
 		System.out.println("called: Palya run");
 		vehicles.get(0).move(); 	//ez egy for-each lesz vegigmenve vonatokon
