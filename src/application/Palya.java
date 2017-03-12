@@ -35,11 +35,9 @@ public class Palya {
 		
 	}
 	
-	public ControlPoint findCP(){
-		System.out.println("called: findCP");
-		Point2D tmp = new Point2D(0, 0);
-		Shape s = new Rectangle(0, 0);
-		return new ControlPoint(s, tmp);
+	public ControlPoint findCP(int x, int y){
+		System.out.println("called: palya findCP");
+		return cp.get(2);	//mivel ez a switcher, elesbe majd megkeresi
 		}
 	public boolean checkCompleted(){
 		System.out.println("called: level checkCompleted");

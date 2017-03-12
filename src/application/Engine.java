@@ -20,7 +20,7 @@ public class Engine {
 		System.out.println("called: Engine run");
 		
 		if(level==null){
-			System.out.println("  levlel = null");
+			System.out.println("  level = null");
 			nextLevel();
 		}
 		

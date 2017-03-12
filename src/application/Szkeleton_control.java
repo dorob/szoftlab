@@ -25,7 +25,7 @@ public class Szkeleton_control {
 		commands.add("exit");
 		commands.add("win");
 		commands.add("collide");
-		
+		commands.add("switch");
 		try{
 			menu.Init();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,10 +38,11 @@ public class Szkeleton_control {
 	
 				if (parts[0].equals("scores"))
 					menu.getJatek().showScores();
-				else if (parts[0].equals("init"))
+				else if (parts[0].equals("init")){
 					if(menu.getJatek().getLevel()==null)
-						System.out.println("start first");
-					else menu.getJatek().getLevel().init();
+						menu.getJatek().setLevel(new Palya());
+					menu.getJatek().getLevel().init();
+				}
 				else if (parts[0].equals("move")){
 					menu.getJatek().run();
 					}
@@ -71,6 +72,10 @@ public class Szkeleton_control {
 					Engine e = menu.getJatek();
 					e.run();
 					}
+				else if (parts[0].equals("switch")){
+					ControlPoint find = menu.getJatek().getLevel().findCP(0, 0);
+					find.perform(null);
+				}
 				else
 					System.err.println("Unknow command. Commands list is:" + commands);
 			}

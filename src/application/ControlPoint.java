@@ -12,7 +12,7 @@ public class ControlPoint {
 	private ArrayList<Sin> ways = new ArrayList<Sin>();
 	
 	public ControlPoint(Shape shape, Point2D tmp){
-		System.out.println("called: ControlPoint construcor");
+		System.out.println("called: ControlPoint constructor");
 		alak = shape;
 		hely = tmp;
 	}

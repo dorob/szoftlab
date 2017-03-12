@@ -11,6 +11,14 @@ public class Switcher extends ControlPoint{
 		System.out.println("		-called: Switcher constructor");
 	}
 	public int activ;
-	public void Switch(){}
+	
+	@Override
+	public void perform(Mozdony m){
+		System.out.println("called: switcher perform");
+		Switch();
+	}
+	public void Switch(){
+		System.out.println("called: switcher switch");
+	}
 	
 }

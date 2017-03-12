@@ -126,7 +126,7 @@ public class lkjh extends Application {
         	
         	if(isNowColl){
         		
-        		System.out.println("bbsutk" + " " +nm);
+        		System.out.println("meow" + " " +nm);
         		nm++;
         	}
         });
