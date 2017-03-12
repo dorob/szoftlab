@@ -29,21 +29,23 @@ public class Engine {
 		if(level!=null)
 		level.run();
 	}
+	
 	public boolean nextLevel(){ 
 		System.out.println("called: nextLevel");
 		try{
-		System.out.println("Utso palya volt? y/n");
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String line = br.readLine();
-		if(line.equals("y"))
-			return true;
-		level = new Palya();
-		level.init();
-		}catch (Exception e){
-			e.printStackTrace();
-		}
+			System.out.println("Utso palya volt? y/n");
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			String line = br.readLine();
+			if(line.equals("y"))
+				return true;
+			level = new Palya();
+			level.init();
+			}catch (Exception e){
+				e.printStackTrace();
+			}
 		return false;
 		}
+	
 	public void win(){
 		System.out.println("called: Engine win");
 		toplista.addHelyezes(nev, time);
