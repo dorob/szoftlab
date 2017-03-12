@@ -26,7 +26,7 @@ public class Szkeleton_control {
 		commands.add("win");
 		commands.add("collide");
 		commands.add("switch");
-		commands.add("tunnel");
+		commands.add("tunnel" + " " + "-build/destroy");
 		try{
 			menu.Init();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
