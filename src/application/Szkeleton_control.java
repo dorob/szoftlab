@@ -21,11 +21,12 @@ public class Szkeleton_control {
 		commands.add("init");
 		commands.add("start");
 		commands.add("move");
-		commands.add("megall" + " " + "-leszall");
+		commands.add("stop" + " " + "-getoff");
 		commands.add("exit");
 		commands.add("win");
 		commands.add("collide");
 		commands.add("switch");
+		commands.add("tunnel");
 		try{
 			menu.Init();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -46,9 +47,9 @@ public class Szkeleton_control {
 				else if (parts[0].equals("move")){
 					menu.getJatek().run();
 					}
-				else if	(parts[0].equals("megall")){
+				else if	(parts[0].equals("stop")){
 					menu.getJatek().getLevel().getVehicles().get(0).doneMoving();
-					System.out.println("leszall? y/n");
+					System.out.println("Get off? y/n");
 					line = br.readLine();
 					if(line.equals("y")){
 						System.out.println("....szallas:");
@@ -74,6 +75,10 @@ public class Szkeleton_control {
 					}
 				else if (parts[0].equals("switch")){
 					ControlPoint find = menu.getJatek().getLevel().findCP(0, 0);
+					find.perform(null);
+				}
+				else if (parts[0].equals("tunnel")){
+					ControlPoint find = menu.getJatek().getLevel().findCP(0, 1); //csak hogy alagutat adjon vissza
 					find.perform(null);
 				}
 				else

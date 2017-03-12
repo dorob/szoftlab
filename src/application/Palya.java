@@ -37,7 +37,9 @@ public class Palya {
 	
 	public ControlPoint findCP(int x, int y){
 		System.out.println("called: palya findCP");
-		return cp.get(2);	//mivel ez a switcher, elesbe majd megkeresi
+		if(y==1)
+			return cp.get(3); //hogy alagutat adjon a teszthez
+		else return cp.get(2);	//mivel ez a switcher, elesbe majd megkeresi
 		}
 	public boolean checkCompleted(){
 		System.out.println("called: level checkCompleted");

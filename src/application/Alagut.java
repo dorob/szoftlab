@@ -1,5 +1,8 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
@@ -33,11 +36,27 @@ public class Alagut extends Switcher{
 		this.isBuilt = isBuilt;
 	}
 	
+	@Override
+	public void perform(Mozdony m){
+		System.out.println("called: Alagut perform");
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Build or destroy? b/d");
+			String line = br.readLine();
+			if(line.equals("b"))
+				this.build();
+			else if(line.equals("d"))
+				this.destroy();
+			else System.err.println("Tunnel failed"); //rossz command
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
 	public void build(){
-		System.out.println("called: build");
+		System.out.println("called: Alagut build");
 	}
 	public void destroy(){
-		System.out.println("called: destroy");
+		System.out.println("called: Alagut destroy");
 	}
 }
