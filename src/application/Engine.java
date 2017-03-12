@@ -1,5 +1,8 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Engine {
 	private Palya level;
 	private Scoreboard toplista;
@@ -44,10 +47,20 @@ public class Engine {
 	}
 	public void collisionDetection(){
 		System.out.println("called: Engine collisionDetection");
-		this.exit();
+		try{
+			System.out.println("Utkoznek? y/n");
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			String line = br.readLine();
+			if(line.equals("y"))
+				this.exit();
+			else return;
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	public void exit(){
 		System.out.println("called: Engine exit");
+		return;
 	}
 	
 	

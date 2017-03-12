@@ -67,7 +67,6 @@ public class Szkeleton_control {
 					}
 				else if (parts[0].equals("collide")){
 					menu.getJatek().collisionDetection();
-					break;
 					}
 				else if (parts[0].equals("start")){
 					Engine e = menu.getJatek();
