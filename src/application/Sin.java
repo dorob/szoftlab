@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Color;
 import java.awt.geom.CubicCurve2D;
 
 public class Sin {
@@ -14,6 +15,8 @@ public class Sin {
 	 */
 	public Sin(){
 		System.out.println("called: sin constructor");
+		controlpoint2 = new Megallo(null, null, Color.ORANGE);
+		
 	}
 	
 	public void giveNext(){

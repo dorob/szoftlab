@@ -36,7 +36,10 @@ public class Mozdony {
 		utvonal.get(0).giveNext();
 	}
 	public void addWay(Sin s){}
-	public void stationArrive(Color c){}
+	public void stationArrive(Color c){
+		System.out.println("called: mozdony stationArrive");
+		vagonok.get(0).getDown(c);
+	}
 
 	
 	

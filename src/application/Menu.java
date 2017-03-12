@@ -11,44 +11,21 @@ private Engine jatek;
 	public Menu(){
 		System.out.println("called: Menu constructor");
 	}
-
+/* alapbol ez fog futni de most a control miatt nem ez a main
 	public static void main(String[] args){
 		Menu mm = new Menu();
 		mm.Init();
 	}
+*/
 	public void Init(){
 		System.out.println("called: engine init");
-		ArrayList<String> commands= new ArrayList<String>(); // ebbe basszatok bele az uj parancsokat
-		commands.add("scores");
-		commands.add("init");
-		commands.add("move");
-		try{
-			jatek = new Engine();
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-			while (true) {
-				String line = br.readLine();
-				if (line == null)
-					break;
-				String[] parts = line.split(" ");
-	
-				if (parts[0].equals("scores"))
-					jatek.showScores();
-				else if (parts[0].equals("init"))
-					jatek.getLevel().init();
-				else if (parts[0].equals("move")){
-					jatek.run();
-					}
-				else if	(parts[0].equals("megall")){
-					jatek.getLevel().getVehicles().get(0).doneMoving();
-				}
-				
-				else
-					System.err.println("Unknow command. Commands list is:" + commands);
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		jatek = new Engine();
+	}
+	public Engine getJatek() {
+		return jatek;
+	}
+	public void setJatek(Engine jatek) {
+		this.jatek = jatek;
 	}
 	
 }

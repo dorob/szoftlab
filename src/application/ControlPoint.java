@@ -26,7 +26,7 @@ public class ControlPoint {
 		System.out.println("called: controlpoint giveDirection");
 		return a;
 		}
-	public void perform(){
+	public void perform(Mozdony m){
 		System.out.println("called: perform");
 	}
 }

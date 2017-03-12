@@ -26,8 +26,9 @@ public class Megallo extends ControlPoint{
 		return a;
 		}
 	@Override
-	public void perform(){
-		System.out.println("called: megallo perform");
+	public void perform(Mozdony m){
+		System.out.println("called: megallo perform-leszallas");
+		m.stationArrive(color);
 	}
 	
 }
