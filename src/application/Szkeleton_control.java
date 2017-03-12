@@ -27,6 +27,7 @@ public class Szkeleton_control {
 		commands.add("collide");
 		commands.add("switch");
 		commands.add("tunnel" + " " + "-build/destroy");
+		commands.add("nextlevel");
 		try{
 			menu.Init();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -79,6 +80,17 @@ public class Szkeleton_control {
 				else if (parts[0].equals("tunnel")){
 					ControlPoint find = menu.getJatek().getLevel().findCP(0, 1); //csak hogy alagutat adjon vissza
 					find.perform(null);
+				}
+				else if (parts[0].equals("nextlevel")){
+					Engine e =menu.getJatek();
+					if(!e.getLevel().checkCompleted()){
+						
+					}else{
+						if(e.nextLevel()){
+							e.win();
+							return;
+						}
+						}
 				}
 				else
 					System.err.println("Unknow command. Commands list is:" + commands);

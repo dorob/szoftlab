@@ -3,6 +3,8 @@ package application;
 
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import javafx.geometry.Point2D;
@@ -41,36 +43,55 @@ public class Palya {
 			return cp.get(3); //hogy alagutat adjon a teszthez
 		else return cp.get(2);	//mivel ez a switcher, elesbe majd megkeresi
 		}
+	
 	public boolean checkCompleted(){
 		System.out.println("called: level checkCompleted");
-		
-		return false;
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Veget ert a palya? y/n");
+			String line = br.readLine();
+			if(line.equals("y"))
+				return true;
+			else return false; 
+		}catch (Exception e){
+			e.printStackTrace();
+			return false;
 		}
+		}
+	
 	public void run(){
 		System.out.println("called: Palya run");
 		vehicles.get(0).move(); 	//ez egy for-each lesz vegigmenve vonatokon
 	}
+	
 	public Image getHatter() {
 		return hatter;
 	}
+	
 	public void setHatter(Image hatter) {
 		this.hatter = hatter;
 	}
+	
 	public ArrayList<ControlPoint> getCp() {
 		return cp;
 	}
+	
 	public void setCp(ArrayList<ControlPoint> cp) {
 		this.cp = cp;
 	}
+	
 	public Point2D getOpenAlagut() {
 		return openAlagut;
 	}
+	
 	public void setOpenAlagut(Point2D openAlagut) {
 		this.openAlagut = openAlagut;
 	}
+	
 	public void setVehicles(ArrayList<Mozdony> vehicles) {
 		this.vehicles = vehicles;
 	}
+	
 	public ArrayList<Mozdony> getVehicles(){
 		return vehicles;
 	}

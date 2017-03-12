@@ -31,8 +31,17 @@ public class Engine {
 	}
 	public boolean nextLevel(){ 
 		System.out.println("called: nextLevel");
+		try{
+		System.out.println("Utso palya volt? y/n");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String line = br.readLine();
+		if(line.equals("y"))
+			return true;
 		level = new Palya();
 		level.init();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		return false;
 		}
 	public void win(){
