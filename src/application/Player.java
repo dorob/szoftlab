@@ -1,5 +1,8 @@
 package application;
-
+/**
+ * A jatekost szimbolizalo objektum. Ebben taroljuk a jatekos nevet, illetve idejet.
+ * @author Tsurhe
+ */
 public class Player implements Comparable{
 	private String name;
 	private int ertek;
@@ -10,14 +13,26 @@ public class Player implements Comparable{
 	public Player(){ //ez majd var egy nevet es egy erteket
 		System.out.println("called: Player constructor");
 	}
-	public String toString(){ return "random string";};
-	//public void compareTo(Player a){}
+	
+	/**
+	 * Feluldefinialt kiirato fuggveny, amellyel felhasznalobaratibb kiiratas valik lehetove a Player-eken
+	 */
+	@Override
+	public String toString(){ 
+		return " ";
+		}
+	
+	/**
+	 * Feluldefinialt osszehasonlito fuggveny az egyszerubb sort-olas erdekeben
+	 * @param o Amivel osszehasonlitjuk
+	 */
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
 		System.out.println("players compared");
 		return 0;
 	}
+	
+	// generalt fuggvenyek
 	public String getName() {
 		return name;
 	}
