@@ -11,7 +11,12 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-
+/**
+ * Palyaelemek betoltese illetve tarolasa.Itt tarolunk minden interakciora kepesobjektumot:
+ * Vonatok ControlPointok hatter
+ * @author Tsurhe
+ *
+ */
 public class Palya {
 	
 	private Image hatter;   //nem buffered kell, a bufferedet e segitsegeve alitod elo de itt nmkell plusz az swinges
@@ -19,12 +24,17 @@ public class Palya {
 	private ArrayList<Mozdony> vehicles;
 	public Point2D openAlagut;
 	
-	
+	/**
+	 * palya konstruktor
+	 */
 	public Palya(){
 		System.out.println("called: Palya constructor");
 		cp = new ArrayList<ControlPoint>();
 		vehicles = new ArrayList<Mozdony>();
 	}
+	/**
+	 * palya inicializalasa.
+	 */
 	public void init(){
 		//itt lesz am fajlbol beolvassa egesz palyat ahelyett mostmeg csak bemutatja construktorokat
 		System.out.println("called: palya init");
@@ -37,6 +47,12 @@ public class Palya {
 		
 	}
 	
+	/**
+	 * Az adott ControlPoint kikeresese
+	 * @param x x koordinata.
+	 * @param y y koordinata.
+	 * @return A koordinatak alapjan megadott ControlPoint.
+	 */
 	public ControlPoint findCP(int x, int y){
 		System.out.println("called: palya findCP");
 		if(y==1)
@@ -44,6 +60,10 @@ public class Palya {
 		else return cp.get(2);	//mivel ez a switcher, elesbe majd megkeresi
 		}
 	
+	/**
+	 * Ellenorzi, hogy minden vonatnak kiurult-e a valamennyi vagonja.
+	 * @return Minden vagon kiurult-e.
+	 */
 	public boolean checkCompleted(){
 		System.out.println("called: level checkCompleted");
 		try{
@@ -58,11 +78,15 @@ public class Palya {
 			return false;
 		}
 		}
-	
+	/**
+	 * A palya futtatasaertfelelos fuggveny.
+	 */
 	public void run(){
 		System.out.println("called: Palya run");
 		vehicles.get(0).move(); 	//ez egy for-each lesz vegigmenve vonatokon
 	}
+	
+	//Generalt fuggvenyek.
 	
 	public Image getHatter() {
 		return hatter;
