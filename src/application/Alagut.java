@@ -35,6 +35,7 @@ public class Alagut extends Switcher{
 		System.out.println("called: isBuilt");
 		return isBuilt;
 	}
+	
 	public void setBuilt(boolean isBuilt) {
 		System.out.println("called: setBuilt");
 		this.isBuilt = isBuilt;
@@ -62,12 +63,14 @@ public class Alagut extends Switcher{
 			e.printStackTrace();
 		}
 	}
+	
 	/**
 	 * Felepiti az alagutat.
 	 */
 	public void build(){
 		System.out.println("called: Alagut build");
 	}
+	
 	/**
 	 * Lerombolja az alagutat.
 	 */
