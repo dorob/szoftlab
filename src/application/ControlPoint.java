@@ -46,7 +46,7 @@ public class ControlPoint {
 	/**
 	 * Feluldefinialando fv. minden ControlPoint sajat esemenyet hivja meg. pl megalloban megallas
 	 * vagy Switchernel valtas. 
-	 * @param m Referencia a mozdonyra ami hivta.
+	 * @param m Referencia a mozdonyra ami a megalloban van.
 	 */
 	public void perform(Mozdony m){
 		System.out.println("called: perform");
