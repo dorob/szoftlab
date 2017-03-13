@@ -21,7 +21,8 @@ public class Switcher extends ControlPoint{
 	}
 	
 	/**
-	 * A feluldefinialt perform fuggveny, ami valtast indit 
+	 * A feluldefinialt perform fuggveny, ami valtast indit
+	 *  @param m A mozdony, mely oda ert hozza (lehet null is)
 	 */
 	@Override
 	public void perform(Mozdony m){
