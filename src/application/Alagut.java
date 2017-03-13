@@ -7,7 +7,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
 /**
- * Alagut osztaly leirasat ide kene copizni elso doksibol
+ * Olyan ControlPoint, amelyre alagut szaj epítheto, illetve bonthato le. Ahol alagut van,
+ * ott a vonat minden esetben az alagutban halad tovabb, nem masik uton.
  * @author Tsurhe
  *
  */
@@ -21,12 +22,15 @@ public class Alagut extends Switcher{
 	 */
 	public Alagut(Shape shape, Point2D tmp) {
 		super(shape, tmp);
-		// TODO Auto-generated constructor stub
+		
 		System.out.println("		-called: Alagut constructor");
 	}
 	
 	
-	
+	/**
+	 * Megnezi, hogy felepitettuk-e mar ezt az alagutszajat.
+	 * @return visszaadja a hiv tesztem eredmenyet
+	 */
 	public boolean isBuilt() {
 		System.out.println("called: isBuilt");
 		return isBuilt;
@@ -36,7 +40,13 @@ public class Alagut extends Switcher{
 		this.isBuilt = isBuilt;
 	}
 	
+	
+	
 	@Override
+	/**
+	 * Letrehoz vagy lerombol egy alagutat.
+	 * @param m referencia a hivo mozdonyra
+	 */
 	public void perform(Mozdony m){
 		System.out.println("called: Alagut perform");
 		try{
@@ -52,10 +62,15 @@ public class Alagut extends Switcher{
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Felepiti az alagutat.
+	 */
 	public void build(){
 		System.out.println("called: Alagut build");
 	}
+	/**
+	 * Lerombolja az alagutat.
+	 */
 	public void destroy(){
 		System.out.println("called: Alagut destroy");
 	}
