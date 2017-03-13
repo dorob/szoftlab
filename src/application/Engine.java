@@ -2,7 +2,11 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+/**
+ * A jatek futasaert felelos objektum.
+ * @author Tsurhe
+ *
+ */
 public class Engine {
 	private Palya level;
 	private Scoreboard toplista;
@@ -18,7 +22,9 @@ public class Engine {
 		
 	}
 	
-	
+	/**
+	 * A jatek focklusanak futtatasa.
+	 */
 	public void run(){
 		System.out.println("called: Engine run");
 	
@@ -29,7 +35,11 @@ public class Engine {
 		if(level!=null)
 		level.run();
 	}
-	
+	/**
+	 * A kovetkezo palya betolteset, illetve ha nincs tobb palya a win szekvencia meghivasat
+	 * vegzi.
+	 * @return Van e kovetkezo palya.
+	 */
 	public boolean nextLevel(){ 
 		System.out.println("called: nextLevel");
 		try{
@@ -45,17 +55,25 @@ public class Engine {
 			}
 		return false;
 		}
-	
+	/**
+	 * A jatek vegen hivodik meg, megallit minden folyamatot es hozzaadja a jatekost a toplistahoz.
+	 */
 	public void win(){
 		System.out.println("called: Engine win");
 		toplista.addHelyezes(nev, time);
 		toplista.save();
 		this.exit();
 	}
+	/**
+	 * Megnyitja a toplistat.
+	 */
 	public void showScores(){
 		System.out.println("called: Engine showScores");
 		toplista.load();
 	}
+	/**
+	 * A vonatok utkozeset detektalja.
+	 */
 	public void collisionDetection(){
 		System.out.println("called: Engine collisionDetection");
 		try{
@@ -69,12 +87,15 @@ public class Engine {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Leallitja a folyamatokat esbezarja a programot.
+	 */
 	public void exit(){
 		System.out.println("called: Engine exit");
 		return;
 	}
 	
-	
+	//Generalt fv.-nyek.
 	public Palya getLevel() {
 		System.out.println("called: getLevel");
 		return level;
