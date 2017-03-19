@@ -112,18 +112,26 @@ public class Szkeleton_control {
 				}
 				
 				else if	(parts[0].equals("stop")){
-					menu.getJatek().getLevel().getVehicles().get(0).doneMoving();
-					//Ellenorizzuk, hogy le leszallnak-e (vagyis megallo van e a controlpointnal)
-					System.out.println("Get off? y/n");
-					GlobalLogger.log("Get off? y/n");
+					System.out.println("Is it a station (Not Tunnel, nor Switch)? y/n");
+					GlobalLogger.log("Is it a station (Not Tunnel, nor Switch)? y/n");
 					line = br.readLine();
 					GlobalLogger.log("INPUT: " + line);
 					if(line.equals("y")){
-						System.out.println("....szallas:");
-						GlobalLogger.log("....szallas:");
-						Mozdony m = menu.getJatek().getLevel().getVehicles().get(0);
-						m.getUtvonal().get(0).controlpoint2.perform(m);
-					}else continue;
+						//Ellenorizzuk, hogy leszallnak-e a megallonal (azonos szin)
+						System.out.println("You arrived at a Station. Do you want to get off? y/n");
+						GlobalLogger.log("You arrived at a Station. Do you want to get off? y/n");
+						
+						line = br.readLine();
+						GlobalLogger.log("INPUT: " + line);
+						
+						if(line.equals("y")){
+							System.out.println("....getting off:");
+							GlobalLogger.log("....getting off:");
+							Mozdony m = menu.getJatek().getLevel().getVehicles().get(0);
+							m.getUtvonal().get(0).controlpoint2.perform(m);
+						}else ;
+					}
+					menu.getJatek().getLevel().getVehicles().get(0).doneMoving();
 				}
 				
 				else if (parts[0].equals("exit")){
