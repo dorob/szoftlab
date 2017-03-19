@@ -12,6 +12,7 @@ public class Player implements Comparable{
 	 */
 	public Player(){ //ez majd var egy nevet es egy erteket
 		System.out.println("called: Player constructor");
+		GlobalLogger.log("called: Player constructor");
 	}
 	
 	/**
@@ -29,6 +30,7 @@ public class Player implements Comparable{
 	@Override
 	public int compareTo(Object o) {
 		System.out.println("players compared");
+		GlobalLogger.log("players compared");
 		return 0;
 	}
 	

@@ -17,6 +17,7 @@ public class Scoreboard {
 	 */
 	public Scoreboard(){
 		System.out.println("called: scoreboard constructor");
+		GlobalLogger.log("called: scoreboard constructor");
 		helyezes = new ArrayList<Player>();
 	}
 	
@@ -25,6 +26,7 @@ public class Scoreboard {
 	 */
 	public void save(){
 		System.out.println("called scoreboard - save");
+		GlobalLogger.log("called scoreboard - save");
 	}
 	
 	/**
@@ -32,6 +34,7 @@ public class Scoreboard {
 	 */
 	public void load(){
 		System.out.println("called: Scoreboard load");
+		GlobalLogger.log("called: Scoreboard load");
 	}
 	
 	/**
@@ -40,8 +43,10 @@ public class Scoreboard {
 	 * @param i A jatekos idoeredmenye
 	 */
 	public void addHelyezes(String s, int i) {
-		System.out.println("called scoreboard addHelyezes");
+		System.out.println("called: scoreboard addHelyezes");
+		GlobalLogger.log("called: scoreboard addHelyezes");
 		System.out.println("--players sorted"); //comparator megirasa utan egyszeru lesz a sort-olas
+		GlobalLogger.log("--players sorted");
 	}
 	
 	// generalt fuggvenyek

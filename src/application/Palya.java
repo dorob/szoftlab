@@ -29,6 +29,7 @@ public class Palya {
 	 */
 	public Palya(){
 		System.out.println("called: Palya constructor");
+		GlobalLogger.log("called: Palya constructor");
 		cp = new ArrayList<ControlPoint>();
 		vehicles = new ArrayList<Mozdony>();
 	}
@@ -38,6 +39,7 @@ public class Palya {
 	public void init(){
 		//itt lesz am fajlbol beolvassa egesz palyat ahelyett mostmeg csak bemutatja construktorokat
 		System.out.println("called: palya init");
+		GlobalLogger.log("called: palya init");
 		cp.add(new ControlPoint(null, null));
 		cp.add(new Megallo(null, null, null));
 		cp.add(new Switcher(null, null));
@@ -55,6 +57,7 @@ public class Palya {
 	 */
 	public ControlPoint findCP(int x, int y){
 		System.out.println("called: palya findCP");
+		GlobalLogger.log("called: palya findCP");
 		if(y==1)
 			return cp.get(3); //hogy alagutat adjon a teszthez
 		else return cp.get(2);	//mivel ez a switcher, elesbe majd megkeresi
@@ -66,9 +69,11 @@ public class Palya {
 	 */
 	public boolean checkCompleted(){
 		System.out.println("called: level checkCompleted");
+		GlobalLogger.log("called: level checkCompleted");
 		try{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Veget ert a palya? y/n");
+			GlobalLogger.log("Veget ert a palya? y/n");
 			String line = br.readLine();
 			if(line.equals("y"))
 				return true;
@@ -83,6 +88,7 @@ public class Palya {
 	 */
 	public void run(){
 		System.out.println("called: Palya run");
+		GlobalLogger.log("called: Palya run");
 		vehicles.get(0).move(); 	//ez egy for-each lesz vegigmenve vonatokon
 	}
 	

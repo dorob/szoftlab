@@ -20,6 +20,7 @@ public class Vagon {
 	 */
 	public Vagon(){
 		System.out.println("called: vagon constructor");
+		GlobalLogger.log("called: vagon constructor");
 		color=color.RED;  //most csak szemleltetes celjabol.
 	}
 	
@@ -28,6 +29,7 @@ public class Vagon {
 	 */
 	public void move(){
 		System.out.println("called: vagon move");
+		GlobalLogger.log("called: vagon move");
 	}
 	
 	/**
@@ -36,6 +38,7 @@ public class Vagon {
 	 */
 	public void getDown(Color c){
 		System.out.println("called: vagon getDown");
+		GlobalLogger.log("called: vagon getDown");
 	}
 	
 	//generalt fuggvenyek
