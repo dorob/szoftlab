@@ -78,6 +78,7 @@ public class Alagut extends Switcher{
 	 */
 	public void build(){
 		System.out.println("called: Alagut build");
+		GlobalLogger.log("called: Alagut build");
 	}
 	
 	/**
@@ -85,5 +86,6 @@ public class Alagut extends Switcher{
 	 */
 	public void destroy(){
 		System.out.println("called: Alagut destroy");
+		GlobalLogger.log("called: Alagut destroy");
 	}
 }

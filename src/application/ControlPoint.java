@@ -23,6 +23,7 @@ public class ControlPoint {
 	 */
 	public ControlPoint(Shape shape, Point2D tmp){
 		System.out.println("called: ControlPoint constructor");
+		GlobalLogger.log("called: ControlPoint constructor");
 		alak = shape;
 		hely = tmp;
 	}
@@ -33,6 +34,7 @@ public class ControlPoint {
 	public void addWay(Sin s){
 		ways.add(s);
 		System.out.println("sin added");
+		GlobalLogger.log("sin added");
 	}
 	/**
 	 * Egy sinnek aki kerdezi visszaad egy iranyt ami a kovetkezo sin(utirany) lesz.
@@ -41,6 +43,7 @@ public class ControlPoint {
 	 */
 	public Sin giveDirection(Sin a){ 
 		System.out.println("called: controlpoint giveDirection");
+		GlobalLogger.log("called: controlpoint giveDirection");
 		return a;
 		}
 	/**
@@ -50,5 +53,6 @@ public class ControlPoint {
 	 */
 	public void perform(Mozdony m){
 		System.out.println("called: perform");
+		GlobalLogger.log("called: perform");
 	}
 }
