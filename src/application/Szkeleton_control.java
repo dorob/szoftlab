@@ -11,16 +11,19 @@ import java.util.ArrayList;
  */
 public class Szkeleton_control {
 	Menu menu;
-	
 	/**
 	 * Ez hivodik meg eloszor az applikacio inditasakor.
 	 * @param args
 	 */
 	public static void main (String[] args){
 		Szkeleton_control con = new Szkeleton_control();
+		GlobalLogger.Init();
+		GlobalLogger.log("--------------------------Program Started-------------------------");
 		con.Init();
 		//jelezzuk a szkeleton leallasat, ez tulajdonkeppen nem error, de igy latvanyosabb
 		System.err.println("Szkeleton control ended");		
+		GlobalLogger.log("---------------------Szkeleton control ended----------------------");
+		GlobalLogger.stop();
 	}
 	
 	/**
@@ -28,8 +31,7 @@ public class Szkeleton_control {
 	 */
 	public void Init(){
 		System.out.println("called: szkeleton init");
-		menu = new Menu();
-		
+		GlobalLogger.log("called: szkeleton init");
 		ArrayList<String> commands= new ArrayList<String>(); // itt taroljuk a megvalosithato parancsokat
 		/**
 		 * Ezzel tesztelhetjuk a toplista megtekinteset.
@@ -84,6 +86,10 @@ public class Szkeleton_control {
 		 */
 		commands.add("nextlevel");
 		
+		System.out.println("Commands list is:" + commands);
+		GlobalLogger.log("Commands list is:" + commands);
+		menu = new Menu();
+		
 		try{
 			menu.Init();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -92,6 +98,8 @@ public class Szkeleton_control {
 				String line = br.readLine();
 				if (line == null)
 					break;
+				GlobalLogger.log("INPUT: " + line);
+				
 				String[] parts = line.split(" ");
 	
 				if (parts[0].equals("scores"))
@@ -107,9 +115,12 @@ public class Szkeleton_control {
 					menu.getJatek().getLevel().getVehicles().get(0).doneMoving();
 					//Ellenorizzuk, hogy le leszallnak-e (vagyis megallo van e a controlpointnal)
 					System.out.println("Get off? y/n");
+					GlobalLogger.log("Get off? y/n");
 					line = br.readLine();
+					GlobalLogger.log("INPUT: " + line);
 					if(line.equals("y")){
 						System.out.println("....szallas:");
+						GlobalLogger.log("....szallas:");
 						Mozdony m = menu.getJatek().getLevel().getVehicles().get(0);
 						m.getUtvonal().get(0).controlpoint2.perform(m);
 					}else continue;
@@ -154,8 +165,10 @@ public class Szkeleton_control {
 						}
 						}
 				}
-				else
+				else{
 					System.err.println("Unknow command. Commands list is:" + commands); //Kiirjuk a felismert parancsokat, amennyiben a felhasznalo ervenytelent hasznalna
+					GlobalLogger.log("Unknow command. Commands list is:" + commands);
+				}
 			}
 			
 		}catch(Exception e){

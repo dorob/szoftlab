@@ -24,6 +24,7 @@ public class Alagut extends Switcher{
 		super(shape, tmp);
 		
 		System.out.println("		-called: Alagut constructor");
+		GlobalLogger.log("		-called: Alagut constructor");
 	}
 	
 	
@@ -33,11 +34,13 @@ public class Alagut extends Switcher{
 	 */
 	public boolean isBuilt() {
 		System.out.println("called: isBuilt");
+		GlobalLogger.log("		-called: Alagut constructor");
 		return isBuilt;
 	}
 	
 	public void setBuilt(boolean isBuilt) {
 		System.out.println("called: setBuilt");
+		GlobalLogger.log("called: setBuilt");
 		this.isBuilt = isBuilt;
 	}
 	
@@ -50,15 +53,21 @@ public class Alagut extends Switcher{
 	 */
 	public void perform(Mozdony m){
 		System.out.println("called: Alagut perform");
+		GlobalLogger.log("called: Alagut perform");
 		try{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Build or destroy? b/d");
+			GlobalLogger.log("Build or destroy? b/d");
 			String line = br.readLine();
+			GlobalLogger.log("INPUT: " + line);
 			if(line.equals("b"))
 				this.build();
 			else if(line.equals("d"))
 				this.destroy();
-			else System.err.println("Tunnel failed"); //rossz command
+			else {
+				System.err.println("Tunnel failed"); //rossz command
+				GlobalLogger.log("Tunnel failed");
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
