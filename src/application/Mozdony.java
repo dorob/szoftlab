@@ -34,8 +34,8 @@ public class Mozdony {
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.
 	 */
 	public void move(){
-		System.out.println("called: mozdony move");
-		GlobalLogger.log("called: mozdony move");
+		System.out.println("called: mozdony -move");
+		GlobalLogger.log("called: mozdony -move");
 		vagonok.get(0).move(); //javafx-be mar nm igy lesz
 		if(ways.isEmpty()) 
 			doneMoving();
@@ -49,8 +49,8 @@ public class Mozdony {
 	 * Akkor hivodik mikor elfogynak az eppen adott utak amin a vonatnak vegig kell mennie.
 	 */
 	public void doneMoving(){
-		System.out.println("called: mozdony doneMoving");
-		GlobalLogger.log("called: mozdony doneMoving");
+		System.out.println("called: mozdony -doneMoving");
+		GlobalLogger.log("called: mozdony -doneMoving");
 		utvonal.get(0).giveNext();
 	}
 	/**
@@ -63,8 +63,8 @@ public class Mozdony {
 	 * @param c
 	 */
 	public void stationArrive(Color c){
-		System.out.println("called: mozdony stationArrive");
-		GlobalLogger.log("called: mozdony stationArrive");
+		System.out.println("called: mozdony -stationArrive");
+		GlobalLogger.log("called: mozdony -stationArrive");
 		vagonok.get(0).getDown(c);
 	}
 

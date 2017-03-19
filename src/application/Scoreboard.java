@@ -2,7 +2,6 @@ package application;
 
 import java.util.ArrayList;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 /**
  * A legjobb idot elert jatekosok adatait taroljuk ebben a toplistaban. Az osszes megnyert jatek eredmenyet meg lehet itt tekinteni,
@@ -33,8 +32,8 @@ public class Scoreboard {
 	 * Betolti fajlbol a helyezeseket
 	 */
 	public void load(){
-		System.out.println("called: Scoreboard load");
-		GlobalLogger.log("called: Scoreboard load");
+		System.out.println("called: Scoreboard -load");
+		GlobalLogger.log("called: Scoreboard -load");
 	}
 	
 	/**
@@ -43,8 +42,8 @@ public class Scoreboard {
 	 * @param i A jatekos idoeredmenye
 	 */
 	public void addHelyezes(String s, int i) {
-		System.out.println("called: scoreboard addHelyezes");
-		GlobalLogger.log("called: scoreboard addHelyezes");
+		System.out.println("called: scoreboard -addHelyezes");
+		GlobalLogger.log("called: scoreboard -addHelyezes");
 		System.out.println("--players sorted"); //comparator megirasa utan egyszeru lesz a sort-olas
 		GlobalLogger.log("--players sorted");
 	}

@@ -1,9 +1,5 @@
 package application;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-
 public class Menu {
 	
 private Engine jatek;
@@ -19,8 +15,8 @@ private Engine jatek;
 	}
 */
 	public void Init(){
-		System.out.println("called: engine init");
-		GlobalLogger.log("called: engine init");
+		System.out.println("called: engine -init");
+		GlobalLogger.log("called: engine -init");
 		jatek = new Engine();
 	}
 	public Engine getJatek() {

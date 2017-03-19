@@ -27,8 +27,8 @@ public class Sin {
 	 * Uj utvonalat ad a mozdonyanak
 	 */
 	public void giveNext(){
-		System.out.println("called: sin giveNext");
-		GlobalLogger.log("called: sin giveNext");
+		System.out.println("called: sin -giveNext");
+		GlobalLogger.log("called: sin -giveNext");
 		controlpoint1 = new ControlPoint(null, null);
 		controlpoint1.giveDirection(this);
 	}

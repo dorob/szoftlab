@@ -28,8 +28,8 @@ public class Vagon {
 	 * Ezzel a fuggvennyel mozgatjuk a vagonokat
 	 */
 	public void move(){
-		System.out.println("called: vagon move");
-		GlobalLogger.log("called: vagon move");
+		System.out.println("called: vagon -move");
+		GlobalLogger.log("called: vagon- move");
 	}
 	
 	/**
@@ -37,8 +37,8 @@ public class Vagon {
 	 * @param c A megallo szine, ami melett a vonat eppen elhalad
 	 */
 	public void getDown(Color c){
-		System.out.println("called: vagon getDown");
-		GlobalLogger.log("called: vagon getDown");
+		System.out.println("called: vagon -getDown");
+		GlobalLogger.log("called: vagon -getDown");
 	}
 	
 	//generalt fuggvenyek
