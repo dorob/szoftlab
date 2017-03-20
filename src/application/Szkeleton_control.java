@@ -30,6 +30,8 @@ public class Szkeleton_control {
 	 * Inicializalo fuggveny, ami mar hivhat nem statikus fuggvenyeket. Ez fogja olvasni a parancsainkat, es vegrehajtja azokat.
 	 */
 	public void Init(){
+		System.out.println("EVERY TIME YOU START THE APPLICATION YOU MUST START WITH THE 'init' COMMAND!!");
+		GlobalLogger.log("EVERY TIME YOU START THE APPLICATION YOU MUST START WITH THE 'init' COMMAND!!");
 		System.out.println("called: szkeleton init");
 		GlobalLogger.log("called: szkeleton init");
 		ArrayList<String> commands= new ArrayList<String>(); // itt taroljuk a megvalosithato parancsokat

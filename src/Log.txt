@@ -1,0 +1,13 @@
+
+2017-03-20T01:33:57.071 --------------------------Program Started-------------------------
+2017-03-20T01:33:57.080 called: szkeleton init
+2017-03-20T01:33:57.081 Commands list is:[scores, init, start, stop -getoff, exit, win, collide, switch, tunnel -build/destroy, nextlevel]
+2017-03-20T01:33:57.081 called: Menu constructor
+2017-03-20T01:33:57.082 called: engine -init
+2017-03-20T01:33:57.082 called: Engine constructor
+2017-03-20T01:33:57.083 called: scoreboard constructor
+2017-03-20T01:34:00.905 INPUT: l
+2017-03-20T01:34:00.906 Unknow command. Commands list is:[scores, init, start, stop -getoff, exit, win, collide, switch, tunnel -build/destroy, nextlevel]
+2017-03-20T01:34:17.521 INPUT: nextlevel
+2017-03-20T01:34:17.521 called: Engine -getLevel
+2017-03-20T01:34:17.525 ---------------------Szkeleton control ended----------------------

@@ -1,0 +1,9 @@
+
+2017-03-20T01:37:20.355 --------------------------Program Started-------------------------
+2017-03-20T01:37:20.365 EVERY TIME YOU START THE APPLICATION YOU MUST START WITH THE 'init' COMMAND!!
+2017-03-20T01:37:20.365 called: szkeleton init
+2017-03-20T01:37:20.366 Commands list is:[scores, init, start, stop -getoff, exit, win, collide, switch, tunnel -build/destroy, nextlevel]
+2017-03-20T01:37:20.366 called: Menu constructor
+2017-03-20T01:37:20.367 called: engine -init
+2017-03-20T01:37:20.368 called: Engine constructor
+2017-03-20T01:37:20.368 called: scoreboard constructor
