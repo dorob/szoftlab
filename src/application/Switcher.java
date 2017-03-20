@@ -1,8 +1,10 @@
 package application;
 
-import javafx.geometry.Point2D;
-import javafx.scene.shape.Shape;
+//import javafx.geometry.Point2D;
+//import javafx.scene.shape.Shape;
 
+import java.awt.Shape;
+import java.awt.geom.Point2D;
 /**
  * Valtokat reprezentalja, Sin szakaszok kozotti kapcsolatokat allit, ezzel a jatekos iranyithatja, hogy melyik uton haladjon tovabb a vonat.
  * @author Tsurhe

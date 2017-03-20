@@ -6,11 +6,11 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+import java.awt.geom.Point2D;
+//import javafx.geometry.Point2D;
+//import javafx.scene.image.Image;
+//import javafx.scene.shape.Rectangle;
+//import javafx.scene.shape.Shape;
 /**
  * Palyaelemek betoltese illetve tarolasa.Itt tarolunk minden interakciora kepesobjektumot:
  * Vonatok ControlPointok hatter
@@ -19,7 +19,7 @@ import javafx.scene.shape.Shape;
  */
 public class Palya {
 	
-	private Image hatter;   //nem buffered kell, a bufferedet e segitsegeve alitod elo de itt nmkell plusz az swinges
+	private BufferedImage hatter;   
 	private ArrayList<ControlPoint> cp;
 	private ArrayList<Mozdony> vehicles;
 	public Point2D openAlagut;
@@ -95,11 +95,11 @@ public class Palya {
 	
 	//Generalt fuggvenyek.
 	
-	public Image getHatter() {
+	public BufferedImage getHatter() {
 		return hatter;
 	}
 	
-	public void setHatter(Image hatter) {
+	public void setHatter(BufferedImage hatter) {
 		this.hatter = hatter;
 	}
 	

@@ -1,9 +1,10 @@
 package application;
 
 import java.awt.Color;
-
-import javafx.geometry.Point2D;
-import javafx.scene.shape.Shape;
+import java.awt.Shape;
+import java.awt.geom.Point2D;
+//import javafx.geometry.Point2D;
+//import javafx.scene.shape.Shape;
 
 /**
  * Olyan ControlPoint ahol az utasoknak lehetoseguk van leszallni. A megallok szinnel

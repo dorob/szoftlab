@@ -1,10 +1,13 @@
 package application;
 
 
+import java.awt.Shape;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-import javafx.geometry.Point2D;
-import javafx.scene.shape.Shape;
+//import javafx.geometry.Point2D;
+//import javafx.scene.shape.Shape;
+
 /**
  * Sineket osszekoto specialis pontok. Ilyenek a megallo, a valto, vagy az alagut.
  *  Megmondja az oda erkezo vonatoknak, hogy merre menjenek tovabb.
