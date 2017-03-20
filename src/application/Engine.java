@@ -3,7 +3,7 @@ package application;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
+
 /**
  * A jatek futasaert felelos objektum.
  * @author Tsurhe

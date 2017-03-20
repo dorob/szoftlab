@@ -1,10 +1,12 @@
 package application;
 
+import java.awt.Shape;
+import java.awt.geom.Point2D;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import javafx.geometry.Point2D;
-import javafx.scene.shape.Shape;
+//import javafx.geometry.Point2D;
+//import javafx.scene.shape.Shape;
 
 /**
  * Olyan ControlPoint, amelyre alagut szaj epitheto, illetve bonthato le. Ahol alagut van,
