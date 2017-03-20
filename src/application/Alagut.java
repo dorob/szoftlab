@@ -7,7 +7,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.shape.Shape;
 
 /**
- * Olyan ControlPoint, amelyre alagut szaj epítheto, illetve bonthato le. Ahol alagut van,
+ * Olyan ControlPoint, amelyre alagut szaj epitheto, illetve bonthato le. Ahol alagut van,
  * ott a vonat minden esetben az alagutban halad tovabb, nem masik uton.
  * @author Tsurhe
  *

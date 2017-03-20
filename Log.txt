@@ -1,0 +1,5 @@
+
+2017-03-19T23:47:33.887 --------------------------Program Started-------------------------
+2017-03-19T23:47:33.952 called: szkeleton init
+2017-03-19T23:47:33.952 Commands list is:[scores, init, start, stop -getoff, exit, win, collide, switch, tunnel -build/destroy, nextlevel]
+2017-03-19T23:47:33.954 called: Engine constructor
