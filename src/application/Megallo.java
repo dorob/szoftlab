@@ -23,13 +23,13 @@ public class Megallo extends ControlPoint{
 	 */
 	public Megallo(Shape al, Point2D pos, Color col) {
 		super(al, pos);
-		System.out.println("	-called: megallo constructor");
+	//	System.out.println("	-called: megallo constructor");
 		GlobalLogger.log("	-called: megallo constructor");
 		color=col;
 	}
 	
 	public Color getColor(){ 
-		System.out.println("called: Megallo -getColor");
+	//	System.out.println("called: Megallo -getColor");
 		GlobalLogger.log("called: Megallo -getColor");
 		return Color.GREEN;
 		}
@@ -41,7 +41,7 @@ public class Megallo extends ControlPoint{
 	 */
 	@Override
 	public Sin giveDirection(Sin a){
-		System.out.println("called: megallo -giveDirection");
+//		System.out.println("called: megallo -giveDirection");
 		GlobalLogger.log("called: megallo -giveDirection");
 		return a;
 		}
@@ -52,7 +52,7 @@ public class Megallo extends ControlPoint{
 	 */
 	@Override
 	public void perform(Mozdony m){
-		System.out.println("called: megallo perform -leszallas");
+//		System.out.println("called: megallo perform -leszallas");
 		GlobalLogger.log("called: megallo perform -leszallas");
 		m.stationArrive(color);
 	}

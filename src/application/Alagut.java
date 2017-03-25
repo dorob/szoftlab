@@ -25,7 +25,7 @@ public class Alagut extends Switcher{
 	public Alagut(Shape shape, Point2D tmp) {
 		super(shape, tmp);
 		
-		System.out.println("		-called: Alagut constructor");
+	//	System.out.println("		-called: Alagut constructor");
 		GlobalLogger.log("		-called: Alagut constructor");
 	}
 	
@@ -35,13 +35,13 @@ public class Alagut extends Switcher{
 	 * @return visszaadja a hiv tesztem eredmenyet
 	 */
 	public boolean isBuilt() {
-		System.out.println("called: isBuilt");
+	//	System.out.println("called: isBuilt");
 		GlobalLogger.log("		-called: Alagut constructor");
 		return isBuilt;
 	}
 	
 	public void setBuilt(boolean isBuilt) {
-		System.out.println("called: setBuilt");
+	//	System.out.println("called: setBuilt");
 		GlobalLogger.log("called: setBuilt");
 		this.isBuilt = isBuilt;
 	}
@@ -54,11 +54,11 @@ public class Alagut extends Switcher{
 	 * @param m referencia a hivo mozdonyra
 	 */
 	public void perform(Mozdony m){
-		System.out.println("called: Alagut perform");
+	//	System.out.println("called: Alagut perform");
 		GlobalLogger.log("called: Alagut perform");
 		try{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("Build or destroy? b/d");
+		//	System.out.println("Build or destroy? b/d");
 			GlobalLogger.log("Build or destroy? b/d");
 			String line = br.readLine();
 			GlobalLogger.log("INPUT: " + line);
@@ -67,7 +67,7 @@ public class Alagut extends Switcher{
 			else if(line.equals("d"))
 				this.destroy();
 			else {
-				System.err.println("Tunnel failed"); //rossz command
+		//		System.err.println("Tunnel failed"); //rossz command
 				GlobalLogger.log("Tunnel failed");
 			}
 		}catch(Exception e){
@@ -79,7 +79,7 @@ public class Alagut extends Switcher{
 	 * Felepiti az alagutat.
 	 */
 	public void build(){
-		System.out.println("called: Alagut build");
+	//System.out.println("called: Alagut build");
 		GlobalLogger.log("called: Alagut build");
 	}
 	
@@ -87,7 +87,7 @@ public class Alagut extends Switcher{
 	 * Lerombolja az alagutat.
 	 */
 	public void destroy(){
-		System.out.println("called: Alagut destroy");
+	//	System.out.println("called: Alagut destroy");
 		GlobalLogger.log("called: Alagut destroy");
 	}
 }

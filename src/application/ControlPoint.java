@@ -25,7 +25,7 @@ public class ControlPoint {
 	 * @param tmp 	palyan levo helye.
 	 */
 	public ControlPoint(Shape shape, Point2D tmp){
-		System.out.println("called: ControlPoint constructor");
+	//	System.out.println("called: ControlPoint constructor");
 		GlobalLogger.log("called: ControlPoint constructor");
 		alak = shape;
 		hely = tmp;
@@ -36,7 +36,7 @@ public class ControlPoint {
 	 */
 	public void addWay(Sin s){
 		ways.add(s);
-		System.out.println("sin added");
+	//	System.out.println("sin added");
 		GlobalLogger.log("sin added");
 	}
 	/**
@@ -45,7 +45,7 @@ public class ControlPoint {
 	 * @return Az a sin amit hozza kell adni az utvonalhoz.
 	 */
 	public Sin giveDirection(Sin a){ 
-		System.out.println("called: controlpoint giveDirection");
+	//	System.out.println("called: controlpoint giveDirection");
 		GlobalLogger.log("called: controlpoint giveDirection");
 		return a;
 		}
@@ -55,7 +55,7 @@ public class ControlPoint {
 	 * @param m Referencia a mozdonyra ami a megalloban van.
 	 */
 	public void perform(Mozdony m){
-		System.out.println("called: perform");
+	//	System.out.println("called: perform");
 		GlobalLogger.log("called: perform");
 	}
 }

@@ -19,7 +19,7 @@ public class Vagon {
 	 * Vagon konstruktora
 	 */
 	public Vagon(){
-		System.out.println("called: vagon constructor");
+	//	System.out.println("called: vagon constructor");
 		GlobalLogger.log("called: vagon constructor");
 		color=color.RED;  //most csak szemleltetes celjabol.
 	}
@@ -28,7 +28,7 @@ public class Vagon {
 	 * Ezzel a fuggvennyel mozgatjuk a vagonokat
 	 */
 	public void move(){
-		System.out.println("called: vagon -move");
+//		System.out.println("called: vagon -move");
 		GlobalLogger.log("called: vagon- move");
 	}
 	
@@ -37,7 +37,7 @@ public class Vagon {
 	 * @param c A megallo szine, ami melett a vonat eppen elhalad
 	 */
 	public void getDown(Color c){
-		System.out.println("called: vagon -getDown");
+	//	System.out.println("called: vagon -getDown");
 		GlobalLogger.log("called: vagon -getDown");
 	}
 	

@@ -19,7 +19,7 @@ public class Switcher extends ControlPoint{
 	 */
 	public Switcher(Shape shape, Point2D tmp) {
 		super(shape, tmp);
-		System.out.println("		-called: Switcher constructor");
+	//	System.out.println("		-called: Switcher constructor");
 		GlobalLogger.log("		-called: Switcher constructor");
 	}
 	
@@ -29,7 +29,7 @@ public class Switcher extends ControlPoint{
 	 */
 	@Override
 	public void perform(Mozdony m){
-		System.out.println("called: switcher -perform");
+//		System.out.println("called: switcher -perform");
 		GlobalLogger.log("called: switcher -perform");
 		Switch();
 	}
@@ -38,7 +38,7 @@ public class Switcher extends ControlPoint{
 	 * Ez vegzi tenylegesen a valtast, vagyis az aktiv sin indexet valtoztatja
 	 */
 	public void Switch(){
-		System.out.println("called: switcher -switch");
+//		System.out.println("called: switcher -switch");
 		GlobalLogger.log("called: switcher -switch");
 	}
 	

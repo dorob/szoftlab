@@ -18,7 +18,7 @@ public class Sin {
 	 * Sin konstruktora
 	 */
 	public Sin(){
-		System.out.println("called: sin constructor");
+	//	System.out.println("called: sin constructor");
 		GlobalLogger.log("called: sin constructor");
 		controlpoint2 = new Megallo(null, null, Color.ORANGE);
 	}
@@ -27,7 +27,7 @@ public class Sin {
 	 * Uj utvonalat ad a mozdonyanak
 	 */
 	public void giveNext(){
-		System.out.println("called: sin -giveNext");
+//		System.out.println("called: sin -giveNext");
 		GlobalLogger.log("called: sin -giveNext");
 		controlpoint1 = new ControlPoint(null, null);
 		controlpoint1.giveDirection(this);

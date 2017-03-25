@@ -28,7 +28,7 @@ public class Palya {
 	 * palya konstruktor
 	 */
 	public Palya(){
-		System.out.println("called: Palya constructor");
+	//	System.out.println("called: Palya constructor");
 		GlobalLogger.log("called: Palya constructor");
 		cp = new ArrayList<ControlPoint>();
 		vehicles = new ArrayList<Mozdony>();
@@ -38,7 +38,7 @@ public class Palya {
 	 */
 	public void init(){
 		//itt lesz am fajlbol beolvassa egesz palyat ahelyett mostmeg csak bemutatja construktorokat
-		System.out.println("called: palya -init");
+	//	System.out.println("called: palya -init");
 		GlobalLogger.log("called: palya -init");
 		cp.add(new ControlPoint(null, null));
 		cp.add(new Megallo(null, null, null));
@@ -56,7 +56,7 @@ public class Palya {
 	 * @return A koordinatak alapjan megadott ControlPoint.
 	 */
 	public ControlPoint findCP(int x, int y){
-		System.out.println("called: palya -findCP");
+//		System.out.println("called: palya -findCP");
 		GlobalLogger.log("called: palya -findCP");
 		if(y==1)
 			return cp.get(3); //hogy alagutat adjon a teszthez
@@ -68,11 +68,11 @@ public class Palya {
 	 * @return Minden vagon kiurult-e.
 	 */
 	public boolean checkCompleted(){
-		System.out.println("called: level -checkCompleted");
+//		System.out.println("called: level -checkCompleted");
 		GlobalLogger.log("called: level -checkCompleted");
 		try{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("Veget ert a palya? y/n");
+	//		System.out.println("Veget ert a palya? y/n");
 			GlobalLogger.log("Veget ert a palya? y/n");
 			String line = br.readLine();
 			GlobalLogger.log("INPUT: " + line);
@@ -88,7 +88,7 @@ public class Palya {
 	 * A palya futtatasaertfelelos fuggveny.
 	 */
 	public void run(){
-		System.out.println("called: Palya -run");
+	//	System.out.println("called: Palya -run");
 		GlobalLogger.log("called: Palya -run");
 		vehicles.get(0).move(); 	//ez egy for-each lesz vegigmenve vonatokon
 	}
