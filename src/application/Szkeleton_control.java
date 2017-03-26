@@ -242,7 +242,8 @@ public class Szkeleton_control {
 					GlobalLogger.log("Unknow command. Commands list is:" + commands);
 				}
 			}
-			
+			if(br!=null)
+			br.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
