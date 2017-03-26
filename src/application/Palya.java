@@ -75,7 +75,7 @@ public class Palya {
 	//		System.out.println("Veget ert a palya? y/n");
 			GlobalLogger.log("Veget ert a palya? y/n");
 			String line = br.readLine();
-			GlobalLogger.log("INPUT: " + line);
+			GlobalLogger.log("----INPUT: " + line);
 			if(line.equals("y"))
 				return true;
 			else return false; 

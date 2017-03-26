@@ -50,6 +50,7 @@ public class GlobalLogger {
 	 */
 	public static void stop(){
 		try {
+			if(fw != null)
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();

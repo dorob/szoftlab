@@ -54,7 +54,7 @@ public class Engine {
 			GlobalLogger.log("Utso palya volt? y/n");
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String line = br.readLine();
-			GlobalLogger.log("INPUT: " + line);
+			GlobalLogger.log("----INPUT: " + line);
 			if(line.equals("y"))
 				return true;
 			level = new Palya();
@@ -95,7 +95,7 @@ public class Engine {
 			//beolvassuk a valaszt
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String line = br.readLine();
-			GlobalLogger.log("INPUT: " + line);
+			GlobalLogger.log("----INPUT: " + line);
 			
 			if(line.equals("y"))
 				this.exit();

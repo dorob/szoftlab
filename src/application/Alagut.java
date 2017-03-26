@@ -61,7 +61,7 @@ public class Alagut extends Switcher{
 		//	System.out.println("Build or destroy? b/d");
 			GlobalLogger.log("Build or destroy? b/d");
 			String line = br.readLine();
-			GlobalLogger.log("INPUT: " + line);
+			GlobalLogger.log("----INPUT: " + line);
 			if(line.equals("b"))
 				this.build();
 			else if(line.equals("d"))

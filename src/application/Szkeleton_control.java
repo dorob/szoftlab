@@ -3,6 +3,7 @@ package application;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 public class Szkeleton_control {
 	static File wd;
 	Menu menu;
-	
+	private BufferedReader br;
 	/**
 	 * Ez hivodik meg eloszor az applikacio inditasakor.
 	 * @param args
@@ -47,7 +48,8 @@ public class Szkeleton_control {
 	public void Init(Szkeleton_control con){
 		System.out.println("EVERY TIME YOU START THE APPLICATION YOU MUST START WITH THE 'init' COMMAND!!"
 				+ "\n\r To start logging into a file, type in: log 'filename'"
-				+ "\n\r To see the valid command, type in: help");
+				+ "\n\r To see the valid command, type in: help"
+				+ "\n\r To read test input from file, navigate into its folder and type in: load 'filename'\n\r");
 		ArrayList<String> commands= new ArrayList<String>(); // itt taroljuk a megvalosithato parancsokat
 		/**
 		 * Ezzel tesztelhetjuk a toplista megtekinteset.
@@ -116,18 +118,19 @@ public class Szkeleton_control {
 		commands.add("mv");
 		commands.add("cat");
 		commands.add("wc");
+		commands.add("load");
 		
 		menu = new Menu();  ////ezt kiszedni innen h kesobb induljon 
 		
 		try{
 			menu.Init();
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			br = new BufferedReader(new InputStreamReader(System.in));
 			//amig olvasunk a consolerol, addig folyamatosan inditjuk a kivant teszteket, melyeket fentebb emlitettunk
 			while (true) {
 				String line = br.readLine();
 				if (line == null)
 					break;
-				GlobalLogger.log("INPUT: " + line);
+				GlobalLogger.log("----INPUT: " + line);
 				
 				String[] parts = line.split(" ");
 	
@@ -144,14 +147,14 @@ public class Szkeleton_control {
 				//	System.out.println("Is it a station (Not Tunnel, nor Switch)? y/n");
 					GlobalLogger.log("Is it a station (Not Tunnel, nor Switch)? y/n");
 					line = br.readLine();
-					GlobalLogger.log("INPUT: " + line);
+					GlobalLogger.log("----INPUT: " + line);
 					if(line.equals("y")){
 						//Ellenorizzuk, hogy leszallnak-e a megallonal (azonos szin)
 						//System.out.println("You arrived at a Station. Do you want to get off? y/n");
 						GlobalLogger.log("You arrived at a Station. Do you want to get off? y/n");
 						
 						line = br.readLine();
-						GlobalLogger.log("INPUT: " + line);
+						GlobalLogger.log("----INPUT: " + line);
 						
 						if(line.equals("y")){
 						//	System.out.println("....getting off:");
@@ -230,6 +233,8 @@ public class Szkeleton_control {
 					con.mv(parts);
 				else if (parts[0].equals("cat"))
 					con.cat(parts);
+				else if (parts[0].equals("load"))
+					con.load(parts);
 				else if (parts[0].equals("wc"))
 					con.wc(parts);
 				else{
@@ -428,6 +433,19 @@ public class Szkeleton_control {
 		buf.close();
 	}
 
+	/**
+	 * Fajlbol beolvassa a prarancsokat, es elvegzi oket
+	 * @param cmd A fajl eleresi utvonala
+	 * @throws FileNotFoundException 
+	 */
+	protected void load(String[] cmd) throws FileNotFoundException{
+		File check = new File(wd, cmd[1]);
+		if (!check.exists())
+			throw new IllegalArgumentException("File doesn't exist");
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(check)));	
+	}
+	
+	
 	/**
 	 * atnevezes
 	 * @param cmd
