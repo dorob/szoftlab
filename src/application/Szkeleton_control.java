@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 
 /**
  * Vezerlo osztaly a szkeleton hasznalatahoz, mellyel consolos feluleten iranyithatjuk az applikaciot, es tesztelhetjuk le egyes fuggvenyeit.
@@ -149,6 +148,7 @@ public class Szkeleton_control {
 					line = br.readLine();
 					GlobalLogger.log("----INPUT: " + line);
 					if(line.equals("y")){
+						menu.getJatek().getLevel().getVehicles().get(0).doneMoving();
 						//Ellenorizzuk, hogy leszallnak-e a megallonal (azonos szin)
 						//System.out.println("You arrived at a Station. Do you want to get off? y/n");
 						GlobalLogger.log("You arrived at a Station. Do you want to get off? y/n");
@@ -161,9 +161,10 @@ public class Szkeleton_control {
 							GlobalLogger.log("....getting off:");
 							Mozdony m = menu.getJatek().getLevel().getVehicles().get(0);
 							m.getUtvonal().get(0).controlpoint2.perform(m);
-						}else ;
+						}
+						
 					}
-					menu.getJatek().getLevel().getVehicles().get(0).doneMoving();
+					
 				}
 				
 				else if (parts[0].equals("exit")){

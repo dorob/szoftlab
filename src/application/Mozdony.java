@@ -60,12 +60,18 @@ public class Mozdony {
 	public void addWay(Sin s){}
 	/**
 	 * Mikor a megalloba er ezt a fuggvenyt hivja a vonat, 
-	 * @param c
+	 * @param c megallo szine
+	 * @param getUp Van e ott folszallo
+	 * @return Igaz, ha sikerult folszallni barmelyik vagonjan
 	 */
-	public void stationArrive(Color c){
+	public boolean stationArrive(Color c, boolean getUp){
 //		System.out.println("called: mozdony -stationArrive");
 		GlobalLogger.log("called: mozdony -stationArrive");
 		vagonok.get(0).getDown(c);
+		if(getUp == true)
+			if(vagonok.get(0).getUp(c)==true)
+				return true;
+		return false;
 	}
 
 	//Generaltfuggvenyek.

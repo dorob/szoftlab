@@ -24,7 +24,9 @@ public class Sin {
 	}
 	
 	/**
-	 * Uj utvonalat ad a mozdonyanak
+	 * Uj utvonalat ad a mozdonyanak (visszakap egy sint es mivel tarolja a rajta levo vonatokat, 
+	 * igy azok fifo szeru mukodese miatt a reglereggben rajta levonek adja az uj utat mert
+	 * nyilvanvaloan annak kell, kulonbozo esetben mar utkozes tortent volna
 	 */
 	public void giveNext(){
 //		System.out.println("called: sin -giveNext");

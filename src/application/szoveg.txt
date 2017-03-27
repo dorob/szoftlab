@@ -1,4 +1,0 @@
-néhány változtatás:
-- Mozdony -> utkozesEll függvény -> CollisionDetection néven lett dokumentálva
-- Color Color hibás
-- Palya -> BufferedImage lett a képt változója

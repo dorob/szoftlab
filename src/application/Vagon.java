@@ -41,6 +41,16 @@ public class Vagon {
 		GlobalLogger.log("called: vagon -getDown");
 	}
 	
+	/**
+	 * igazzal ter vissza ha ide fol tudtak szallni, hamissal ha nem
+	 * @param c A megallo szine
+	 */
+	public boolean getUp(Color c){
+		GlobalLogger.log("called: vagon -getUp");
+		return true;
+	}
+	
+	
 	//generalt fuggvenyek
 	public ArrayList<Point2D> getKoor() {
 		return koor;
