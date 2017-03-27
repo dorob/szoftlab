@@ -118,7 +118,8 @@ public class Szkeleton_control {
 		commands.add("cat");
 		commands.add("wc");
 		commands.add("load");
-		
+		commands.add("log");
+		System.out.println(commands.size());
 		menu = new Menu();  ////ezt kiszedni innen h kesobb induljon 
 		
 		try{
