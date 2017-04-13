@@ -82,7 +82,7 @@ public class Scoreboard implements Serializable{
 		return this;
 	}
 	public void SetScoreboard(Scoreboard in) {
-		
+		setHelyezes(in.getHelyezes());
 	}
 	public ArrayList<Player> getHelyezes() {
 		return helyezes;
