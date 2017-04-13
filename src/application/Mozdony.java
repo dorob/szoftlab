@@ -56,8 +56,9 @@ public class Mozdony {
 	 * Hozzaad a vonat utvonalahoz egy sint
 	 * @param s A hozzaadando sin.
 	 */
-	public void addWay(Sin s){		
-		s.mozdony=this;
+	public void addWay(Sin s){
+		this.ways = this.utvonal;
+		s.mozdony=this;		
 		utvonal = s;
 	}
 	/**
