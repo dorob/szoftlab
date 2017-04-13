@@ -84,7 +84,12 @@ public class Magic {
 			 */
 			int numOfSins = Integer.parseInt(buf.readLine());
 			for(int i = 0; i < numOfSins; i++){
-				
+				Sin stmp = new Sin();
+				String[] idxs = buf.readLine().split(" ");
+				stmp.controlpoint1 = cp.get(Integer.parseInt(idxs[0]));
+				stmp.controlpoint2 = cp.get(Integer.parseInt(idxs[1]));
+				cp.get(Integer.parseInt(idxs[0])).addWay(stmp);
+				cp.get(Integer.parseInt(idxs[1])).addWay(stmp);
 			}
 			
 			
