@@ -1,6 +1,8 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.io.*;
 
 
 /**
@@ -8,7 +10,7 @@ import java.util.ArrayList;
  *  a jatekos nevevel egyutt.
  * @author Tsurhe
  */
-public class Scoreboard {
+public class Scoreboard implements Serializable{
 	private ArrayList<Player> helyezes;
 	
 	/**
@@ -25,15 +27,40 @@ public class Scoreboard {
 	 */
 	public void save(){
 	//	System.out.println("called scoreboard - save");
+		try {
+	         FileOutputStream fileOut =
+	         new FileOutputStream("Scoreboard.ser");
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	         out.writeObject(this);
+	         out.close();
+	         fileOut.close();	         
+	      }catch(IOException i) {
+	         GlobalLogger.log("Scoreboard save failed.");;
 		GlobalLogger.log("called scoreboard - save");
+	      }
 	}
 	
 	/**
 	 * Betolti fajlbol a helyezeseket
 	 */
-	public void load(){
+	public Scoreboard load(){
 //		System.out.println("called: Scoreboard -load");
-		GlobalLogger.log("called: Scoreboard -load");
+		Scoreboard e = null;
+		try {
+	         FileInputStream fileIn = new FileInputStream("Scoreboard.ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         e = (Scoreboard) in.readObject();
+	         in.close();
+	         fileIn.close();
+	         GlobalLogger.log("called: Scoreboard -load");
+	         return e;
+	      }catch(IOException i) {
+	         GlobalLogger.log("File not found");	        
+	      }catch(ClassNotFoundException c) {
+	         System.out.println("Scoreboard class not found");
+	         c.printStackTrace();
+	      }		
+		return null;
 	}
 	
 	/**
@@ -43,7 +70,9 @@ public class Scoreboard {
 	 */
 	public void addHelyezes(String s, int i) {
 	//	System.out.println("called: scoreboard -addHelyezes");
-		GlobalLogger.log("called: scoreboard -addHelyezes");
+		GlobalLogger.log("called: scoreboard -addHelyezes");		
+		helyezes.add(new Player(s,i));
+		Collections.sort(helyezes);
 //		System.out.println("--players sorted"); //comparator megirasa utan egyszeru lesz a sort-olas
 		GlobalLogger.log("--players sorted");
 	}
