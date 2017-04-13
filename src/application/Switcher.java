@@ -17,9 +17,9 @@ public class Switcher extends ControlPoint{
 	 * @param shape Az alakja
 	 * @param tmp A pozicioja
 	 */
-	public Switcher(Shape shape, Point2D tmp) {
-		super(shape, tmp);
-	//	System.out.println("		-called: Switcher constructor");
+	public Switcher(Shape shape, int parseInt, int parseInt2, int aktiv_) {
+		super(shape, parseInt, parseInt2);
+		aktiv=aktiv_;
 		GlobalLogger.log("		-called: Switcher constructor");
 	}
 	
@@ -40,6 +40,10 @@ public class Switcher extends ControlPoint{
 	public void Switch(){
 //		System.out.println("called: switcher -switch");
 		GlobalLogger.log("called: switcher -switch");
+		if (ways.size() == aktiv + 1)
+			aktiv = 0;
+		else
+			aktiv ++;
 	}
 	
 }

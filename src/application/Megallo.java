@@ -17,24 +17,21 @@ import java.io.InputStreamReader;
  */
 public class Megallo extends ControlPoint{
 	private Color color;
-	private boolean getUp=false;
+	private boolean getUp;
 	/**
 	 * Megallo konstruktor.
 	 * @param al A megallo shape-je.
-	 * @param pos A megallo helyzete a palyan.
+	 * @param parseInt A megallo helyzete a palyan.
+	 * @param parseInt A megallo helyzete a palyan.
 	 * @param col A megallo szine.
-	 */
-	public Megallo(Shape al, Point2D pos, Color col) {
-		super(al, pos);
-	//	System.out.println("	-called: megallo constructor");
-		GlobalLogger.log("	-called: megallo constructor");
-		color=col;
-	}
-	
-	public Megallo(Object object, int parseInt, int parseInt2, Color szin) {
+	 * @param getUp_ A megalloban vannak-e felszallo utasok.
+	 */	
+	public Megallo(Shape object, int parseInt, int parseInt2, Color szin, boolean getUp_) {
 		// TODO Auto-generated constructor stub
 		super(object, parseInt, parseInt2);
 		color=szin;
+		getUp=getUp_;
+		GlobalLogger.log("	-called: megallo constructor");
 	}
 
 	public Color getColor(){ 
@@ -42,18 +39,10 @@ public class Megallo extends ControlPoint{
 		GlobalLogger.log("called: Megallo -getColor");
 		return Color.GREEN;
 		}
-	public void setColor(){}
+	public void setColor(Color color){
+		this.color = color;
+	}
 	
-	/**
-	 * Uj iranyt ad a megallon athalado vonatnak.
-	 * @param a Az iranytkero sin.
-	 */
-	@Override
-	public Sin giveDirection(Sin a){
-//		System.out.println("called: megallo -giveDirection");
-		GlobalLogger.log("called: megallo -giveDirection");
-		return a;
-		}
 	
 	/**
 	 * Leszallitja az utasokat ha egyezik a szin. Ha folszallo van, akkor megprobal folszallni, 
@@ -62,9 +51,10 @@ public class Megallo extends ControlPoint{
 	 */
 	@Override
 	public void perform(Mozdony m){
+		boolean passengers;
 //		System.out.println("called: megallo perform -leszallas");
 		GlobalLogger.log("called: megallo -perform -leszallas");
-		try{
+		/*try{
 		BufferedReader tmp = new BufferedReader(new InputStreamReader(System.in));
 		GlobalLogger.log("Could the passengers get up (they found empty places)? y/n");
 		if(tmp.readLine().equals("y")){
@@ -79,7 +69,10 @@ public class Megallo extends ControlPoint{
 		}catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		passengers = m.stationArrive(color, getUp);
+		if(passengers == true)
+			getUp = false;
 	}
 
 	public boolean isGetUp() {
