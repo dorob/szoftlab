@@ -34,7 +34,32 @@ public class Magic {
 		while(true){
 			String line = buf.readLine();
 			if(line == null) break;
-			
+			int numOfVonat = Integer.parseInt(line);
+			for(int i = 0; i < numOfVonat; i++){
+				Mozdony mtmp = new Mozdony();
+				int numOfVagon = Integer.parseInt(buf.readLine());
+				for(int j = 0; j < numOfVagon; j++){
+					String col = buf.readLine();
+					switch (col){
+						case "RED":{
+							
+							break;
+						}
+						case "GREEN":{
+							
+							break;
+						}
+						case "BLUE":{
+							
+							break;
+						}
+						case "YELLOW":{
+							
+							break;
+						}
+					}
+				}
+			}
 			
 		}
 		buf.close();
