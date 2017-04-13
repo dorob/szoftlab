@@ -65,17 +65,28 @@ public class Magic {
 						break;
 					}
 					case "Megallo":{
-						cp.add(new Megallo(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3])));
+						cp.add(new Megallo(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3]), Boolean.valueOf(attrs[4])));
 						break;
 					}
 					case "Switcher":{
+						cp.add(new Switcher(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
 						break;
 					}
 					case "Alagut":{
+						cp.add(new Alagut(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
 						break;
 					}
 				}
 			}
+			
+			/**
+			 * sinek beolvasasa es kontrolpontokkal valo osszekapcsolasa
+			 */
+			int numOfSins = Integer.parseInt(buf.readLine());
+			for(int i = 0; i < numOfSins; i++){
+				
+			}
+			
 			
 			
 		}
@@ -86,6 +97,13 @@ public class Magic {
 		}
 	}
 	
+	
+	
+	/**
+	 * A Stringbol konkret szint kepez
+	 * @param in A szin szoveggel megadva
+	 * @return A szin szin osztallyal megadva
+	 */
 	public Color szin(String in){
 		switch (in){
 		case "RED":{
