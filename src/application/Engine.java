@@ -81,7 +81,7 @@ public class Engine {
 	//	System.out.println("called: Engine -showScores");
 		GlobalLogger.log("called: Engine -showScores");
 		String s="";
-		toplista.load();
+		//toplista.load(); // serialize ellenorzes
 		Collections.sort(toplista.getHelyezes());
 		
 		for(Player p: toplista.getHelyezes()){
