@@ -72,7 +72,7 @@ public class Scoreboard implements Serializable{
 	//	System.out.println("called: scoreboard -addHelyezes");
 		GlobalLogger.log("called: scoreboard -addHelyezes");		
 		helyezes.add(new Player(s,i));
-		Collections.sort(helyezes);
+		
 //		System.out.println("--players sorted"); //comparator megirasa utan egyszeru lesz a sort-olas
 		GlobalLogger.log("--players sorted");
 	}

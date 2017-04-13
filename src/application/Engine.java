@@ -2,6 +2,7 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Collections;
 
 
 /**
@@ -81,10 +82,13 @@ public class Engine {
 	//	System.out.println("called: Engine -showScores");
 		GlobalLogger.log("called: Engine -showScores");
 		String s="";
+		
+		Collections.sort(toplista.getHelyezes());
+		
 		for(Player p: toplista.getHelyezes()){
 			s+=p.toString()+'\n';
-			
 		}
+		
 		GlobalLogger.log(s);
 		
 	}
