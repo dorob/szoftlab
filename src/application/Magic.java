@@ -128,13 +128,60 @@ public class Magic {
 	}
 	}
 	
-	public void print(){
-		System.out.println(tmp);
+	/**
+	 * Ket bemeneti szoveget hasonlit ossze es visszater igazzal, ha megegyeznek, valamint
+	 * hamissal, ha kulonboznek
+	 * @param result Az egyik bemenet. (Tipikusan, amit a tesztunk kimenetkent adott)
+	 * @param expected A masik bemenet. (Tipikusan az elore megadot elvart kimenet)
+	 * @return Igaz, ha egyezik, Hamis ha kulonbozik
+	 */
+	public boolean compareText(String result, String expected){
+		try{
+			BufferedReader res = new BufferedReader(new FileReader(result));
+			BufferedReader exp = new BufferedReader(new FileReader(expected));
+			ArrayList<Integer> atLine = new ArrayList<Integer>();
+			int lineNum = 0;
+			while(true){
+				String resLine = res.readLine();
+				String expLine = exp.readLine();
+				/**
+				 * Ha mindket szovegen vegigertunk akkor kilepunk
+				 */
+				if(resLine == null && expLine == null)
+					break;
+				/**
+				 * Ha valamelyiken meg nem ertunk vegig, akkor NullPointerException elkerulese vegett
+				 * mar nem hasonlitunk, de feljegyezzunk a kulonbozo sor szamat
+				 */
+				if(resLine == null || expLine == null)
+					atLine.add(lineNum);
+				else if(resLine.compareTo(expLine) != 0){
+					atLine.add(lineNum);
+				}
+				lineNum++;
+			}
+			
+			/**
+			 * Ha ures a hibas sorok szamanak listaja, akkor egyezik a ket sziveg
+			 */
+			if(atLine.size() < 1)
+				return true;
+			else{
+				System.out.println("Differencies at lines: " + atLine);
+				return false;
+			}
+			
+			
+		}catch (Exception e){
+			e.printStackTrace();
+			return false;
+		}
 	}
+	
 	public static void main(String[] args){
 		Magic m = new Magic();
-		m.loadShit("");
-		m.print();
+	//	m.loadShit("");
+		System.out.println(m.compareText("result1.txt", "expected1.txt"));
 	}
 	
 }
