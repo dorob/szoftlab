@@ -23,6 +23,11 @@ public class Vagon {
 		GlobalLogger.log("called: vagon constructor");
 		color=c;
 	}
+	public Vagon(){
+	//	System.out.println("called: vagon constructor");
+		GlobalLogger.log("called: vagon constructor");
+		color=Color.RED;
+	}
 	
 	/**
 	 * Ezzel a fuggvennyel mozgatjuk a vagonokat
