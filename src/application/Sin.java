@@ -32,7 +32,8 @@ public class Sin {
 //		System.out.println("called: sin -giveNext");
 		GlobalLogger.log("called: sin -giveNext");
 		controlpoint1 = new ControlPoint(null, null);
-		controlpoint1.giveDirection(this);
+		Sin next = controlpoint1.giveDirection(this);
+		mozdony.addWay(next);
 	}
 }
 	
