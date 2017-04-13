@@ -19,7 +19,11 @@ public class Scoreboard implements Serializable{
 	public Scoreboard(){
 	//	System.out.println("called: scoreboard constructor");
 		GlobalLogger.log("called: scoreboard constructor");
-		helyezes = new ArrayList<Player>();		
+		helyezes = new ArrayList<Player>();
+		helyezes.add(new Player("s",5));
+		helyezes.add(new Player("s",5));
+		this.save();
+		helyezes = new ArrayList<Player>();
 	}
 	
 	/**
@@ -43,7 +47,7 @@ public class Scoreboard implements Serializable{
 	/**
 	 * Betolti fajlbol a helyezeseket
 	 */
-	public Scoreboard load(){
+	public void load(){
 //		System.out.println("called: Scoreboard -load");
 		Scoreboard e = null;
 		try {
@@ -53,14 +57,14 @@ public class Scoreboard implements Serializable{
 	         in.close();
 	         fileIn.close();
 	         GlobalLogger.log("called: Scoreboard -load");
-	         return e;
+	         this.SetScoreboard(e);
 	      }catch(IOException i) {
 	         GlobalLogger.log("File not found");	        
 	      }catch(ClassNotFoundException c) {
 	         System.out.println("Scoreboard class not found");
 	         c.printStackTrace();
 	      }		
-		return null;
+	
 	}
 	
 	/**

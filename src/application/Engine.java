@@ -51,8 +51,7 @@ public class Engine {
 		GlobalLogger.log("called: Engine -nextLevel");
 		
 		try{
-		//	System.out.println("Utso palya volt? y/n");
-			GlobalLogger.log("Utso palya volt? y/n");
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String line = br.readLine();
 			GlobalLogger.log("----INPUT: " + line);
@@ -82,7 +81,7 @@ public class Engine {
 	//	System.out.println("called: Engine -showScores");
 		GlobalLogger.log("called: Engine -showScores");
 		String s="";
-		
+		toplista.load();
 		Collections.sort(toplista.getHelyezes());
 		
 		for(Player p: toplista.getHelyezes()){
