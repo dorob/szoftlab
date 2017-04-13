@@ -8,7 +8,9 @@ import java.awt.geom.CubicCurve2D;
  * @author Tsurhe
  */
 public class Sin {
-	private int id;
+	private int id=num++;
+	//dani egy buzi!!!
+	private static int num=0;
 	private CubicCurve2D gorbe;
 	public ControlPoint controlpoint1;
 	public ControlPoint controlpoint2;
@@ -18,9 +20,7 @@ public class Sin {
 	 * Sin konstruktora
 	 */
 	public Sin(){
-	//	System.out.println("called: sin constructor");
 		GlobalLogger.log("called: sin constructor");
-		controlpoint2 = new Megallo(null, null, Color.ORANGE);
 	}
 	
 	/**
@@ -29,9 +29,7 @@ public class Sin {
 	 * nyilvanvaloan annak kell, kulonbozo esetben mar utkozes tortent volna
 	 */
 	public void giveNext(){
-//		System.out.println("called: sin -giveNext");
 		GlobalLogger.log("called: sin -giveNext");
-		controlpoint1 = new ControlPoint(null, null);
 		Sin next = controlpoint1.giveDirection(this);
 		mozdony.addWay(next);
 	}

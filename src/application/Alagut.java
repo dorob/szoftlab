@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
  *
  */
 public class Alagut extends Switcher{
-	private boolean isBuilt;
+	private boolean isBuilt=false;
 	
 	/**
 	 * Alagut construktor megkapja a poziciojat es az alakjat amit kesobb nyomni lehet
@@ -76,6 +76,7 @@ public class Alagut extends Switcher{
 	public void build(){
 		GlobalLogger.log("called: Alagut build");
 		isBuilt=true;
+		Palya.openAlagut=hely;
 	}
 	
 	/**
