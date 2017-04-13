@@ -44,6 +44,7 @@ public class ControlPoint {
 	 */
 	public Sin giveDirection(Sin a){ 
 		GlobalLogger.log("called: controlpoint giveDirection");
+		
 		return a;
 		}
 	/**

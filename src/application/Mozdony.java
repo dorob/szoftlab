@@ -40,7 +40,7 @@ public class Mozdony {
 	 */
 	public void doneMoving(){
 		GlobalLogger.log("called: mozdony -doneMoving");
-		utvonal.giveNext();
+		utvonal.giveNext(this);
 	}
 	/**
 	 * Hozzaad a vonat utvonalahoz egy sint

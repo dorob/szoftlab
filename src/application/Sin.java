@@ -8,7 +8,7 @@ import java.awt.geom.CubicCurve2D;
  * @author Tsurhe
  */
 public class Sin {
-	private int id=num++;
+	private int id;
 	private static int num=0;
 	private CubicCurve2D gorbe;
 	public ControlPoint controlpoint1;
@@ -20,6 +20,8 @@ public class Sin {
 	 */
 	public Sin(){
 		GlobalLogger.log("called: sin constructor");
+		id = num;
+		num++;
 	}
 	
 	/**
@@ -27,9 +29,13 @@ public class Sin {
 	 * igy azok fifo szeru mukodese miatt a reglereggben rajta levonek adja az uj utat mert
 	 * nyilvanvaloan annak kell, kulonbozo esetben mar utkozes tortent volna
 	 */
-	public void giveNext(){
+	public void giveNext(Mozdony asker){
 		GlobalLogger.log("called: sin -giveNext");
-		Sin next = controlpoint1.giveDirection(this);
+		Sin next;
+		if(controlpoint1.id == mozdony.getWays().controlpoint1.id)
+			next = controlpoint2.giveDirection(this);
+		else
+			next = controlpoint1.giveDirection(this);
 		mozdony.addWay(next);
 	}
 }
