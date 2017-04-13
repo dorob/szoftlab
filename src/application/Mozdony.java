@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class Mozdony {
 	
 	private ArrayList<Vagon> vagonok;
-	private Sin ways;
+	private ArrayList<Sin> ways;
 	private Rectangle2D forma;
-	private Sin utvonal;
+	private ArrayList<Sin> utvonal;
 	private boolean isDone;
 	/**
 	 * Mozdony konstruktor
@@ -22,12 +22,13 @@ public class Mozdony {
 //		System.out.println("called: mozdony constructor");
 		GlobalLogger.log("called: mozdony constructor");
 		vagonok = new ArrayList<Vagon>();
-		
+		ways = new ArrayList<Sin>();
 		
 		vagonok.add(new Vagon());
+		ways.add(new Sin());
 		
-		
-		utvonal = new Sin();
+		utvonal = new ArrayList<Sin>();
+		utvonal.add(new Sin());
 	}
 	/**
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.
@@ -35,9 +36,9 @@ public class Mozdony {
 	public void move(){
 	//	System.out.println("called: mozdony -move");
 		GlobalLogger.log("called: mozdony -move");
-		vagonok.get(0).move(); //javafx-be mar nm igy lesz
-		/*if(ways.isEmpty()) 
-			doneMoving();*/
+		for(Vagon m: vagonok) m.move(); 
+		if(ways.isEmpty()) 
+			doneMoving();
 	}
 	/**
 	 * Ezzel vizsgalhatjuk avonatok utkozeset.
@@ -50,17 +51,13 @@ public class Mozdony {
 	public void doneMoving(){
 	//	System.out.println("called: mozdony -doneMoving");
 		GlobalLogger.log("called: mozdony -doneMoving");
-		utvonal.giveNext();
+		utvonal.get(0).giveNext();
 	}
 	/**
 	 * Hozzaad a vonat utvonalahoz egy sint
 	 * @param s A hozzaadando sin.
 	 */
-	public void addWay(Sin s){
-		this.ways = this.utvonal;
-		s.mozdony=this;		
-		utvonal = s;
-	}
+	public void addWay(Sin s){}
 	/**
 	 * Mikor a megalloba er ezt a fuggvenyt hivja a vonat, 
 	 * @param c megallo szine
@@ -87,11 +84,11 @@ public class Mozdony {
 		this.vagonok = vagonok;
 	}
 
-	public Sin getWays() {
+	public ArrayList<Sin> getWays() {
 		return ways;
 	}
 
-	public void setWays(Sin ways) {
+	public void setWays(ArrayList<Sin> ways) {
 		this.ways = ways;
 	}
 
@@ -103,11 +100,11 @@ public class Mozdony {
 		this.forma = forma;
 	}
 
-	public Sin getUtvonal() {
+	public ArrayList<Sin> getUtvonal() {
 		return utvonal;
 	}
 
-	public void setUtvonal(Sin utvonal) {
+	public void setUtvonal(ArrayList<Sin> utvonal) {
 		this.utvonal = utvonal;
 	}
 	
