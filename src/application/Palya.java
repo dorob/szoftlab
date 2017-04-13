@@ -51,25 +51,18 @@ public class Palya {
 	 */
 	public boolean checkCompleted(){
 		GlobalLogger.log("called: level -checkCompleted");
-		try{
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	//		System.out.println("Veget ert a palya? y/n");
-			GlobalLogger.log("Veget ert a palya? y/n");
-			String line = br.readLine();
-			GlobalLogger.log("----INPUT: " + line);
-			if(line.equals("y"))
-				return true;
-			else return false; 
-		}catch (Exception e){
-			e.printStackTrace();
-			return false;
-		}
+			for(Mozdony m: vehicles ){
+				for(Vagon v : m.getVagonok()) {
+					if(!v.isEmpty()) return false;
+				}
+				
+			}
+		return true;
 		}
 	/**
 	 * A palya futtatasaertfelelos fuggveny.
 	 */
 	public void run(){
-	//	System.out.println("called: Palya -run");
 		GlobalLogger.log("called: Palya -run");
 		for(Mozdony m: vehicles) m.move(); 	
 	}

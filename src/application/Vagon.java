@@ -44,7 +44,7 @@ public class Vagon {
 	public void getDown(Color c){
 	//	System.out.println("called: vagon -getDown");
 		GlobalLogger.log("called: vagon -getDown");
-		if(!isEmpty&&c==color) isEmpty=true;
+		if(c==color) isEmpty=false;
 	}
 	
 	/**
@@ -53,6 +53,7 @@ public class Vagon {
 	 */
 	public boolean getUp(Color c){
 		GlobalLogger.log("called: vagon -getUp");
+		if(c==color) isEmpty=true;
 		return true;
 	}
 	
