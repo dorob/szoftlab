@@ -1,8 +1,10 @@
 package application;
 
 import java.awt.Color;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class Magic {
 
@@ -44,31 +46,36 @@ public class Magic {
 				int numOfVagon = Integer.parseInt(buf.readLine());
 				for(int j = 0; j < numOfVagon; j++){
 					String col = buf.readLine();
-					switch (col){
-						case "RED":{
-							mtmp.addVagon(new Vagon(Color.RED));
-							break;
-						}
-						case "GREEN":{
-							mtmp.addVagon(new Vagon(Color.GREEN));
-							break;
-						}
-						case "BLUE":{
-							mtmp.addVagon(new Vagon(Color.BLUE));
-							break;
-						}
-						case "YELLOW":{
-							mtmp.addVagon(new Vagon(Color.YELLOW));
-							break;
-						}
-					}
+					mtmp.addVagon(new Vagon(szin(col)));
 				}
 			}
 			
 			/**
 			 * Controlpointok betoltese
 			 */
-			
+			int numOfControlPoints = Integer.parseInt(buf.readLine());
+			ArrayList<ControlPoint> cp = new ArrayList<ControlPoint>();
+			for(int i = 0; i < numOfControlPoints; i++){
+				String complex = buf.readLine();
+				String attrs[] = complex.split(" ");
+				switch (attrs[0]){
+					case "CP":{
+
+						cp.add(new ControlPoint(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2])));
+						break;
+					}
+					case "Megallo":{
+						cp.add(new Megallo(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3])));
+						break;
+					}
+					case "Switcher":{
+						break;
+					}
+					case "Alagut":{
+						break;
+					}
+				}
+			}
 			
 			
 		}
@@ -77,6 +84,24 @@ public class Magic {
 			e.printStackTrace();
 			
 		}
+	}
+	
+	public Color szin(String in){
+		switch (in){
+		case "RED":{
+			return Color.RED;
+		}
+		case "GREEN":{
+			return Color.GREEN;
+		}
+		case "BLUE":{
+			return Color.BLUE;
+		}
+		case "YELLOW":{
+			return Color.YELLOW;
+		}
+		default: return null;
+	}
 	}
 	
 }

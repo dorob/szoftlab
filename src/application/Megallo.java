@@ -31,6 +31,12 @@ public class Megallo extends ControlPoint{
 		color=col;
 	}
 	
+	public Megallo(Object object, int parseInt, int parseInt2, Color szin) {
+		// TODO Auto-generated constructor stub
+		super(object, parseInt, parseInt2);
+		color=szin;
+	}
+
 	public Color getColor(){ 
 	//	System.out.println("called: Megallo -getColor");
 		GlobalLogger.log("called: Megallo -getColor");

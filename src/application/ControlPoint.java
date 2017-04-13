@@ -30,6 +30,10 @@ public class ControlPoint {
 		alak = shape;
 		hely = tmp;
 	}
+	public ControlPoint(Object object, int parseInt, int parseInt2) {
+		// TODO Auto-generated constructor stub
+		//atirtam h 2 intet kap, abbol kell majd a point2d-t csinalni grafikus felulethez
+	}
 	/**
 	 * hozzaad egysint a mozdon utvonalahoz.
 	 * @param s a sin amit hozzad az utvonalhoz.
