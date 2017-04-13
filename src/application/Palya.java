@@ -39,11 +39,10 @@ public class Palya {
 	 * @param y y koordinata.
 	 * @return A koordinatak alapjan megadott ControlPoint.
 	 */
-	public ControlPoint findCP(int x, int y){
+	public ControlPoint findCP(int x){
+		// kesobb kattintas koordinatai alapjan
 		GlobalLogger.log("called: palya -findCP");
-		if(y==1)
-			return cp.get(3); //hogy alagutat adjon a teszthez
-		else return cp.get(2);	//mivel ez a switcher, elesbe majd megkeresi
+		return cp.get(x);
 		}
 	
 	/**
