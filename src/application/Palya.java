@@ -27,26 +27,10 @@ public class Palya {
 	/**
 	 * palya konstruktor
 	 */
-	public Palya(){
-	//	System.out.println("called: Palya constructor");
+	public Palya(){	
 		GlobalLogger.log("called: Palya constructor");
 		cp = new ArrayList<ControlPoint>();
 		vehicles = new ArrayList<Mozdony>();
-	}
-	/**
-	 * palya inicializalasa.
-	 */
-	public void init(){
-		//itt lesz am fajlbol beolvassa egesz palyat ahelyett mostmeg csak bemutatja construktorokat
-	//	System.out.println("called: palya -init");
-		GlobalLogger.log("called: palya -init");
-		cp.add(new ControlPoint(null, null));
-		cp.add(new Megallo(null, null, null));
-		cp.add(new Switcher(null, null));
-		cp.add(new Alagut(null, null));
-		
-		vehicles.add(new Mozdony());
-		
 	}
 	
 	/**
@@ -56,7 +40,6 @@ public class Palya {
 	 * @return A koordinatak alapjan megadott ControlPoint.
 	 */
 	public ControlPoint findCP(int x, int y){
-//		System.out.println("called: palya -findCP");
 		GlobalLogger.log("called: palya -findCP");
 		if(y==1)
 			return cp.get(3); //hogy alagutat adjon a teszthez
@@ -68,7 +51,6 @@ public class Palya {
 	 * @return Minden vagon kiurult-e.
 	 */
 	public boolean checkCompleted(){
-//		System.out.println("called: level -checkCompleted");
 		GlobalLogger.log("called: level -checkCompleted");
 		try{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
