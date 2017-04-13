@@ -18,10 +18,10 @@ public class Vagon {
 	/**
 	 * Vagon konstruktora
 	 */
-	public Vagon(){
+	public Vagon(Color c){
 	//	System.out.println("called: vagon constructor");
 		GlobalLogger.log("called: vagon constructor");
-		color=color.RED;  //most csak szemleltetes celjabol.
+		color=c;
 	}
 	
 	/**
