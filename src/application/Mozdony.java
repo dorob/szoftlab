@@ -21,6 +21,7 @@ public class Mozdony {
 	public Mozdony(){
 //		System.out.println("called: mozdony constructor");
 		GlobalLogger.log("called: mozdony constructor");
+<<<<<<< HEAD
 		vagonok = new ArrayList<Vagon>();
 		ways = new ArrayList<Sin>();
 		
@@ -29,6 +30,8 @@ public class Mozdony {
 		
 		utvonal = new ArrayList<Sin>();
 		utvonal.add(new Sin());
+=======
+>>>>>>> 6dee537372489843e60893bd3b8c0fd52e1ea890
 	}
 	/**
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.

@@ -161,7 +161,7 @@ public class Szkeleton_control {
 						//	System.out.println("....getting off:");
 							GlobalLogger.log("....getting off:");
 							Mozdony m = menu.getJatek().getLevel().getVehicles().get(0);
-							m.getUtvonal().get(0).controlpoint2.perform(m);
+							m.getUtvonal().controlpoint2.perform(m);
 						}
 						
 					}
