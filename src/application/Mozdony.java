@@ -19,18 +19,16 @@ public class Mozdony {
 	 * Mozdony konstruktor
 	 */
 	public Mozdony(){
-//		System.out.println("called: mozdony constructor");
-		GlobalLogger.log("called: mozdony constructor");
+		GlobalLogger.log("called: mozdony default constructor");
 	}
 	/**
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.
 	 */
 	public void move(){
-	//	System.out.println("called: mozdony -move");
 		GlobalLogger.log("called: mozdony -move");
 		for(Vagon m: vagonok) m.move(); 
 		//if(ways.isEmpty()) 
-			//doneMoving();
+		doneMoving();
 	}
 	/**
 	 * Ezzel vizsgalhatjuk avonatok utkozeset.
@@ -41,7 +39,6 @@ public class Mozdony {
 	 * Akkor hivodik mikor elfogynak az eppen adott utak amin a vonatnak vegig kell mennie.
 	 */
 	public void doneMoving(){
-	//	System.out.println("called: mozdony -doneMoving");
 		GlobalLogger.log("called: mozdony -doneMoving");
 		utvonal.giveNext();
 	}
@@ -61,13 +58,21 @@ public class Mozdony {
 	 * @return Igaz, ha sikerult folszallni barmelyik vagonjan
 	 */
 	public boolean stationArrive(Color c, boolean getUp){
-//		System.out.println("called: mozdony -stationArrive");
 		GlobalLogger.log("called: mozdony -stationArrive");
-		vagonok.get(0).getDown(c);
-		if(getUp == true)
-			if(vagonok.get(0).getUp(c)==true)
-				return true;
+		for(Vagon v:this.vagonok){
+			if(!v.isEmpty)
+				if(!v.getDown(c))  
+					break;
+		}
+		if(getUp){
+			for(Vagon v:this.vagonok){
+				if(v.isEmpty)
+					if(v.getUp(c))
+						return true;
+			}
+		}
 		return false;
+		
 	}
 
 	//Generaltfuggvenyek.
