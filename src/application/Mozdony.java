@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Mozdony {
 	
-	private ArrayList<Vagon> vagonok;
+	private ArrayList<Vagon> vagonok = new ArrayList<Vagon>();
 	private Sin ways; //elõzõ út amin voltam
 	private Rectangle2D forma;
 	private Sin utvonal; //amin most vagyok

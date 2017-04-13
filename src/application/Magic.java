@@ -28,9 +28,8 @@ public class Magic {
 	 * <cp1 index> <cp2 index>   //beolvasuk cp1 es cp2-t amit a new sinnek adunk attr. kent
 	 * 							 //aztan mind2 cp ways-ehez hozzaadjuk a letrehozott uj sint
 	 */
-	
+	Palya tmp = new Palya();
 	public void loadShit(String filename){
-		Palya tmp;
 		try{
 		FileReader fr = new FileReader("MagicMap1.txt");
 		BufferedReader buf = new BufferedReader(fr);
@@ -48,6 +47,7 @@ public class Magic {
 					String col = buf.readLine();
 					mtmp.addVagon(new Vagon(szin(col)));
 				}
+				tmp.getVehicles().add(mtmp);
 			}
 			
 			/**
@@ -91,6 +91,7 @@ public class Magic {
 				cp.get(Integer.parseInt(idxs[0])).addWay(stmp);
 				cp.get(Integer.parseInt(idxs[1])).addWay(stmp);
 			}
+			tmp.getCp().addAll(cp);
 			
 			
 			
@@ -125,6 +126,15 @@ public class Magic {
 		}
 		default: return null;
 	}
+	}
+	
+	public void print(){
+		System.out.println(tmp);
+	}
+	public static void main(String[] args){
+		Magic m = new Magic();
+		m.loadShit("");
+		m.print();
 	}
 	
 }
