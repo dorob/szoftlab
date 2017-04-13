@@ -90,7 +90,7 @@ public class Palya {
 	public void run(){
 	//	System.out.println("called: Palya -run");
 		GlobalLogger.log("called: Palya -run");
-		vehicles.get(0).move(); 	//ez egy for-each lesz vegigmenve vonatokon
+		for(Mozdony m: vehicles) m.move(); 	
 	}
 	
 	//Generalt fuggvenyek.
