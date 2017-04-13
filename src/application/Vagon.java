@@ -12,20 +12,18 @@ public class Vagon {
 	
 	private ArrayList<Point2D>koor;
 	private Color color;
-	private boolean isEmpty;
+	public boolean isEmpty = false;
 	
 	
 	/**
 	 * Vagon konstruktora
 	 */
 	public Vagon(Color c){
-	//	System.out.println("called: vagon constructor");
 		GlobalLogger.log("called: vagon constructor");
 		color=c;
 	}
 	public Vagon(){
-	//	System.out.println("called: vagon constructor");
-		GlobalLogger.log("called: vagon constructor");
+		GlobalLogger.log("called: vagon default constructor");
 		color=Color.RED;
 	}
 	
@@ -33,7 +31,6 @@ public class Vagon {
 	 * Ezzel a fuggvennyel mozgatjuk a vagonokat
 	 */
 	public void move(){
-//		System.out.println("called: vagon -move");
 		GlobalLogger.log("called: vagon- move");
 	}
 	
@@ -41,10 +38,13 @@ public class Vagon {
 	 * Ezen keresztul kerdezzuk meg, hogy le akarnak-e szallni az utasok az adott vagonrol
 	 * @param c A megallo szine, ami melett a vonat eppen elhalad
 	 */
-	public void getDown(Color c){
-	//	System.out.println("called: vagon -getDown");
+	public boolean getDown(Color c){
 		GlobalLogger.log("called: vagon -getDown");
-		if(c==color) isEmpty=false;
+		if(c==color){
+			isEmpty=true;
+			return true;
+		}
+		return false;
 	}
 	
 	/**
@@ -53,8 +53,11 @@ public class Vagon {
 	 */
 	public boolean getUp(Color c){
 		GlobalLogger.log("called: vagon -getUp");
-		if(c==color) isEmpty=true;
-		return true;
+		if(c==color){ 
+			isEmpty=false;
+			return true;
+		}
+		return false;
 	}
 	
 	
