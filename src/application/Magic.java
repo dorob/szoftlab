@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -34,6 +35,9 @@ public class Magic {
 		while(true){
 			String line = buf.readLine();
 			if(line == null) break;
+			/**
+			 * Vonat teljes betoltes vagonokkal
+			 */
 			int numOfVonat = Integer.parseInt(line);
 			for(int i = 0; i < numOfVonat; i++){
 				Mozdony mtmp = new Mozdony();
@@ -42,24 +46,30 @@ public class Magic {
 					String col = buf.readLine();
 					switch (col){
 						case "RED":{
-							
+							mtmp.addVagon(new Vagon(Color.RED));
 							break;
 						}
 						case "GREEN":{
-							
+							mtmp.addVagon(new Vagon(Color.GREEN));
 							break;
 						}
 						case "BLUE":{
-							
+							mtmp.addVagon(new Vagon(Color.BLUE));
 							break;
 						}
 						case "YELLOW":{
-							
+							mtmp.addVagon(new Vagon(Color.YELLOW));
 							break;
 						}
 					}
 				}
 			}
+			
+			/**
+			 * Controlpointok betoltese
+			 */
+			
+			
 			
 		}
 		buf.close();
