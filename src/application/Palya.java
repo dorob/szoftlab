@@ -22,7 +22,7 @@ public class Palya {
 	private BufferedImage hatter;   
 	private ArrayList<ControlPoint> cp;
 	private ArrayList<Mozdony> vehicles;
-	public static Point2D openAlagut;    //ha mar felepult 1 alagut szaj azt itt taroljuk igy latszodik, hogy hova kell a sint huzni
+	public Point2D openAlagut;
 	
 	/**
 	 * palya konstruktor
