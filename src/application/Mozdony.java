@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class Mozdony {
 	
 	private ArrayList<Vagon> vagonok;
-	private Sin ways;
+	private Sin ways; //elõzõ út amin voltam
 	private Rectangle2D forma;
-	private Sin utvonal;
+	private Sin utvonal; //amin most vagyok
 	private boolean isDone;
 	/**
 	 * Mozdony konstruktor

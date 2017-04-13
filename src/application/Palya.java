@@ -3,8 +3,6 @@ package application;
 
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.awt.geom.Point2D;
 //import javafx.geometry.Point2D;
@@ -22,7 +20,7 @@ public class Palya {
 	private BufferedImage hatter;   
 	private ArrayList<ControlPoint> cp;
 	private ArrayList<Mozdony> vehicles;
-	public Point2D openAlagut;
+	public static Point2D openAlagut;
 	
 	/**
 	 * palya konstruktor
