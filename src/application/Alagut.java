@@ -22,8 +22,8 @@ public class Alagut extends Switcher{
 	 * @param shape Az alakja
 	 * @param tmp A pozicioja
 	 */
-	public Alagut(Shape shape, int x, int y, int id) {
-		super(shape, x, y, id);
+	public Alagut(Shape shape, int parseInt, int parseInt2, int aktiv_) {
+		super(shape, parseInt, parseInt2, aktiv_);
 		GlobalLogger.log("		-called: Alagut constructor");
 	}
 	
@@ -50,6 +50,12 @@ public class Alagut extends Switcher{
 	 * @param m referencia a hivo mozdonyra
 	 */
 	public void perform(Mozdony m){
+		if(Palya.openAlagut == null){
+		}
+		else if(Palya.openAlagut != null){
+			
+		}
+
 		GlobalLogger.log("called: Alagut perform");
 	/*	try{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -74,9 +80,14 @@ public class Alagut extends Switcher{
 	 * Felepiti az alagutat.
 	 */
 	public void build(){
+	//if(Palya.openAlagut.id == this.id){
+//			Palya.openAlagut = null;
+		
+		
+			/* fel kell építeni az utat*/
+		
 		GlobalLogger.log("called: Alagut build");
-		isBuilt=true;
-		Palya.openAlagut=hely;
+		//isBuilt=true;
 	}
 	
 	/**

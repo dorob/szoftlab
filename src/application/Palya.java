@@ -20,7 +20,8 @@ public class Palya {
 	private BufferedImage hatter;   
 	private ArrayList<ControlPoint> cp;
 	private ArrayList<Mozdony> vehicles;
-	public static Point2D openAlagut;
+	public static ControlPoint openAlagut;
+	public static Sin newSin;
 	
 	/**
 	 * palya konstruktor
@@ -83,11 +84,11 @@ public class Palya {
 		this.cp = cp;
 	}
 	
-	public Point2D getOpenAlagut() {
+	public ControlPoint getOpenAlagut() {
 		return openAlagut;
 	}
 	
-	public void setOpenAlagut(Point2D openAlagut) {
+	public void setOpenAlagut(ControlPoint openAlagut) {
 		this.openAlagut = openAlagut;
 	}
 	

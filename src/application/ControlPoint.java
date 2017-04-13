@@ -16,6 +16,7 @@ import java.util.ArrayList;
  *
  */
 public class ControlPoint {
+	protected int id;
 	protected Shape alak;
 	protected Point2D hely;
 	protected ArrayList<Sin> ways = new ArrayList<Sin>();
