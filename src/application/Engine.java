@@ -58,7 +58,7 @@ public class Engine {
 			if(line.equals("y"))
 				return true;
 			level = new Palya();
-			level.init();
+			//level.init();
 			}catch (Exception e){
 				e.printStackTrace();
 			}

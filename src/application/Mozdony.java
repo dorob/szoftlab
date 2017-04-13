@@ -79,6 +79,10 @@ public class Mozdony {
 	public void setVagonok(ArrayList<Vagon> vagonok) {
 		this.vagonok = vagonok;
 	}
+	
+	public void addVagon(Vagon v){
+		vagonok.add(v);
+	}
 
 	public Sin getWays() {
 		return ways;
