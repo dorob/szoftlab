@@ -80,7 +80,13 @@ public class Engine {
 	public void showScores(){
 	//	System.out.println("called: Engine -showScores");
 		GlobalLogger.log("called: Engine -showScores");
-		toplista.load();
+		String s="";
+		for(Player p: toplista.getHelyezes()){
+			s+=p.toString()+'\n';
+			
+		}
+		GlobalLogger.log(s);
+		
 	}
 	/**
 	 * A vonatok utkozeset detektalja.

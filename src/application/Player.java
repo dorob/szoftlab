@@ -13,7 +13,8 @@ public class Player implements Comparable<Player>{
 	public Player(String s, int i){ //ez majd var egy nevet es egy erteket
 //		System.out.println("called: Player constructor");
 		GlobalLogger.log("called: Player constructor");
-		
+		name =s;
+		ertek=i;
 	}
 	
 	/**
@@ -21,7 +22,7 @@ public class Player implements Comparable<Player>{
 	 */
 	@Override
 	public String toString(){ 
-		return name+": "+Integer.toString(ertek);
+		return (name+": "+Integer.toString(ertek));
 		}
 	
 	/**
