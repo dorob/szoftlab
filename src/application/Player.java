@@ -10,7 +10,7 @@ public class Player implements Comparable<Player>{
 	/**
 	 * Player constructor
 	 */
-	public Player(String s, int i){ //ez majd var egy nevet es egy erteket
+	public Player(String s, int i){ 
 //		System.out.println("called: Player constructor");
 		GlobalLogger.log("called: Player constructor");
 		name =s;
