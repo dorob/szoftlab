@@ -16,23 +16,18 @@ import java.util.ArrayList;
  *
  */
 public class ControlPoint {
-	private Shape alak;
-	private Point2D hely;
-	private ArrayList<Sin> ways = new ArrayList<Sin>();
+	protected Shape alak;
+	protected Point2D hely;
+	protected ArrayList<Sin> ways = new ArrayList<Sin>();
 	/**
 	 * ControlPoint konstruktor.
 	 * @param shape controlpoint kinezete.
 	 * @param tmp 	palyan levo helye.
 	 */
-	public ControlPoint(Shape shape, Point2D tmp){
-	//	System.out.println("called: ControlPoint constructor");
-		GlobalLogger.log("called: ControlPoint constructor");
-		alak = shape;
-		hely = tmp;
-	}
-	public ControlPoint(Object object, int parseInt, int parseInt2) {
+	public ControlPoint(Shape object, int parseInt, int parseInt2) {
 		// TODO Auto-generated constructor stub
 		//atirtam h 2 intet kap, abbol kell majd a point2d-t csinalni grafikus felulethez
+		GlobalLogger.log("called: ControlPoint constructor");
 	}
 	/**
 	 * hozzaad egysint a mozdon utvonalahoz.
