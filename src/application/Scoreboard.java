@@ -19,13 +19,7 @@ public class Scoreboard implements Serializable{
 	public Scoreboard(){
 	//	System.out.println("called: scoreboard constructor");
 		GlobalLogger.log("called: scoreboard constructor");
-		helyezes = new ArrayList<Player>();
-		helyezes.add(new Player("a", 8));
-		helyezes.add(new Player("a", 5));
-		helyezes.add(new Player("a", 6));
-		helyezes.add(new Player("a", 7));
-		Collections.sort(helyezes);
-		
+		helyezes = new ArrayList<Player>();		
 	}
 	
 	/**
