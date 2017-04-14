@@ -20,7 +20,9 @@ public class Palya {
 	private BufferedImage hatter;   
 	private ArrayList<ControlPoint> cp;
 	private ArrayList<Mozdony> vehicles;
-	public static ControlPoint openAlagut;
+	//alagut be és kijáratot tároljuk
+	public static ControlPoint openAlagut1;
+	public static ControlPoint openAlagut2;
 	public static Sin newSin;
 	
 	/**
