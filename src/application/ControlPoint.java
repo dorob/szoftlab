@@ -55,4 +55,10 @@ public class ControlPoint {
 	public void perform(Mozdony m){
 		GlobalLogger.log("called: perform");
 	}
+	public int getID(){
+		return id;
+	}
+	public ArrayList<Sin> getWays(){
+		return ways;
+	}
 }
