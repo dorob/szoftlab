@@ -56,7 +56,7 @@ public class Alagut extends Switcher{
 				Palya.openAlagut1=this;	
 			}
 			else{	//ha ugyanarra kattintok másodszor, akkor törlöm az alagutat
-				if(Palya.openAlagut1.getID==this.id)
+				if(Palya.openAlagut1.getID()==this.id)
 						Palya.openAlagut1=null;
 				else{
 					//ha létrejött a két alagut, akkor meghívom a buildet
@@ -109,7 +109,7 @@ public class Alagut extends Switcher{
 	 */
 	public void destroy(){
 		GlobalLogger.log("called: Alagut destroy");
-		if(Palya.newSin.mozdony=! null); //end game
+		if(Palya.newSin.mozdony != null); //end game
 		else{
 		Palya.openAlagut1.getWays().remove(Palya.openAlagut1.getWays().size()-1);
 		Palya.openAlagut2.getWays().remove(Palya.openAlagut2.getWays().size()-1);

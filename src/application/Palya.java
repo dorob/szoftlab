@@ -86,13 +86,6 @@ public class Palya {
 		this.cp = cp;
 	}
 	
-	public ControlPoint getOpenAlagut() {
-		return openAlagut;
-	}
-	
-	public void setOpenAlagut(ControlPoint openAlagut) {
-		this.openAlagut = openAlagut;
-	}
 	
 	public void setVehicles(ArrayList<Mozdony> vehicles) {
 		this.vehicles = vehicles;
