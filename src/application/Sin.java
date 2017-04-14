@@ -9,7 +9,7 @@ import java.awt.geom.CubicCurve2D;
  */
 public class Sin {
 	private int id;
-	private static int num=0;
+	public static int num=0;
 	private CubicCurve2D gorbe;
 	public ControlPoint controlpoint1;
 	public ControlPoint controlpoint2;
@@ -22,6 +22,14 @@ public class Sin {
 		GlobalLogger.log("called: sin constructor");
 		id = num;
 		num++;
+	}
+	public Sin(ControlPoint a, ControlPoint b){
+		GlobalLogger.log("called: sin constructor");
+		id = num;
+		num++;
+		controlpoint1=a;
+		controlpoint2=b;
+		
 	}
 	
 	/**
