@@ -33,10 +33,10 @@ public class Alagut extends Switcher{
 	 * Megnezi, hogy felepitettuk-e mar ezt az alagutszajat.
 	 * @return visszaadja a hiv tesztem eredmenyet
 	 */
-	public void isBuilt() {
+	/*public void isBuilt() {
 		GlobalLogger.log("		-called: Alagut constructor");
 		//return isBuilt;
-	}
+	}*/
 	/*
 	public void setBuilt(boolean isBuilt) {
 		GlobalLogger.log("called: setBuilt");
@@ -52,15 +52,15 @@ public class Alagut extends Switcher{
 	 */
 	public void perform(Mozdony m){
 		if(Palya.newSin == null){
-			if(openAlagut1==null){
-				openAlagut=this;	
+			if(Palya.openAlagut1==null){
+				Palya.openAlagut1=this;	
 			}
 			else{	//ha ugyanarra kattintok másodszor, akkor törlöm az alagutat
-				if(openAlagut1.getID==this.id)
-						openAlagut1=null;
+				if(Palya.openAlagut1.getID==this.id)
+						Palya.openAlagut1=null;
 				else{
 					//ha létrejött a két alagut, akkor meghívom a buildet
-					openAlagut1=this;
+					Palya.openAlagut2=this;
 					build();
 				}
 				
@@ -98,10 +98,10 @@ public class Alagut extends Switcher{
 	 * Felepiti az alagutat.
 	 */
 	public void build(){
-	obalLogger.log("called: Alagut build");
-		newSin=new Sin(openAlagut1, openAlagut2);
-		openAlagut1.getWays().add(newSin);
-		openAlagut2.getWays().add(newSin);
+	GlobalLogger.log("called: Alagut build");
+		Palya.newSin=new Sin(Palya.openAlagut1, Palya.openAlagut2);
+		Palya.openAlagut1.getWays().add(Palya.newSin);
+		Palya.openAlagut2.getWays().add(Palya.newSin);
 	}
 	
 	/**
@@ -109,14 +109,14 @@ public class Alagut extends Switcher{
 	 */
 	public void destroy(){
 		GlobalLogger.log("called: Alagut destroy");
-		if(newSin.mozdony=! null); //end game
+		if(Palya.newSin.mozdony=! null); //end game
 		else{
-		openAlagut1.getWays().remove(openAlagut1.size()-1);
-		openAlagut2.getWays().remove(openAlagut2.size()-1);
-		newSin=null;
+		Palya.openAlagut1.getWays().remove(Palya.openAlagut1.getWays().size()-1);
+		Palya.openAlagut2.getWays().remove(Palya.openAlagut2.getWays().size()-1);
+		Palya.newSin=null;
 		Sin.num--;
-		openAlagut1=null;
-		openAlagut2=null;
+		Palya.openAlagut1=null;
+		Palya.openAlagut2=null;
 		
 		}
 		//isBuilt=false;
