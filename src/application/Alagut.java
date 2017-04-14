@@ -15,7 +15,8 @@ import java.io.InputStreamReader;
  *
  */
 public class Alagut extends Switcher{
-	private boolean isBuilt=false;
+	//ez nem kell
+	//private boolean isBuilt=false;
 	
 	/**
 	 * Alagut construktor megkapja a poziciojat es az alakjat amit kesobb nyomni lehet
@@ -32,15 +33,15 @@ public class Alagut extends Switcher{
 	 * Megnezi, hogy felepitettuk-e mar ezt az alagutszajat.
 	 * @return visszaadja a hiv tesztem eredmenyet
 	 */
-	public boolean isBuilt() {
+	public void isBuilt() {
 		GlobalLogger.log("		-called: Alagut constructor");
-		return isBuilt;
+		//return isBuilt;
 	}
-	
+	/*
 	public void setBuilt(boolean isBuilt) {
 		GlobalLogger.log("called: setBuilt");
 		this.isBuilt = isBuilt;
-	}
+	}*/
 	
 	
 	
@@ -50,10 +51,27 @@ public class Alagut extends Switcher{
 	 * @param m referencia a hivo mozdonyra
 	 */
 	public void perform(Mozdony m){
-		if(Palya.openAlagut == null){
-		}
-		else if(Palya.openAlagut != null){
+		if(Palya.newSin == null){
+			if(openAlagut1==null){
+				openAlagut=this;	
+			}
+			else{	//ha ugyanarra kattintok másodszor, akkor törlöm az alagutat
+				if(openAlagut1.getID==this.id)
+						openAlagut1=null;
+				else{
+					//ha létrejött a két alagut, akkor meghívom a buildet
+					openAlagut1=this;
+					build();
+				}
+				
+			}
 			
+		
+			
+		}
+		else{	
+			destroy();
+			 
 		}
 
 		GlobalLogger.log("called: Alagut perform");
@@ -80,14 +98,10 @@ public class Alagut extends Switcher{
 	 * Felepiti az alagutat.
 	 */
 	public void build(){
-	//if(Palya.openAlagut.id == this.id){
-//			Palya.openAlagut = null;
-		
-		
-			/* fel kell �p�teni az utat*/
-		
-		GlobalLogger.log("called: Alagut build");
-		//isBuilt=true;
+	obalLogger.log("called: Alagut build");
+		newSin=new Sin(openAlagut1, openAlagut2);
+		openAlagut1.getWays().add(newSin);
+		openAlagut2.getWays().add(newSin);
 	}
 	
 	/**
@@ -95,6 +109,16 @@ public class Alagut extends Switcher{
 	 */
 	public void destroy(){
 		GlobalLogger.log("called: Alagut destroy");
-		isBuilt=false;
+		if(newSin.mozdony=! null); //end game
+		else{
+		openAlagut1.getWays().remove(openAlagut1.size()-1);
+		openAlagut2.getWays().remove(openAlagut2.size()-1);
+		newSin=null;
+		Sin.num--;
+		openAlagut1=null;
+		openAlagut2=null;
+		
+		}
+		//isBuilt=false;
 	}
 }
