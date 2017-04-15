@@ -1,6 +1,7 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 
@@ -31,34 +32,38 @@ public class Engine {
 	public void run(){
 		GlobalLogger.log("called: Engine -run");
 	
-		if(level==null){
-			GlobalLogger.log("  level = null");
-			nextLevel();
+		if(level.checkCompleted()){
+			GlobalLogger.log("  level completed");
+			if(!nextLevel()){
+				win();
+			}
 		}
-		if(level!=null)
-		level.run();
+		else{
+			level.run();
+		}
 	}
 	/**
-	 * A kovetkezo palya betolteset, illetve ha nincs tobb palya a win szekvencia meghivasat
-	 * vegzi.
+	 * A kovetkezo palya betolteset vegzi, ha nincs tobb palya false-al ter vissza, a jatekos nyert.
 	 * @return Van e kovetkezo palya.
 	 */
 	public boolean nextLevel(){ 
 		GlobalLogger.log("called: Engine -nextLevel");
 		
-		try{
-			
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			String line = br.readLine();
-			GlobalLogger.log("----INPUT: " + line);
-			if(line.equals("y"))
-				return true;
-			level = new Palya();
-			//level.init();
-			}catch (Exception e){
-				e.printStackTrace();
-			}
-		return false;
+		/*
+		 * try{
+		 *	uj palya betoltese betoltes(deszerializalas fajlbol)
+		 *
+		 *	pl: FileInputStream fileIn = new FileInputStream(new String("level"+number+".ser"));
+		 *		number++;
+		 *		a fajlnevek:level1,level2,...,leveln 
+		 *		n+1nel kivetelt dob ebbol tudjuk h uccso palya volt
+		 *	return true; // sikeresen betoltottuk a palyat
+		 * }
+		 * cath(IOException i){
+		 * 	return false; // nincs tobb betoltendo palya, nyertunk
+		 * }
+		 */
+		return true;
 		}
 	/**
 	 * A jatek vegen hivodik meg, megallit minden folyamatot es hozzaadja a jatekost a toplistahoz.
