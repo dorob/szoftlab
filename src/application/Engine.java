@@ -62,6 +62,7 @@ public class Engine {
 		 * cath(IOException i){
 		 * 	return false; // nincs tobb betoltendo palya, nyertunk
 		 * }
+		 * Fentihez hasonloan lesz majd csak a betoltes kulon fuggvennyel lesz (Magic.loadshit)
 		 */
 		return true;
 		}
