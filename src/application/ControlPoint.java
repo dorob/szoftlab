@@ -53,7 +53,7 @@ public class ControlPoint {
 			else
 				return ways.get(0);
 		}
-		return null;			//CSAK ÁTMENETI, ITT INKÁBB KIVÉTELT KÉNE DOBNI!!
+		return null;			//CSAK aTMENETI, ITT INKaBB KIVeTELT KeNE DOBNI!!
 	}
 	/**
 	 * Feluldefinialando fv. minden ControlPoint sajat esemenyet hivja meg. pl megalloban megallas

@@ -51,47 +51,24 @@ public class Alagut extends Switcher{
 	 * @param m referencia a hivo mozdonyra
 	 */
 	public void perform(Mozdony m){
+		GlobalLogger.log("called: Alagut perform");
 		if(Palya.newSin == null){
 			if(Palya.openAlagut1==null){
 				Palya.openAlagut1=this;	
 			}
-			else{	//ha ugyanarra kattintok másodszor, akkor törlöm az alagutat
+			else{	//ha ugyanarra kattintok masodszor, akkor torlom az alagutat
 				if(Palya.openAlagut1.getID()==this.id)
 						Palya.openAlagut1=null;
 				else{
-					//ha létrejött a két alagut, akkor meghívom a buildet
+					//ha letrejott a ket alagut, akkor meghivom a buildet
 					Palya.openAlagut2=this;
 					build();
-				}
-				
-			}
-			
-		
-			
+				}	
+			}	
 		}
 		else{	
-			destroy();
-			 
+			destroy(); 
 		}
-
-		GlobalLogger.log("called: Alagut perform");
-	/*	try{
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			GlobalLogger.log("Build or destroy? b/d");
-			String line = br.readLine();
-			GlobalLogger.log("----INPUT: " + line);
-			if(line.equals("b"))
-				this.build();
-			else if(line.equals("d"))
-				this.destroy();
-			else {
-				GlobalLogger.log("Tunnel failed");
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}*/
-		
-		
 	}
 	
 	/**

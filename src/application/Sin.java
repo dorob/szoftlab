@@ -9,6 +9,9 @@ import java.awt.geom.CubicCurve2D;
  */
 public class Sin {
 	private int id;
+	/**
+	 * A sinek egyedi azonositasahoz haszalt szamlalo
+	 */
 	public static int num=0;
 	private CubicCurve2D gorbe;
 	public ControlPoint controlpoint1;
