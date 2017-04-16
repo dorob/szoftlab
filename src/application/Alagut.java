@@ -50,7 +50,7 @@ public class Alagut extends Switcher{
 	 * Letrehoz vagy lerombol egy alagutat.
 	 * @param m referencia a hivo mozdonyra
 	 */
-	public void perform(Mozdony m){
+	public void perform(Mozdony m) throws CollideException {
 		GlobalLogger.log("called: Alagut perform");
 		if(Palya.newSin == null){
 			if(Palya.openAlagut1==null){
@@ -84,9 +84,11 @@ public class Alagut extends Switcher{
 	/**
 	 * Lerombolja az alagutat.
 	 */
-	public void destroy(){
+	public void destroy() throws CollideException{
 		GlobalLogger.log("called: Alagut destroy");
-		if(Palya.newSin.mozdony != null); //end game
+		if(Palya.newSin.mozdony != null){
+			throw new CollideException("utkozes");//end game
+		}
 		else{
 		Palya.openAlagut1.getWays().remove(Palya.openAlagut1.getWays().size()-1);
 		Palya.openAlagut2.getWays().remove(Palya.openAlagut2.getWays().size()-1);

@@ -30,7 +30,7 @@ public class Switcher extends ControlPoint{
 	 *  @param m A mozdony, mely oda ert hozza (lehet null is)
 	 */
 	@Override
-	public void perform(Mozdony m){
+	public void perform(Mozdony m) throws CollideException {
 //		System.out.println("called: switcher -perform");
 		GlobalLogger.log("called: switcher -perform");
 		Switch();
@@ -59,7 +59,7 @@ public class Switcher extends ControlPoint{
 	public void Switch(){
 		GlobalLogger.log("called: switcher -switch");
 		if (ways.size() == aktiv + 1)
-			aktiv = 0;
+			aktiv = 1;
 		else
 			aktiv ++;
 	}

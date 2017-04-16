@@ -64,7 +64,7 @@ public class ControlPoint {
 	 * vagy Switchernel valtas. 
 	 * @param m Referencia a mozdonyra ami a megalloban van.
 	 */
-	public void perform(Mozdony m){
+	public void perform(Mozdony m) throws CollideException {
 		GlobalLogger.log("called: perform");
 	}
 	public int getID(){
