@@ -63,7 +63,10 @@ public class Sin {
 	
 	@Override
 	public String toString() {
-		return "Sin [id=" + id + ", mozdony=" + mozdony + "]";
+		if(mozdony != null)
+			return "Sin [id=" + id + ", mozdonyID=" + mozdony.getId() + "]";
+		else
+			return "Sin [id=" + id + ", mozdonyID=" + mozdony + "]";
 	}
 }
 	

@@ -15,11 +15,21 @@ public class Mozdony {
 	private Rectangle2D forma;
 	private Sin utvonal; //amin most vagyok
 	private boolean isDone;
+	
+	private int id;
+	/**
+	 * A mozdonyok egyedi azonositasahoz haszalt szamlalo
+	 */
+	private static int numme=0;
+	
+	
 	/**
 	 * Mozdony konstruktor
 	 */
 	public Mozdony(){
 		GlobalLogger.log("called: mozdony default constructor");
+		id = numme;
+		numme++;
 	}
 	/**
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.
@@ -95,12 +105,18 @@ public class Mozdony {
 	
 	@Override
 	public String toString() {
-		return "Mozdony [vagonok=" + vagonok + "]";
+		return "Mozdony [ID=" + this.id + ", vagonok=" + vagonok + "]";
 	}
 	public ArrayList<Vagon> getVagonok() {
 		return vagonok;
 	}
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void setVagonok(ArrayList<Vagon> vagonok) {
 		this.vagonok = vagonok;
 	}

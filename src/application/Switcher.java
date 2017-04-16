@@ -10,7 +10,7 @@ import java.awt.Point;
  * @author Tsurhe
  */
 public class Switcher extends ControlPoint{
-	private int aktiv;
+	protected int aktiv;
 	
 	/**
 	 * Switcher konstruktora

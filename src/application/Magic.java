@@ -31,7 +31,7 @@ public class Magic {
 	Palya tmp = new Palya();
 	public void loadShit(String filename){
 		try{
-		FileReader fr = new FileReader("MagicMap1.txt");
+		FileReader fr = new FileReader("MagicMap2.txt");
 		BufferedReader buf = new BufferedReader(fr);
 		while(true){
 			String line = buf.readLine();
@@ -91,10 +91,18 @@ public class Magic {
 				cp.get(Integer.parseInt(idxs[0])).addWay(stmp);
 				cp.get(Integer.parseInt(idxs[1])).addWay(stmp);
 			}
+			
+			
+			/**
+			 * Mozdonyok hozzaadasa a sinekhez beolvassa, hogy melyik cp 0.ways elemehez adja hozza melyik indexu vonatot
+			 */
+			buf.readLine();
+			for(int i = 0; i < numOfVonat; i++){
+				String[] idxs = buf.readLine().split(" ");
+				cp.get(Integer.parseInt(idxs[0])).getWays().get(0).mozdony = tmp.getVehicles().get(Integer.parseInt(idxs[1]));
+			}
+			//a palyaba feltolti a controlpontokat
 			tmp.getCp().addAll(cp);
-			
-			
-			
 		}
 		buf.close();
 		}catch (Exception e){

@@ -104,6 +104,9 @@ public class Alagut extends Switcher{
 
 	@Override
 	public String toString() {
-		return "Alagut [id=" + id + ", ways=" + ways + "]";
+		return "Alagut [aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
 	}
+
+
+	
 }
