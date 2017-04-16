@@ -38,15 +38,20 @@ public class Sin {
 	 * Uj utvonalat ad a mozdonyanak (visszakap egy sint es mivel tarolja a rajta levo vonatokat,
 	 * igy azok fifo szeru mukodese miatt a reglereggben rajta levonek adja az uj utat mert
 	 * nyilvanvaloan annak kell, kulonbozo esetben mar utkozes tortent volna
+	 * @throws CollideException Utkozeskor dobja
 	 */
-	public void giveNext(Mozdony asker){
-		GlobalLogger.log("called: sin -giveNext");
-		Sin next;
-		if(controlpoint1.id == mozdony.getWays().controlpoint1.id)
-			next = controlpoint2.giveDirection(this);
-		else
-			next = controlpoint1.giveDirection(this);
-		mozdony.addWay(next);
+	public void giveNext(Mozdony asker) throws CollideException{
+		try{
+			GlobalLogger.log("called: sin -giveNext");
+			Sin next;
+			if(controlpoint1.id == mozdony.getWays().controlpoint1.id)
+				next = controlpoint2.giveDirection(this);
+			else
+				next = controlpoint1.giveDirection(this);
+			mozdony.addWay(next);
+		}catch(CollideException e){
+			throw e;
+		}
 	}
 }
 	

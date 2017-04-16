@@ -30,6 +30,8 @@ public class ControlPoint {
 	public ControlPoint(Shape object, int parseInt, int parseInt2) {
 		GlobalLogger.log("called: ControlPoint constructor");
 		hely = new Point(parseInt, parseInt2);
+		id = num;
+		num++;
 	}
 	/**
 	 * hozzaad egy sint a mozdony utvonalahoz.
@@ -43,8 +45,9 @@ public class ControlPoint {
 	 * Egy sinnek aki kerdezi visszaad egy iranyt ami a kovetkezo sin(utirany) lesz.
 	 * @param prev Az a sin ahol jelenleg van a mozdony, ami kerte az iranyadast.
 	 * @return Az a sin ami a mozdony kovetkezo sinje.
+	 * @throws CollideException Utkozes eseten dobja
 	 */
-	public Sin giveDirection(Sin prev){
+	public Sin giveDirection(Sin prev) throws CollideException{
 		GlobalLogger.log("called: controlpoint giveDirection");
 		//Ha ez nem egy valto hanem egy sima controllpoint, akkor 2 sin johet ki belole.
 		if (ways.size() == 2) {
@@ -53,8 +56,9 @@ public class ControlPoint {
 			else
 				return ways.get(0);
 		}
-		return null;			//CSAK aTMENETI, ITT INKaBB KIVeTELT KeNE DOBNI!!
+		throw new CollideException("givDir hiba");			//CSAK aTMENETI, ITT INKaBB KIVeTELT KeNE DOBNI!!
 	}
+	
 	/**
 	 * Feluldefinialando fv. minden ControlPoint sajat esemenyet hivja meg. pl megalloban megallas
 	 * vagy Switchernel valtas. 

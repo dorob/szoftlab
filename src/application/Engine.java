@@ -27,7 +27,7 @@ public class Engine {
 	}
 	
 	/**
-	 * A jatek focklusanak futtatasa.
+	 * A jatek focklusanak futtatasa. Utkozesi hiba eseten leallitja a programot
 	 */
 	public void run(){
 		GlobalLogger.log("called: Engine -run");
@@ -39,7 +39,11 @@ public class Engine {
 			}
 		}
 		else{
-			level.run();
+			try {
+				level.run();
+			} catch (CollideException e) {
+				this.exit();
+			}
 		}
 	}
 	/**

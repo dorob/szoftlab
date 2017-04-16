@@ -182,6 +182,7 @@ public class Magic {
 		Magic m = new Magic();
 	//	m.loadShit("");
 		System.out.println(m.compareText("result1.txt", "expected1.txt"));
+		
 	}
 	
 }

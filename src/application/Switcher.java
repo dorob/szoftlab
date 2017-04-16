@@ -40,18 +40,23 @@ public class Switcher extends ControlPoint{
 	 * Egy sinnek aki kerdezi visszaad egy iranyt ami a kovetkezo sin(utirany) lesz.
 	 * @param prev Az a sin ahol jelenleg van a mozdony, ami kerte az iranyadast.
 	 * @return Az a sin ami a mozdony kovetkezo sinje.
+	 * @throws CollideException Kivetel amikor olyan helyrol jon vonat, amerrre nincs valto ezert utkozik
 	 */
 	@Override
-	public Sin giveDirection(Sin prev){
+	public Sin giveDirection(Sin prev) throws CollideException {
 		GlobalLogger.log("called: controlpoint giveDirection");
-		return ways.get(aktiv);
+		if(prev.equals(ways.get(0)))
+			return ways.get(aktiv);
+		else if(prev.equals(ways.get(aktiv)))
+			return ways.get(0);
+		//ha egyik iranybol se jon akkor utkoznie kell mert nincs arra nyitva valto
+		else throw new CollideException("utkozes");
 	}
 	
 	/**
 	 * Ez vegzi tenylegesen a valtast, vagyis az aktiv sin indexet valtoztatja
 	 */
 	public void Switch(){
-//		System.out.println("called: switcher -switch");
 		GlobalLogger.log("called: switcher -switch");
 		if (ways.size() == aktiv + 1)
 			aktiv = 0;

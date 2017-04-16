@@ -72,10 +72,16 @@ public class Palya {
 		}
 	/**
 	 * A palya futtatasaertfelelos fuggveny.
+	 * @throws CollideException Utkozeskor dobott hiba
 	 */
-	public void run(){
+	public void run() throws CollideException{
 		GlobalLogger.log("called: Palya -run");
-		for(Mozdony m: vehicles) m.move(); 	
+		try{
+			for(Mozdony m: vehicles) 
+			m.move(); 	
+		}catch(CollideException e){
+			throw e;
+		}
 	}
 	
 	//Generalt fuggvenyek.

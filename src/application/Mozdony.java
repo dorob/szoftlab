@@ -23,12 +23,16 @@ public class Mozdony {
 	}
 	/**
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.
+	 * @throws CollideException 
 	 */
-	public void move(){
+	public void move() throws CollideException{
 		GlobalLogger.log("called: mozdony -move");
 		for(Vagon m: vagonok) m.move(); 
-		//if(ways.isEmpty()) 
-		doneMoving();
+		try{ 
+			doneMoving();
+		}catch(CollideException e){
+		throw e;
+		}
 	}
 	/**
 	 * Ezzel vizsgalhatjuk avonatok utkozeset.
@@ -37,10 +41,15 @@ public class Mozdony {
 	public boolean CollisionDetection(){ return false;}
 	/**
 	 * Akkor hivodik mikor elfogynak az eppen adott utak amin a vonatnak vegig kell mennie.
+	 * @throws CollideException 
 	 */
-	public void doneMoving(){
-		GlobalLogger.log("called: mozdony -doneMoving");
+	public void doneMoving() throws CollideException{
+		try{
+			GlobalLogger.log("called: mozdony -doneMoving");
 		utvonal.giveNext(this);
+		}catch(CollideException e){
+			throw e;
+		}
 	}
 	/**
 	 * Hozzaad a vonat utvonalahoz egy sint
