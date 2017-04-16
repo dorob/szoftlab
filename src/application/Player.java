@@ -1,18 +1,23 @@
 package application;
+
+import java.io.Serializable;
+
 /**
  * A jatekost szimbolizalo objektum. Ebben taroljuk a jatekos nevet, illetve idejet.
  * @author Tsurhe
  */
-public class Player implements Comparable{
+public class Player implements Comparable<Player>, Serializable{
 	private String name;
 	private int ertek;
 	
 	/**
 	 * Player constructor
 	 */
-	public Player(){ //ez majd var egy nevet es egy erteket
-		System.out.println("called: Player constructor");
+	public Player(String s, int i){ 
+//		System.out.println("called: Player constructor");
 		GlobalLogger.log("called: Player constructor");
+		name =s;
+		ertek=i;
 	}
 	
 	/**
@@ -20,7 +25,7 @@ public class Player implements Comparable{
 	 */
 	@Override
 	public String toString(){ 
-		return " ";
+		return (name+": "+Integer.toString(ertek));
 		}
 	
 	/**
@@ -28,9 +33,12 @@ public class Player implements Comparable{
 	 * @param o Amivel osszehasonlitjuk
 	 */
 	@Override
-	public int compareTo(Object o) {
-		System.out.println("players compared");
+	public int compareTo(Player o) {
+	//	System.out.println("players compared");
 		GlobalLogger.log("players compared");
+		if (ertek< o.ertek) return 1;
+		
+		if(ertek > o.ertek) return -1;
 		return 0;
 	}
 	

@@ -9,6 +9,7 @@ import java.awt.geom.CubicCurve2D;
  */
 public class Sin {
 	private int id;
+	public static int num=0;
 	private CubicCurve2D gorbe;
 	public ControlPoint controlpoint1;
 	public ControlPoint controlpoint2;
@@ -18,19 +19,32 @@ public class Sin {
 	 * Sin konstruktora
 	 */
 	public Sin(){
-		System.out.println("called: sin constructor");
 		GlobalLogger.log("called: sin constructor");
-		controlpoint2 = new Megallo(null, null, Color.ORANGE);
+		id = num;
+		num++;
+	}
+	public Sin(ControlPoint a, ControlPoint b){
+		GlobalLogger.log("called: sin constructor");
+		id = num;
+		num++;
+		controlpoint1=a;
+		controlpoint2=b;
+		
 	}
 	
 	/**
-	 * Uj utvonalat ad a mozdonyanak
+	 * Uj utvonalat ad a mozdonyanak (visszakap egy sint es mivel tarolja a rajta levo vonatokat, 
+	 * igy azok fifo szeru mukodese miatt a reglereggben rajta levonek adja az uj utat mert
+	 * nyilvanvaloan annak kell, kulonbozo esetben mar utkozes tortent volna
 	 */
-	public void giveNext(){
-		System.out.println("called: sin -giveNext");
+	public void giveNext(Mozdony asker){
 		GlobalLogger.log("called: sin -giveNext");
-		controlpoint1 = new ControlPoint(null, null);
-		controlpoint1.giveDirection(this);
+		Sin next;
+		if(controlpoint1.id == mozdony.getWays().controlpoint1.id)
+			next = controlpoint2.giveDirection(this);
+		else
+			next = controlpoint1.giveDirection(this);
+		mozdony.addWay(next);
 	}
 }
 	

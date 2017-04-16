@@ -12,23 +12,25 @@ public class Vagon {
 	
 	private ArrayList<Point2D>koor;
 	private Color color;
-	private boolean isEmpty;
+	public boolean isEmpty = false;
 	
 	
 	/**
 	 * Vagon konstruktora
 	 */
-	public Vagon(){
-		System.out.println("called: vagon constructor");
+	public Vagon(Color c){
 		GlobalLogger.log("called: vagon constructor");
-		color=color.RED;  //most csak szemleltetes celjabol.
+		color=c;
+	}
+	public Vagon(){
+		GlobalLogger.log("called: vagon default constructor");
+		color=Color.RED;
 	}
 	
 	/**
 	 * Ezzel a fuggvennyel mozgatjuk a vagonokat
 	 */
 	public void move(){
-		System.out.println("called: vagon -move");
 		GlobalLogger.log("called: vagon- move");
 	}
 	
@@ -36,10 +38,28 @@ public class Vagon {
 	 * Ezen keresztul kerdezzuk meg, hogy le akarnak-e szallni az utasok az adott vagonrol
 	 * @param c A megallo szine, ami melett a vonat eppen elhalad
 	 */
-	public void getDown(Color c){
-		System.out.println("called: vagon -getDown");
+	public boolean getDown(Color c){
 		GlobalLogger.log("called: vagon -getDown");
+		if(c==color){
+			isEmpty=true;
+			return true;
+		}
+		return false;
 	}
+	
+	/**
+	 * igazzal ter vissza ha ide fol tudtak szallni, hamissal ha nem
+	 * @param c A megallo szine
+	 */
+	public boolean getUp(Color c){
+		GlobalLogger.log("called: vagon -getUp");
+		if(c==color){ 
+			isEmpty=false;
+			return true;
+		}
+		return false;
+	}
+	
 	
 	//generalt fuggvenyek
 	public ArrayList<Point2D> getKoor() {

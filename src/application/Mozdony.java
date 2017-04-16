@@ -10,35 +10,25 @@ import java.util.ArrayList;
  */
 public class Mozdony {
 	
-	private ArrayList<Vagon> vagonok;
-	private ArrayList<Sin> ways;
+	private ArrayList<Vagon> vagonok = new ArrayList<Vagon>();
+	private Sin ways; //elõzõ út amin voltam
 	private Rectangle2D forma;
-	private ArrayList<Sin> utvonal;
+	private Sin utvonal; //amin most vagyok
 	private boolean isDone;
 	/**
 	 * Mozdony konstruktor
 	 */
 	public Mozdony(){
-		System.out.println("called: mozdony constructor");
-		GlobalLogger.log("called: mozdony constructor");
-		vagonok = new ArrayList<Vagon>();
-		ways = new ArrayList<Sin>();
-		
-		vagonok.add(new Vagon());
-		ways.add(new Sin());
-		
-		utvonal = new ArrayList<Sin>();
-		utvonal.add(new Sin());
+		GlobalLogger.log("called: mozdony default constructor");
 	}
 	/**
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.
 	 */
 	public void move(){
-		System.out.println("called: mozdony -move");
 		GlobalLogger.log("called: mozdony -move");
-		vagonok.get(0).move(); //javafx-be mar nm igy lesz
-		if(ways.isEmpty()) 
-			doneMoving();
+		for(Vagon m: vagonok) m.move(); 
+		//if(ways.isEmpty()) 
+		doneMoving();
 	}
 	/**
 	 * Ezzel vizsgalhatjuk avonatok utkozeset.
@@ -49,23 +39,40 @@ public class Mozdony {
 	 * Akkor hivodik mikor elfogynak az eppen adott utak amin a vonatnak vegig kell mennie.
 	 */
 	public void doneMoving(){
-		System.out.println("called: mozdony -doneMoving");
 		GlobalLogger.log("called: mozdony -doneMoving");
-		utvonal.get(0).giveNext();
+		utvonal.giveNext(this);
 	}
 	/**
 	 * Hozzaad a vonat utvonalahoz egy sint
 	 * @param s A hozzaadando sin.
 	 */
-	public void addWay(Sin s){}
+	public void addWay(Sin s){
+		this.ways = this.utvonal;
+		s.mozdony = this;
+		utvonal = s;
+	}
 	/**
 	 * Mikor a megalloba er ezt a fuggvenyt hivja a vonat, 
-	 * @param c
+	 * @param c megallo szine
+	 * @param getUp Van e ott folszallo
+	 * @return Igaz, ha sikerult folszallni barmelyik vagonjan
 	 */
-	public void stationArrive(Color c){
-		System.out.println("called: mozdony -stationArrive");
+	public boolean stationArrive(Color c, boolean getUp){
 		GlobalLogger.log("called: mozdony -stationArrive");
-		vagonok.get(0).getDown(c);
+		for(Vagon v:this.vagonok){
+			if(!v.isEmpty)
+				if(!v.getDown(c))  
+					break;
+		}
+		if(getUp){
+			for(Vagon v:this.vagonok){
+				if(v.isEmpty)
+					if(v.getUp(c))
+						return true;
+			}
+		}
+		return false;
+		
 	}
 
 	//Generaltfuggvenyek.
@@ -77,12 +84,16 @@ public class Mozdony {
 	public void setVagonok(ArrayList<Vagon> vagonok) {
 		this.vagonok = vagonok;
 	}
+	
+	public void addVagon(Vagon v){
+		vagonok.add(v);
+	}
 
-	public ArrayList<Sin> getWays() {
+	public Sin getWays() {
 		return ways;
 	}
 
-	public void setWays(ArrayList<Sin> ways) {
+	public void setWays(Sin ways) {
 		this.ways = ways;
 	}
 
@@ -94,11 +105,11 @@ public class Mozdony {
 		this.forma = forma;
 	}
 
-	public ArrayList<Sin> getUtvonal() {
+	public Sin getUtvonal() {
 		return utvonal;
 	}
 
-	public void setUtvonal(ArrayList<Sin> utvonal) {
+	public void setUtvonal(Sin utvonal) {
 		this.utvonal = utvonal;
 	}
 	

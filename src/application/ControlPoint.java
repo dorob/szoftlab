@@ -16,19 +16,18 @@ import java.util.ArrayList;
  *
  */
 public class ControlPoint {
-	private Shape alak;
-	private Point2D hely;
-	private ArrayList<Sin> ways = new ArrayList<Sin>();
+	protected int id;
+	protected Shape alak;
+	protected Point2D hely;
+	protected ArrayList<Sin> ways = new ArrayList<Sin>();
 	/**
 	 * ControlPoint konstruktor.
 	 * @param shape controlpoint kinezete.
 	 * @param tmp 	palyan levo helye.
 	 */
-	public ControlPoint(Shape shape, Point2D tmp){
-		System.out.println("called: ControlPoint constructor");
+	public ControlPoint(Shape object, int parseInt, int parseInt2) {
+		//atirtam h 2 intet kap, abbol kell majd a point2d-t csinalni grafikus felulethez
 		GlobalLogger.log("called: ControlPoint constructor");
-		alak = shape;
-		hely = tmp;
 	}
 	/**
 	 * hozzaad egysint a mozdon utvonalahoz.
@@ -36,7 +35,6 @@ public class ControlPoint {
 	 */
 	public void addWay(Sin s){
 		ways.add(s);
-		System.out.println("sin added");
 		GlobalLogger.log("sin added");
 	}
 	/**
@@ -45,8 +43,8 @@ public class ControlPoint {
 	 * @return Az a sin amit hozza kell adni az utvonalhoz.
 	 */
 	public Sin giveDirection(Sin a){ 
-		System.out.println("called: controlpoint giveDirection");
 		GlobalLogger.log("called: controlpoint giveDirection");
+		
 		return a;
 		}
 	/**
@@ -55,7 +53,12 @@ public class ControlPoint {
 	 * @param m Referencia a mozdonyra ami a megalloban van.
 	 */
 	public void perform(Mozdony m){
-		System.out.println("called: perform");
 		GlobalLogger.log("called: perform");
+	}
+	public int getID(){
+		return id;
+	}
+	public ArrayList<Sin> getWays(){
+		return ways;
 	}
 }

@@ -19,6 +19,8 @@ import java.lang.Runnable;
 import java.lang.Thread;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -42,8 +44,8 @@ public class lkjh extends Application {
     public void start(Stage primaryStage) throws Exception{
         mozdony.setFill(Color.AQUA);
         mozdony2.setFill(Color.ORANGE);
-    	
-    	
+
+        
     	final double wid = 800;
         final double heig = 800;
     	
@@ -76,6 +78,7 @@ public class lkjh extends Application {
     	moz1Anim.play();
     	
         Scene palya = new Scene(root,wid,heig);
+        
 //eza resz meg nincs
         palya.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.SPACE) {
