@@ -34,17 +34,27 @@ public class Palya {
 		vehicles = new ArrayList<Mozdony>();
 	}
 	
-	/**
-	 * Az adott ControlPoint kikeresese
-	 * @param x x koordinata.
-	 * @param y y koordinata.
-	 * @return A koordinatak alapjan megadott ControlPoint.
-	 */
-	public ControlPoint findCP(int x){
+
+	/*public ControlPoint findCP(int x){
 		// kesobb kattintas koordinatai alapjan
 		GlobalLogger.log("called: palya -findCP");
 		return cp.get(x);
+		}*/
+
+	/**
+	 * A koordinatakkal megadott ControlPoint kikeresese
+	 * @param x x koordinata.
+	 * @param y y koordinata.
+	 * @return A koordinatak alapjan megadott ControlPoint, vagy ha nem létezik akkor null.
+	 */
+	public ControlPoint findCP(int x, int y) {
+		GlobalLogger.log("called: palya -findCP");
+		for (ControlPoint iter: cp) {
+			if (iter.hely.getX() == x && iter.hely.getY() == y)
+				return iter;
 		}
+		return null;
+	}
 	
 	/**
 	 * Ellenorzi, hogy minden vonatnak kiurult-e a valamennyi vagonja.

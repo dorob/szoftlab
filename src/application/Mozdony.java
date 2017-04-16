@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Mozdony {
 	
 	private ArrayList<Vagon> vagonok = new ArrayList<Vagon>();
-	private Sin ways; //elõzõ út amin voltam
+	private Sin ways; //elozo ut amin voltam
 	private Rectangle2D forma;
 	private Sin utvonal; //amin most vagyok
 	private boolean isDone;
@@ -46,11 +46,23 @@ public class Mozdony {
 	 * Hozzaad a vonat utvonalahoz egy sint
 	 * @param s A hozzaadando sin.
 	 */
+
 	public void addWay(Sin s){
+		ways = utvonal;
+		ways.mozdony = null;
+		utvonal = s;
+		utvonal.mozdony = this;
+	}
+
+	/*public void addWay(Sin s){
 		this.ways = this.utvonal;
 		s.mozdony = this;
 		utvonal = s;
-	}
+	}*/
+
+
+
+
 	/**
 	 * Mikor a megalloba er ezt a fuggvenyt hivja a vonat, 
 	 * @param c megallo szine
@@ -85,9 +97,7 @@ public class Mozdony {
 		this.vagonok = vagonok;
 	}
 	
-	public void addVagon(Vagon v){
-		vagonok.add(v);
-	}
+	public void addVagon(Vagon v){ vagonok.add(v); }
 
 	public Sin getWays() {
 		return ways;

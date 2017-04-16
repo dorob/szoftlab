@@ -2,7 +2,7 @@ package application;
 
 
 import java.awt.Shape;
-import java.awt.geom.Point2D;
+import java.awt.Point;
 import java.util.ArrayList;
 
 //import javafx.geometry.Point2D;
@@ -17,20 +17,22 @@ import java.util.ArrayList;
  */
 public class ControlPoint {
 	protected int id;
+	public static int num = 0;
 	protected Shape alak;
-	protected Point2D hely;
+	protected Point hely;
 	protected ArrayList<Sin> ways = new ArrayList<Sin>();
 	/**
-	 * ControlPoint konstruktor.
-	 * @param shape controlpoint kinezete.
-	 * @param tmp 	palyan levo helye.
+	 * ControlPoint konstruktor, ami beallitja helyenek koordinatait.
+	 * @param object controlpoint kinezete.
+	 * @param parseInt elso koordinataja a CP-nek.
+	 * @param parseInt2 masodik koordinataja a CP-nek
 	 */
 	public ControlPoint(Shape object, int parseInt, int parseInt2) {
-		//atirtam h 2 intet kap, abbol kell majd a point2d-t csinalni grafikus felulethez
 		GlobalLogger.log("called: ControlPoint constructor");
+		hely = new Point(parseInt, parseInt2);
 	}
 	/**
-	 * hozzaad egysint a mozdon utvonalahoz.
+	 * hozzaad egy sint a mozdony utvonalahoz.
 	 * @param s a sin amit hozzad az utvonalhoz.
 	 */
 	public void addWay(Sin s){
@@ -39,14 +41,20 @@ public class ControlPoint {
 	}
 	/**
 	 * Egy sinnek aki kerdezi visszaad egy iranyt ami a kovetkezo sin(utirany) lesz.
-	 * @param a Az asin ami kerte az iranyadast.
-	 * @return Az a sin amit hozza kell adni az utvonalhoz.
+	 * @param prev Az a sin ahol jelenleg van a mozdony, ami kerte az iranyadast.
+	 * @return Az a sin ami a mozdony kovetkezo sinje.
 	 */
-	public Sin giveDirection(Sin a){ 
+	public Sin giveDirection(Sin prev){
 		GlobalLogger.log("called: controlpoint giveDirection");
-		
-		return a;
+		//Ha ez nem egy valto hanem egy sima controllpoint, akkor 2 sin johet ki belole.
+		if (ways.size() == 2) {
+			if (ways.get(0).controlpoint1.equals(prev.controlpoint1) && ways.get(0).controlpoint2.equals(prev.controlpoint2))
+				return ways.get(1);
+			else
+				return ways.get(0);
 		}
+		return null;			//CSAK ÁTMENETI, ITT INKÁBB KIVÉTELT KÉNE DOBNI!!
+	}
 	/**
 	 * Feluldefinialando fv. minden ControlPoint sajat esemenyet hivja meg. pl megalloban megallas
 	 * vagy Switchernel valtas. 

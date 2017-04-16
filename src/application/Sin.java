@@ -29,11 +29,10 @@ public class Sin {
 		num++;
 		controlpoint1=a;
 		controlpoint2=b;
-		
 	}
 	
 	/**
-	 * Uj utvonalat ad a mozdonyanak (visszakap egy sint es mivel tarolja a rajta levo vonatokat, 
+	 * Uj utvonalat ad a mozdonyanak (visszakap egy sint es mivel tarolja a rajta levo vonatokat,
 	 * igy azok fifo szeru mukodese miatt a reglereggben rajta levonek adja az uj utat mert
 	 * nyilvanvaloan annak kell, kulonbozo esetben mar utkozes tortent volna
 	 */

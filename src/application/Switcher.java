@@ -4,7 +4,7 @@ package application;
 //import javafx.scene.shape.Shape;
 
 import java.awt.Shape;
-import java.awt.geom.Point2D;
+import java.awt.Point;
 /**
  * Valtokat reprezentalja, Sin szakaszok kozotti kapcsolatokat allit, ezzel a jatekos iranyithatja, hogy melyik uton haladjon tovabb a vonat.
  * @author Tsurhe
@@ -15,7 +15,9 @@ public class Switcher extends ControlPoint{
 	/**
 	 * Switcher konstruktora
 	 * @param shape Az alakja
-	 * @param tmp A pozicioja
+	 * @param parseInt Az x koordinataja
+	 * @param parseInt2 Az y koordinataja
+	 * @param aktiv_ Az aktiv sin szamat tartalmazza
 	 */
 	public Switcher(Shape shape, int parseInt, int parseInt2, int aktiv_) {
 		super(shape, parseInt, parseInt2);
@@ -32,6 +34,17 @@ public class Switcher extends ControlPoint{
 //		System.out.println("called: switcher -perform");
 		GlobalLogger.log("called: switcher -perform");
 		Switch();
+	}
+
+	/**
+	 * Egy sinnek aki kerdezi visszaad egy iranyt ami a kovetkezo sin(utirany) lesz.
+	 * @param prev Az a sin ahol jelenleg van a mozdony, ami kerte az iranyadast.
+	 * @return Az a sin ami a mozdony kovetkezo sinje.
+	 */
+	@Override
+	public Sin giveDirection(Sin prev){
+		GlobalLogger.log("called: controlpoint giveDirection");
+		return ways.get(aktiv);
 	}
 	
 	/**
