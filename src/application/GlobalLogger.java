@@ -17,11 +17,11 @@ public class GlobalLogger {
 	 * Ezt a fuggvenyt hivva tudunk fajlba irni ( a fajl elozo tartalma nem torlodik)
 	 * @param s Az irni kivant tartalom 
 	 */
-	public static void log(String s){
+	public static void log(Object s){ //atirva stringrol hatha mukodik
 		try{
 			//a loghoz idot is adunk a konnyebb attekinthetoseg erdekeben
 			LocalDateTime ldt = LocalDateTime.now();
-			String tmp = ldt + " " + s;
+			String tmp = ldt + " " + s.toString();
 			System.out.println(s);
 			if(writeInFile && fw !=null){
 			fw.write(System.lineSeparator() + tmp );

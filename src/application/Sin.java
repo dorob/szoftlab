@@ -13,6 +13,13 @@ public class Sin {
 	 * A sinek egyedi azonositasahoz haszalt szamlalo
 	 */
 	public static int num=0;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private CubicCurve2D gorbe;
 	public ControlPoint controlpoint1;
 	public ControlPoint controlpoint2;
@@ -52,6 +59,11 @@ public class Sin {
 		}catch(CollideException e){
 			throw e;
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Sin [id=" + id + ", mozdony=" + mozdony + "]";
 	}
 }
 	

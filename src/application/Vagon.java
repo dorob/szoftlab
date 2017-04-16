@@ -61,6 +61,10 @@ public class Vagon {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Vagon [color=" + color + ", isEmpty=" + isEmpty + "]";
+	}
 	//generalt fuggvenyek
 	public ArrayList<Point2D> getKoor() {
 		return koor;

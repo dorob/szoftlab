@@ -100,4 +100,10 @@ public class Alagut extends Switcher{
 		}
 		//isBuilt=false;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Alagut [id=" + id + ", ways=" + ways + "]";
+	}
 }

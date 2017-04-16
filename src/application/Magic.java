@@ -180,9 +180,10 @@ public class Magic {
 	
 	public static void main(String[] args){
 		Magic m = new Magic();
-	//	m.loadShit("");
+		m.loadShit("");
 		System.out.println(m.compareText("result1.txt", "expected1.txt"));
-		
+		m.tmp.listVonat();
+		m.tmp.listCP();
 	}
 	
 }

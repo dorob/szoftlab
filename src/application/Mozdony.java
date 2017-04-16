@@ -63,14 +63,6 @@ public class Mozdony {
 		utvonal.mozdony = this;
 	}
 
-	/*public void addWay(Sin s){
-		this.ways = this.utvonal;
-		s.mozdony = this;
-		utvonal = s;
-	}*/
-
-
-
 
 	/**
 	 * Mikor a megalloba er ezt a fuggvenyt hivja a vonat, 
@@ -96,8 +88,15 @@ public class Mozdony {
 		
 	}
 
+	
+	
+	
 	//Generaltfuggvenyek.
 	
+	@Override
+	public String toString() {
+		return "Mozdony [vagonok=" + vagonok + "]";
+	}
 	public ArrayList<Vagon> getVagonok() {
 		return vagonok;
 	}

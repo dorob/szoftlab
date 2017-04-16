@@ -75,6 +75,11 @@ public class Megallo extends ControlPoint{
 			getUp = false;
 	}
 
+	@Override
+	public String toString() {
+		return "Megallo [color=" + color + ", getUp=" + getUp + ", id=" + id + ", ways=" + ways + "]";
+	}
+
 	public boolean isGetUp() {
 		return getUp;
 	}

@@ -63,5 +63,10 @@ public class Switcher extends ControlPoint{
 		else
 			aktiv ++;
 	}
+
+	@Override
+	public String toString() {
+		return "Switcher [aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
+	}
 	
 }
