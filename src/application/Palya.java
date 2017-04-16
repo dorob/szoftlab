@@ -66,7 +66,6 @@ public class Palya {
 				for(Vagon v : m.getVagonok()) {
 					if(!v.isEmpty()) return false;
 				}
-				
 			}
 		return true;
 		}
