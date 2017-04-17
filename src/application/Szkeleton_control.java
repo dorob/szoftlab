@@ -65,28 +65,12 @@ public class Szkeleton_control {
 		 * Ezzel teszteljuk a jatek mozgatasat, valamint inicializalas elott hivva inicializalhatunk is vele,
 		 * amennyibenaz "Utso palya volt"-ra "n" -al valaszolunk.
 		 */
-		commands.add("start");
-		
-		/**
-		 * Ezzel teszteljuk azt, hogy vegigment egy sinen es beert egy controlPointba, ahonnan uj utvonalat var,
-		 * valamint ha az a controlpoint, akkor ott le is szallhatnak az utasok.
-		 */
-		commands.add("stop" + " " + "-getoff");
+		commands.add("run");
 		
 		/**
 		 * Ezzel teszteljuk a jatekbol valo kilepest.
 		 */
 		commands.add("exit");
-		
-		/**
-		 * Ezzel teszteljuk a jatek megnyereset
-		 */
-		commands.add("win");
-		
-		/**
-		 * Ezzel adunk lehetoseget az utkozes ellenorzesere
-		 */
-		commands.add("collide");
 		
 		/**
 		 * Ezzel teszteljuk a kapcsolok allitgatasat
@@ -97,13 +81,6 @@ public class Szkeleton_control {
 		 * Ezzel teszteljuk az alagutak epiteset, valamint lebontasat
 		 */
 		commands.add("tunnel" + " " + "-build/destroy");
-		
-		/**
-		 * Ezzel teszteljuk az adott palya veghezvitelebol kovetkezo kovetkezo palya betolteset, valamint
-		 * kovetkezo palya hianyaban a jatek megnyereset
-		 */
-		commands.add("nextlevel");
-		
 		
 		commands.add("load");
 		commands.add("log");
@@ -126,50 +103,18 @@ public class Szkeleton_control {
 					menu.getJatek().showScores();
 				
 				else if (parts[0].equals("test")){
-					if(parts[1]!=null)
+					if(parts[1]!=null){
 						menu.getJatek().setLevel(magic.loadShit(parts[1]));
+					}
 				}
 				
-				else if	(parts[0].equals("stop")){
-				//	System.out.println("Is it a station (Not Tunnel, nor Switch)? y/n");
-					GlobalLogger.log("Is it a station (Not Tunnel, nor Switch)? y/n");
-					line = br.readLine();
-					GlobalLogger.log("----INPUT: " + line);
-					if(line.equals("y")){
-						menu.getJatek().getLevel().getVehicles().get(0).doneMoving();
-						//Ellenorizzuk, hogy leszallnak-e a megallonal (azonos szin)
-						//System.out.println("You arrived at a Station. Do you want to get off? y/n");
-						GlobalLogger.log("You arrived at a Station. Do you want to get off? y/n");
-						
-						line = br.readLine();
-						GlobalLogger.log("----INPUT: " + line);
-						
-						if(line.equals("y")){
-						//	System.out.println("....getting off:");
-							GlobalLogger.log("....getting off:");
-							Mozdony m = menu.getJatek().getLevel().getVehicles().get(0);
-							m.getUtvonal().controlpoint2.perform(m);
-						}
-						
-					}
-					
-				}
 				
 				else if (parts[0].equals("exit")){
 					menu.getJatek().exit();
 					break;
 					}
 				
-				else if (parts[0].equals("win")){
-					menu.getJatek().win();
-					break;
-					}
-				
-				else if (parts[0].equals("collide")){
-					menu.getJatek().collisionDetection();
-					}
-				
-				else if (parts[0].equals("start")){
+				else if (parts[0].equals("run")){
 					menu.getJatek().run();
 					}
 				
@@ -183,17 +128,7 @@ public class Szkeleton_control {
 					find.perform(null);
 				}
 				
-				else if (parts[0].equals("nextlevel")){
-					Engine e =menu.getJatek();
-					if(!e.getLevel().checkCompleted()){
-						
-					}else{
-						if(e.nextLevel()){
-							e.win();
-							break;
-						}
-						}
-				}
+
 				else if (parts[0].equals("log"))
 					GlobalLogger.Init(wd, parts);
 				else if (parts[0].equals("load"))
