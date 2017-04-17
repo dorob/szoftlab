@@ -112,7 +112,7 @@ public class Alagut extends Switcher{
 
 	@Override
 	public String toString() {
-		return "Alagut [aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
+		return "Alagut " + this.hely.x +";"+ this.hely.y +"[aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
 	}
 
 

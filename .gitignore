@@ -3,4 +3,9 @@ szoftlab.iml
 out
 src/sample/sample.fxml
 .idea/workspace.xml
+<<<<<<< HEAD
 bin
+logging.txt
+=======
+bin
+>>>>>>> dd8e81c98ee5c163c9c21e6c32def82b97424835
