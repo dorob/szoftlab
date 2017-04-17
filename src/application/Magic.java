@@ -196,13 +196,4 @@ public class Magic {
 			return false;
 		}
 	}
-	
-	public static void main(String[] args){
-		Magic m = new Magic();
-		m.loadShit("");
-	//	System.out.println(m.compareText("result1.txt", "expected1.txt"));
-		m.tmp.listVonat();
-		m.tmp.listCP();
-	}
-	
 }
