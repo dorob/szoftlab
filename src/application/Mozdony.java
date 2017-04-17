@@ -64,11 +64,13 @@ public class Mozdony {
 	/**
 	 * Hozzaad a vonat utvonalahoz egy sint
 	 * @param s A hozzaadando sin.
+	 * @throws CollideException Ha vannak mar a sinen akkor utkozunk ralepeskor
 	 */
-
-	public void addWay(Sin s){
+	public void addWay(Sin s) throws CollideException{
 		ways = utvonal;
 		ways.mozdony = null;
+		if(s.mozdony != null)
+			throw new CollideException("tele van a sin");
 		utvonal = s;
 		utvonal.mozdony = this;
 	}

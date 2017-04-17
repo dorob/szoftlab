@@ -21,7 +21,8 @@ public class GlobalLogger {
 		try{
 			//a loghoz idot is adunk a konnyebb attekinthetoseg erdekeben
 			LocalDateTime ldt = LocalDateTime.now();
-			String tmp = ldt + " " + s.toString();
+		//	String tmp = ldt + " " + s.toString(); idot ne irja ki
+			String tmp = s.toString();
 			System.out.println(s);
 			if(writeInFile && fw !=null){
 			fw.write(System.lineSeparator() + tmp );
