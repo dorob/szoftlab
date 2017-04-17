@@ -103,7 +103,7 @@ public class Szkeleton_control {
 				
 				
 				else if (parts[0].equals("exit")){
-					menu.getJatek().exit();
+					menu.getJatek().win();
 					break;
 					}
 				
