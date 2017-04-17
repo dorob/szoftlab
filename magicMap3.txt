@@ -11,12 +11,13 @@ Megallo 400 400 BLUE true
 Megallo 500 500 RED false
 Megallo 600 600 YELLOW false
 Megallo 600 700 BLUE false
-6
+7
 0 1
 1 2
 2 3
 3 4
 4 5
 5 6
+6 0
 
 0 0
