@@ -118,7 +118,7 @@ public class Szkeleton_control {
 					menu.getJatek().run();
 					}
 				
-				else if (parts[0].equals("switch")){
+				else if (parts[0].equals("perform")){
 					ControlPoint find = menu.getJatek().getLevel().findCP(0, 0); //0,0 hogy switchert kapjunk vissza
 					find.perform(null);
 				}
@@ -127,8 +127,6 @@ public class Szkeleton_control {
 					ControlPoint find = menu.getJatek().getLevel().findCP(0, 1); // 0,1 hogy alagutat adjon vissza (csak szkeletonba azonosit igy)
 					find.perform(null);
 				}
-				
-
 				else if (parts[0].equals("log"))
 					GlobalLogger.Init(wd, parts);
 				else if (parts[0].equals("load"))
@@ -152,7 +150,6 @@ public class Szkeleton_control {
 	 */
 	protected void help(ArrayList<String> commands){
 		for(String tmp : commands){
-		//	System.out.println(tmp);
 			GlobalLogger.log(tmp);
 		}
 	}

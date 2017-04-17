@@ -27,6 +27,9 @@ public class Magic {
 	 * k     // sinek szama
 	 * <cp1 index> <cp2 index>   //beolvasuk cp1 es cp2-t amit a new sinnek adunk attr. kent
 	 * 							 //aztan mind2 cp ways-ehez hozzaadjuk a letrehozott uj sint
+	 *					//sorkihagyas
+	 * idx1 idx2       //melyik sinre melyik mozdony
+	 *
 	 */
 	Palya tmp = new Palya();
 	public Palya loadShit(String filename){
