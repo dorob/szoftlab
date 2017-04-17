@@ -46,7 +46,7 @@ public class Engine {
 			try {
 				level.run();
 			} catch (CollideException e) {
-				e.printStackTrace();
+				GlobalLogger.log(e.getMessage());
 				this.exit();
 			}
 		}
