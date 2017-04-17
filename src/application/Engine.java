@@ -23,6 +23,7 @@ public class Engine {
 	public Engine(){
 		GlobalLogger.log("called: Engine constructor");
 		toplista = new Scoreboard();
+		toplista.load();
 		
 	}
 	
