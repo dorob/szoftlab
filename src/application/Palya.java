@@ -3,24 +3,26 @@ package application;
 
 
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.awt.geom.Point2D;
-//import javafx.geometry.Point2D;
-//import javafx.scene.image.Image;
-//import javafx.scene.shape.Rectangle;
-//import javafx.scene.shape.Shape;
 /**
  * Palyaelemek betoltese illetve tarolasa.Itt tarolunk minden interakciora kepesobjektumot:
  * Vonatok ControlPointok hatter
  * @author Tsurhe
  *
  */
-public class Palya {
+public class Palya implements Serializable{
 	
 	private BufferedImage hatter;   
 	private ArrayList<ControlPoint> cp;
 	private ArrayList<Mozdony> vehicles;
-	//alagut be és kijáratot tároljuk
+	//alagut be es kijaratot taroljuk
 	public static ControlPoint openAlagut1;
 	public static ControlPoint openAlagut2;
 	public static Sin newSin;
@@ -33,19 +35,38 @@ public class Palya {
 		cp = new ArrayList<ControlPoint>();
 		vehicles = new ArrayList<Mozdony>();
 	}
+
+	/**
+	 * 
+	 * @param s kiirando fajl
+	 */
+	public void save(String s){
+		try {
+	         FileOutputStream fileOut =
+	         new FileOutputStream(s+".ser");
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	         out.writeObject(this);
+	         out.close();
+	         fileOut.close();	         
+	      }catch(IOException i) {
+	         GlobalLogger.log("Failed to save level.");;
+		GlobalLogger.log("called "+s+"- save");
+	      }
+	}
 	
-
-	/*public ControlPoint findCP(int x){
-		// kesobb kattintas koordinatai alapjan
-		GlobalLogger.log("called: palya -findCP");
-		return cp.get(x);
-		}*/
-
+	/**
+	 * Betolti fajlbol a palyat
+	 * @param s betoltendo fajl
+	 */
+	public void load(String s){
+				
+	
+	}
 	/**
 	 * A koordinatakkal megadott ControlPoint kikeresese
 	 * @param x x koordinata.
 	 * @param y y koordinata.
-	 * @return A koordinatak alapjan megadott ControlPoint, vagy ha nem létezik akkor null.
+	 * @return A koordinatak alapjan megadott ControlPoint, vagy ha nem letezik akkor null.
 	 */
 	public ControlPoint findCP(int x, int y) {
 		GlobalLogger.log("called: palya -findCP");
