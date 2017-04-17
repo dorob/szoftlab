@@ -103,7 +103,7 @@ public class Szkeleton_control {
 				
 				
 				else if (parts[0].equals("exit")){
-					menu.getJatek().win();
+					menu.getJatek().exit();
 					break;
 					}
 				
@@ -127,6 +127,9 @@ public class Szkeleton_control {
 				
 				else if (parts[0].equals("newPlayer"))
 					menu.getJatek().setNev(parts[1]);
+				
+				else if (parts[0].equals("compare"))
+					System.out.println(magic.compareText(parts[1], parts[2]));
 				
 				else if (parts[0].equals("load"))
 					con.load(parts);
