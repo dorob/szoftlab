@@ -1,0 +1,14 @@
+1
+2
+RED
+BLUE
+3
+CP 100 100
+Megallo 200 200 RED false
+Megallo 300 300 BLUE false
+3
+0 1
+1 2
+2 0
+
+1 0

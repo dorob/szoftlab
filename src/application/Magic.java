@@ -34,7 +34,7 @@ public class Magic {
 	Palya tmp = new Palya();
 	public Palya loadShit(String filename){
 		try{
-		FileReader fr = new FileReader("MagicMap2.txt");
+		FileReader fr = new FileReader(filename);
 		BufferedReader buf = new BufferedReader(fr);
 		while(true){
 			String line = buf.readLine();
