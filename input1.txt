@@ -1,4 +1,10 @@
-help
-init
-start
-exit
+log result1.txt
+test magicMap1.txt
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+stop
