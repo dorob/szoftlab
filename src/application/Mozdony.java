@@ -107,7 +107,7 @@ public class Mozdony {
 	
 	@Override
 	public String toString() {
-		return "Mozdony [ID=" + this.id + ", vagonok=" + vagonok + "]";
+		return "Mozdony [ID=" + this.id + ", Jelenlegi SIN: "+ utvonal.getId() +", vagonok=" + vagonok + "]";
 	}
 	public ArrayList<Vagon> getVagonok() {
 		return vagonok;
