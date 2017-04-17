@@ -79,6 +79,12 @@ public class Alagut extends Switcher{
 		Palya.newSin=new Sin(Palya.openAlagut1, Palya.openAlagut2);
 		Palya.openAlagut1.getWays().add(Palya.newSin);
 		Palya.openAlagut2.getWays().add(Palya.newSin);
+		((Alagut) Palya.openAlagut1).Switch();
+		((Alagut) Palya.openAlagut2).Switch();
+	}
+	
+	public void Switch(){
+		aktiv=ways.size()-1;
 	}
 	
 	/**
@@ -92,6 +98,8 @@ public class Alagut extends Switcher{
 		else{
 		Palya.openAlagut1.getWays().remove(Palya.openAlagut1.getWays().size()-1);
 		Palya.openAlagut2.getWays().remove(Palya.openAlagut2.getWays().size()-1);
+		((Alagut) Palya.openAlagut1).Switch();
+		((Alagut) Palya.openAlagut2).Switch();
 		Palya.newSin=null;
 		Sin.num--;
 		Palya.openAlagut1=null;
