@@ -16,8 +16,8 @@ import java.util.Collections;
 public class Engine {
 	private Palya level;
 	private Scoreboard toplista;
-	private String nev;
-	private int time;
+	private String nev = "player";
+	private int time = 0;
 	private int palya = 1;
 	
 	/**

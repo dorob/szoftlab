@@ -44,10 +44,11 @@ public class ControlPoint {
 	/**
 	 * Egy sinnek aki kerdezi visszaad egy iranyt ami a kovetkezo sin(utirany) lesz.
 	 * @param prev Az a sin ahol jelenleg van a mozdony, ami kerte az iranyadast.
+	 * @param asker 
 	 * @return Az a sin ami a mozdony kovetkezo sinje.
 	 * @throws CollideException Utkozes eseten dobja
 	 */
-	public Sin giveDirection(Sin prev) throws CollideException{
+	public Sin giveDirection(Sin prev, Mozdony asker) throws CollideException{
 		GlobalLogger.log("called: controlpoint giveDirection");
 		//Ha ez nem egy valto vagy alagut vagy elagazas hanem egy sima controllpoint, akkor 2 sin johet ki belole.
 		if (ways.size() == 2) {
@@ -95,4 +96,5 @@ public class ControlPoint {
 	public ArrayList<Sin> getWays(){
 		return ways;
 	}
+
 }

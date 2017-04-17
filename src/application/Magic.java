@@ -19,7 +19,7 @@ public class Magic {
 	 * 
 
 	 * (l 	  // controlpontok szama
-	 * <ControlPoint name> <posX> <posY> <esetleges attr>  //esetleges: ha megallo akkor egy RED, switchernel pl 2 
+	 * <ControlPoint name> <posX> <posY> <esetleges attr>  //esetleges: ha megallo akkor egy RED true, switchernel pl 2 
 	 * .
 	 * .
 	 * )  // l db controlpoint
@@ -139,6 +139,9 @@ public class Magic {
 		}
 		case "YELLOW":{
 			return Color.YELLOW;
+		}
+		case "BLACK":{
+			return Color.BLACK;
 		}
 		default: return null;
 	}

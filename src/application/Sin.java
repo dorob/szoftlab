@@ -53,9 +53,9 @@ public class Sin {
 			GlobalLogger.log("called: sin -giveNext");
 			Sin next;
 			if(mozdony.getWays()==null || controlpoint1.id == mozdony.getWays().controlpoint2.id) //cp2.id a vege nm 1 mer kulonben visszavezeti
-				next = controlpoint2.giveDirection(this);
+				next = controlpoint2.giveDirection(this, asker);
 			else
-				next = controlpoint1.giveDirection(this);
+				next = controlpoint1.giveDirection(this, asker);
 			mozdony.addWay(next);
 		}catch(CollideException e){
 			throw e;

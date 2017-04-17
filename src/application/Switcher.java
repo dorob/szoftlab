@@ -43,7 +43,7 @@ public class Switcher extends ControlPoint{
 	 * @throws CollideException Kivetel amikor olyan helyrol jon vonat, amerrre nincs valto ezert utkozik
 	 */
 	@Override
-	public Sin giveDirection(Sin prev) throws CollideException {
+	public Sin giveDirection(Sin prev, Mozdony asker) throws CollideException {
 		GlobalLogger.log("called: controlpoint giveDirection");
 		if(prev.equals(ways.get(0)))
 			return ways.get(aktiv);
