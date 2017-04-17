@@ -28,7 +28,7 @@ public class Palya {
 	/**
 	 * palya konstruktor
 	 */
-	public Palya(){	
+	public Palya(){
 		GlobalLogger.log("called: Palya constructor");
 		cp = new ArrayList<ControlPoint>();
 		vehicles = new ArrayList<Mozdony>();
