@@ -29,7 +29,7 @@ public class Magic {
 	 * 							 //aztan mind2 cp ways-ehez hozzaadjuk a letrehozott uj sint
 	 */
 	Palya tmp = new Palya();
-	public void loadShit(String filename){
+	public Palya loadShit(String filename){
 		try{
 		FileReader fr = new FileReader("MagicMap2.txt");
 		BufferedReader buf = new BufferedReader(fr);
@@ -105,9 +105,10 @@ public class Magic {
 			tmp.getCp().addAll(cp);
 		}
 		buf.close();
+		return tmp;
 		}catch (Exception e){
 			e.printStackTrace();
-			
+			return null;
 		}
 	}
 	
@@ -189,7 +190,7 @@ public class Magic {
 	public static void main(String[] args){
 		Magic m = new Magic();
 		m.loadShit("");
-		System.out.println(m.compareText("result1.txt", "expected1.txt"));
+	//	System.out.println(m.compareText("result1.txt", "expected1.txt"));
 		m.tmp.listVonat();
 		m.tmp.listCP();
 	}

@@ -22,6 +22,7 @@ import java.util.StringTokenizer;
 public class Szkeleton_control {
 	static File wd;
 	Menu menu;
+	Magic magic= new Magic();
 	private BufferedReader br;
 	/**
 	 * Ez hivodik meg eloszor az applikacio inditasakor.
@@ -58,7 +59,7 @@ public class Szkeleton_control {
 		/**
 		 * Ezzel tesztelhetjuk a kezdo inicializalast.
 		 */
-		commands.add("init");
+		commands.add("test");
 		
 		/**
 		 * Ezzel teszteljuk a jatek mozgatasat, valamint inicializalas elott hivva inicializalhatunk is vele,
@@ -124,10 +125,9 @@ public class Szkeleton_control {
 				if (parts[0].equals("scores"))
 					menu.getJatek().showScores();
 				
-				else if (parts[0].equals("init")){
-					if(menu.getJatek().getLevel()==null)
-						menu.getJatek().setLevel(new Palya());
-					menu.getJatek().getLevel().init();
+				else if (parts[0].equals("test")){
+					if(parts[1]!=null)
+						menu.getJatek().setLevel(magic.loadShit(parts[1]));
 				}
 				
 				else if	(parts[0].equals("stop")){
