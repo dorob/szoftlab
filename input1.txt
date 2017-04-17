@@ -1,4 +1,9 @@
-help
-init
-start
-exit
+log maslog.txt
+test magicMap3.txt
+listVonat
+run
+listVonat
+run
+listVonat
+run
+stop
