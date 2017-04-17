@@ -1,0 +1,70 @@
+
++++++++ LOGGING STARTED +++++++
+----INPUT: test magicMap2.txt
+called: mozdony default constructor
+called: vagon constructor
+called: vagon constructor
+called: ControlPoint constructor
+called: ControlPoint constructor
+	-called: megallo constructor
+called: ControlPoint constructor
+	-called: megallo constructor
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+----INPUT: listVonat
+called: Engine -getLevel
+called: palya - listVonat
+Mozdony [ID=0, Jelenlegi SIN: 0, vagonok=[Vagon [color=java.awt.Color[r=255,g=0,b=0], isEmpty=false], Vagon [color=java.awt.Color[r=0,g=0,b=255], isEmpty=false]]]
+----INPUT: run
+called: Engine -run
+called: level -checkCompleted
+called: Palya -run
+called: mozdony -move
+called: vagon- move
+called: vagon- move
+called: mozdony -doneMoving
+called: sin -giveNext
+called: megallo -perform -leszallas
+called: mozdony -stationArrive
+called: vagon -getDown
+called: vagon -getDown
+called: controlpoint giveDirection
+----INPUT: listVonat
+called: Engine -getLevel
+called: palya - listVonat
+Mozdony [ID=0, Jelenlegi SIN: 1, vagonok=[Vagon [color=java.awt.Color[r=255,g=0,b=0], isEmpty=true], Vagon [color=java.awt.Color[r=0,g=0,b=255], isEmpty=false]]]
+----INPUT: run
+called: Engine -run
+called: level -checkCompleted
+called: Palya -run
+called: mozdony -move
+called: vagon- move
+called: vagon- move
+called: mozdony -doneMoving
+called: sin -giveNext
+called: megallo -perform -leszallas
+called: mozdony -stationArrive
+called: vagon -getDown
+called: controlpoint giveDirection
+----INPUT: listVonat
+called: Engine -getLevel
+called: palya - listVonat
+Mozdony [ID=0, Jelenlegi SIN: 2, vagonok=[Vagon [color=java.awt.Color[r=255,g=0,b=0], isEmpty=true], Vagon [color=java.awt.Color[r=0,g=0,b=255], isEmpty=true]]]
+----INPUT: run
+called: Engine -run
+called: level -checkCompleted
+  level completed
+called: Engine -nextLevel
+called: Engine -win
+called: scoreboard -addHelyezes
+called: Player constructor
+--players sorted
+called: Engine -exit
+----INPUT: stop
