@@ -52,7 +52,7 @@ public class Sin {
 		try{
 			GlobalLogger.log("called: sin -giveNext");
 			Sin next;
-			if(mozdony.getWays()==null || controlpoint1.id == mozdony.getWays().controlpoint1.id)
+			if(mozdony.getWays()==null || controlpoint1.id == mozdony.getWays().controlpoint2.id) //cp2.id a vege nm 1 mer kulonben visszavezeti
 				next = controlpoint2.giveDirection(this);
 			else
 				next = controlpoint1.giveDirection(this);
