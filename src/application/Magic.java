@@ -27,11 +27,14 @@ public class Magic {
 	 * k     // sinek szama
 	 * <cp1 index> <cp2 index>   //beolvasuk cp1 es cp2-t amit a new sinnek adunk attr. kent
 	 * 							 //aztan mind2 cp ways-ehez hozzaadjuk a letrehozott uj sint
+	 *					//sorkihagyas
+	 * idx1 idx2       //melyik sinre melyik mozdony
+	 *
 	 */
 	Palya tmp = new Palya();
-	public void loadShit(String filename){
+	public Palya loadShit(String filename){
 		try{
-		FileReader fr = new FileReader("MagicMap1.txt");
+		FileReader fr = new FileReader("MagicMap2.txt");
 		BufferedReader buf = new BufferedReader(fr);
 		while(true){
 			String line = buf.readLine();
@@ -91,15 +94,28 @@ public class Magic {
 				cp.get(Integer.parseInt(idxs[0])).addWay(stmp);
 				cp.get(Integer.parseInt(idxs[1])).addWay(stmp);
 			}
+			
+			
+			/**
+			 * Mozdonyok hozzaadasa a sinekhez beolvassa, hogy melyik cp 0.ways elemehez adja hozza melyik indexu vonatot
+			 */
+			buf.readLine();
+			for(int i = 0; i < numOfVonat; i++){
+				String[] idxs = buf.readLine().split(" ");
+				//az adott mozdony utvonal valtozoja beallitott a valasztott cp 0. sin elemere (default bemenetere)
+				tmp.getVehicles().get(Integer.parseInt(idxs[1])).setUtvonal(cp.get(Integer.parseInt(idxs[0])).getWays().get(0));
+				//a fent emlitett sin mozdony elemenek beallitasa
+				cp.get(Integer.parseInt(idxs[0])).getWays().get(0).mozdony = tmp.getVehicles().get(Integer.parseInt(idxs[1]));
+				
+			}
+			//a palyaba feltolti a controlpontokat
 			tmp.getCp().addAll(cp);
-			
-			
-			
 		}
 		buf.close();
+		return tmp;
 		}catch (Exception e){
 			e.printStackTrace();
-			
+			return null;
 		}
 	}
 	
@@ -180,8 +196,10 @@ public class Magic {
 	
 	public static void main(String[] args){
 		Magic m = new Magic();
-	//	m.loadShit("");
-		System.out.println(m.compareText("result1.txt", "expected1.txt"));
+		m.loadShit("");
+	//	System.out.println(m.compareText("result1.txt", "expected1.txt"));
+		m.tmp.listVonat();
+		m.tmp.listCP();
 	}
 	
 }

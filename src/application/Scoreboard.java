@@ -17,7 +17,6 @@ public class Scoreboard implements Serializable{
 	 * Scoreboard constructor
 	 */
 	public Scoreboard(){
-	//	System.out.println("called: scoreboard constructor");
 		GlobalLogger.log("called: scoreboard constructor");
 		/*helyezes = new ArrayList<Player>();
 		helyezes.add(new Player("s",5));
@@ -30,7 +29,6 @@ public class Scoreboard implements Serializable{
 	 * Kimenti fajlba a helyezeseket
 	 */
 	public void save(){
-	//	System.out.println("called scoreboard - save");
 		try {
 	         FileOutputStream fileOut =
 	         new FileOutputStream("Scoreboard.ser");
@@ -48,7 +46,6 @@ public class Scoreboard implements Serializable{
 	 * Betolti fajlbol a helyezeseket
 	 */
 	public void load(){
-//		System.out.println("called: Scoreboard -load");
 		Scoreboard e = null;
 		try {
 	         FileInputStream fileIn = new FileInputStream("Scoreboard.ser");
@@ -74,11 +71,8 @@ public class Scoreboard implements Serializable{
 	 * @param i A jatekos idoeredmenye
 	 */
 	public void addHelyezes(String s, int i) {
-	//	System.out.println("called: scoreboard -addHelyezes");
 		GlobalLogger.log("called: scoreboard -addHelyezes");		
-		helyezes.add(new Player(s,i));
-		
-//		System.out.println("--players sorted"); //comparator megirasa utan egyszeru lesz a sort-olas
+		helyezes.add(new Player(s,i));		
 		GlobalLogger.log("--players sorted");
 	}
 	

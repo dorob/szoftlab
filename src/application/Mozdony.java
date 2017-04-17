@@ -15,20 +15,34 @@ public class Mozdony {
 	private Rectangle2D forma;
 	private Sin utvonal; //amin most vagyok
 	private boolean isDone;
+	
+	private int id;
+	/**
+	 * A mozdonyok egyedi azonositasahoz haszalt szamlalo
+	 */
+	private static int numme=0;
+	
+	
 	/**
 	 * Mozdony konstruktor
 	 */
 	public Mozdony(){
 		GlobalLogger.log("called: mozdony default constructor");
+		id = numme;
+		numme++;
 	}
 	/**
 	 * A vonat mozgatasa 2 ControlPoint kozott egy sinen.
+	 * @throws CollideException 
 	 */
-	public void move(){
+	public void move() throws CollideException{
 		GlobalLogger.log("called: mozdony -move");
 		for(Vagon m: vagonok) m.move(); 
-		//if(ways.isEmpty()) 
-		doneMoving();
+		try{ 
+			doneMoving();
+		}catch(CollideException e){
+		throw e;
+		}
 	}
 	/**
 	 * Ezzel vizsgalhatjuk avonatok utkozeset.
@@ -37,30 +51,29 @@ public class Mozdony {
 	public boolean CollisionDetection(){ return false;}
 	/**
 	 * Akkor hivodik mikor elfogynak az eppen adott utak amin a vonatnak vegig kell mennie.
+	 * @throws CollideException 
 	 */
-	public void doneMoving(){
-		GlobalLogger.log("called: mozdony -doneMoving");
+	public void doneMoving() throws CollideException{
+		try{
+			GlobalLogger.log("called: mozdony -doneMoving");
 		utvonal.giveNext(this);
+		}catch(CollideException e){
+			throw e;
+		}
 	}
 	/**
 	 * Hozzaad a vonat utvonalahoz egy sint
 	 * @param s A hozzaadando sin.
+	 * @throws CollideException Ha vannak mar a sinen akkor utkozunk ralepeskor
 	 */
-
-	public void addWay(Sin s){
+	public void addWay(Sin s) throws CollideException{
 		ways = utvonal;
 		ways.mozdony = null;
+		if(s.mozdony != null)
+			throw new CollideException("tele van a sin");
 		utvonal = s;
 		utvonal.mozdony = this;
 	}
-
-	/*public void addWay(Sin s){
-		this.ways = this.utvonal;
-		s.mozdony = this;
-		utvonal = s;
-	}*/
-
-
 
 
 	/**
@@ -87,12 +100,25 @@ public class Mozdony {
 		
 	}
 
+	
+	
+	
 	//Generaltfuggvenyek.
 	
+	@Override
+	public String toString() {
+		return "Mozdony [ID=" + this.id + ", Jelenlegi SIN: "+ utvonal.getId() +", vagonok=" + vagonok + "]";
+	}
 	public ArrayList<Vagon> getVagonok() {
 		return vagonok;
 	}
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public void setVagonok(ArrayList<Vagon> vagonok) {
 		this.vagonok = vagonok;
 	}

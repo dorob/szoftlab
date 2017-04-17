@@ -50,48 +50,25 @@ public class Alagut extends Switcher{
 	 * Letrehoz vagy lerombol egy alagutat.
 	 * @param m referencia a hivo mozdonyra
 	 */
-	public void perform(Mozdony m){
+	public void perform(Mozdony m) throws CollideException {
+		GlobalLogger.log("called: Alagut perform");
 		if(Palya.newSin == null){
 			if(Palya.openAlagut1==null){
 				Palya.openAlagut1=this;	
 			}
-			else{	//ha ugyanarra kattintok másodszor, akkor törlöm az alagutat
+			else{	//ha ugyanarra kattintok masodszor, akkor torlom az alagutat
 				if(Palya.openAlagut1.getID()==this.id)
 						Palya.openAlagut1=null;
 				else{
-					//ha létrejött a két alagut, akkor meghívom a buildet
+					//ha letrejott a ket alagut, akkor meghivom a buildet
 					Palya.openAlagut2=this;
 					build();
-				}
-				
-			}
-			
-		
-			
+				}	
+			}	
 		}
 		else{	
-			destroy();
-			 
+			destroy(); 
 		}
-
-		GlobalLogger.log("called: Alagut perform");
-	/*	try{
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			GlobalLogger.log("Build or destroy? b/d");
-			String line = br.readLine();
-			GlobalLogger.log("----INPUT: " + line);
-			if(line.equals("b"))
-				this.build();
-			else if(line.equals("d"))
-				this.destroy();
-			else {
-				GlobalLogger.log("Tunnel failed");
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}*/
-		
-		
 	}
 	
 	/**
@@ -102,17 +79,27 @@ public class Alagut extends Switcher{
 		Palya.newSin=new Sin(Palya.openAlagut1, Palya.openAlagut2);
 		Palya.openAlagut1.getWays().add(Palya.newSin);
 		Palya.openAlagut2.getWays().add(Palya.newSin);
+		((Alagut) Palya.openAlagut1).Switch();
+		((Alagut) Palya.openAlagut2).Switch();
+	}
+	
+	public void Switch(){
+		aktiv=ways.size()-1;
 	}
 	
 	/**
 	 * Lerombolja az alagutat.
 	 */
-	public void destroy(){
+	public void destroy() throws CollideException{
 		GlobalLogger.log("called: Alagut destroy");
-		if(Palya.newSin.mozdony != null); //end game
+		if(Palya.newSin.mozdony != null){
+			throw new CollideException("utkozes");//end game
+		}
 		else{
 		Palya.openAlagut1.getWays().remove(Palya.openAlagut1.getWays().size()-1);
 		Palya.openAlagut2.getWays().remove(Palya.openAlagut2.getWays().size()-1);
+		((Alagut) Palya.openAlagut1).Switch();
+		((Alagut) Palya.openAlagut2).Switch();
 		Palya.newSin=null;
 		Sin.num--;
 		Palya.openAlagut1=null;
@@ -121,4 +108,13 @@ public class Alagut extends Switcher{
 		}
 		//isBuilt=false;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Alagut [aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
+	}
+
+
+	
 }

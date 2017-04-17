@@ -2,7 +2,9 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.util.Collections;
 
 
@@ -16,6 +18,7 @@ public class Engine {
 	private Scoreboard toplista;
 	private String nev;
 	private int time;
+	private int palya = 1;
 	
 	/**
 	 * Engine konstruktora
@@ -23,11 +26,12 @@ public class Engine {
 	public Engine(){
 		GlobalLogger.log("called: Engine constructor");
 		toplista = new Scoreboard();
+		toplista.load();
 		
 	}
 	
 	/**
-	 * A jatek focklusanak futtatasa.
+	 * A jatek focklusanak futtatasa. Utkozesi hiba eseten leallitja a programot
 	 */
 	public void run(){
 		GlobalLogger.log("called: Engine -run");
@@ -39,7 +43,11 @@ public class Engine {
 			}
 		}
 		else{
-			level.run();
+			try {
+				level.run();
+			} catch (CollideException e) {
+				this.exit();
+			}
 		}
 	}
 	/**
@@ -47,23 +55,21 @@ public class Engine {
 	 * @return Van e kovetkezo palya.
 	 */
 	public boolean nextLevel(){ 
-		GlobalLogger.log("called: Engine -nextLevel");
-		
-		/*
-		 * try{
-		 *	uj palya betoltese betoltes(deszerializalas fajlbol)
-		 *
-		 *	pl: FileInputStream fileIn = new FileInputStream(new String("level"+number+".ser"));
-		 *		number++;
-		 *		a fajlnevek:level1,level2,...,leveln 
-		 *		n+1nel kivetelt dob ebbol tudjuk h uccso palya volt
-		 *	return true; // sikeresen betoltottuk a palyat
-		 * }
-		 * cath(IOException i){
-		 * 	return false; // nincs tobb betoltendo palya, nyertunk
-		 * }
-		 * Fentihez hasonloan lesz majd csak a betoltes kulon fuggvennyel lesz (Magic.loadshit)
-		 */
+		GlobalLogger.log("called: Engine -nextLevel");		
+		try {
+	         FileInputStream fileIn = new FileInputStream("level"+palya+".ser");
+	         palya++;
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         level = (Palya) in.readObject();
+	         in.close();
+	         fileIn.close();
+	         GlobalLogger.log("called: Palya -load");
+	         
+	      }catch(IOException i) {
+	         return false;	         
+	      }catch(ClassNotFoundException c) {
+	         System.out.println("Palya class not found");	         
+	      }		
 		return true;
 		}
 	/**
