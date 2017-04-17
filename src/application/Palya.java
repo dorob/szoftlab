@@ -87,6 +87,7 @@ public class Palya {
 	 * Kilistazza a vonatokat a mozdonyaikkal es a mozdonyok vagonjaival, megjelitve a vagonok szineit es telitettseguket
 	 */
 	public void listVonat(){
+		GlobalLogger.log("called: palya - listVonat");
 		for(Mozdony it : vehicles)
 			GlobalLogger.log(it);
 	}
@@ -95,6 +96,7 @@ public class Palya {
 	 * Kilistazza a controlpointokat azok tipusaval, sinjeivel es a sineiken levo mozdonnyal
 	 */
 	public void listCP(){
+		GlobalLogger.log("called: palya - listCP");
 		for(ControlPoint it : cp)
 			GlobalLogger.log(it);
 	}

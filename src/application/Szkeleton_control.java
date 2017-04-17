@@ -72,18 +72,10 @@ public class Szkeleton_control {
 		 */
 		commands.add("exit");
 		
-		/**
-		 * Ezzel teszteljuk a kapcsolok allitgatasat
-		 */
-		commands.add("switch");
-		
-		/**
-		 * Ezzel teszteljuk az alagutak epiteset, valamint lebontasat
-		 */
-		commands.add("tunnel" + " " + "-build/destroy");
-		
 		commands.add("load");
 		commands.add("log");
+		commands.add("listCP");
+		commands.add("listVonat");
 		System.out.println(commands.size());
 		menu = new Menu();  ////ezt kiszedni innen h kesobb induljon 
 		
@@ -119,16 +111,19 @@ public class Szkeleton_control {
 					}
 				
 				else if (parts[0].equals("perform")){
-					ControlPoint find = menu.getJatek().getLevel().findCP(0, 0); //0,0 hogy switchert kapjunk vissza
+					ControlPoint find = menu.getJatek().getLevel().findCP(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])); //0,0 hogy switchert kapjunk vissza
 					find.perform(null);
 				}
 				
-				else if (parts[0].equals("tunnel")){
-					ControlPoint find = menu.getJatek().getLevel().findCP(0, 1); // 0,1 hogy alagutat adjon vissza (csak szkeletonba azonosit igy)
-					find.perform(null);
-				}
+				else if (parts[0].equals("listVonat"))
+					menu.getJatek().getLevel().listVonat();
+				
+				else if (parts[0].equals("listCP"))
+					menu.getJatek().getLevel().listCP();
+				
 				else if (parts[0].equals("log"))
 					GlobalLogger.Init(wd, parts);
+				
 				else if (parts[0].equals("load"))
 					con.load(parts);
 				else{
@@ -143,17 +138,6 @@ public class Szkeleton_control {
 		}
 	}
 
-	
-	/**
-	 * kiirja a parancsokat meg ide ilyen hosszab szarba szepen h melyik fugveny mit csinal
-	 * @param commands
-	 */
-	protected void help(ArrayList<String> commands){
-		for(String tmp : commands){
-			GlobalLogger.log(tmp);
-		}
-	}
-	
 
 	/**
 	 * Fajlbol beolvassa a prarancsokat, es elvegzi oket
