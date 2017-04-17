@@ -53,15 +53,6 @@ public class Palya implements Serializable{
 		GlobalLogger.log("called "+s+"- save");
 	      }
 	}
-	
-	/**
-	 * Betolti fajlbol a palyat
-	 * @param s betoltendo fajl
-	 */
-	public void load(String s){
-				
-	
-	}
 	/**
 	 * A koordinatakkal megadott ControlPoint kikeresese
 	 * @param x x koordinata.
