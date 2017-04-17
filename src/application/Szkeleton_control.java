@@ -76,6 +76,7 @@ public class Szkeleton_control {
 		commands.add("log");
 		commands.add("listCP");
 		commands.add("listVonat");
+		commands.add("newPlayer");
 		GlobalLogger.log(commands);
 		menu = new Menu();  ////ezt kiszedni innen h kesobb induljon 
 		
@@ -123,6 +124,9 @@ public class Szkeleton_control {
 				
 				else if (parts[0].equals("log"))
 					GlobalLogger.Init(wd, parts);
+				
+				else if (parts[0].equals("newPlayer"))
+					menu.getJatek().setNev(parts[1]);
 				
 				else if (parts[0].equals("load"))
 					con.load(parts);
