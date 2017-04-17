@@ -5,5 +5,3 @@ src/sample/sample.fxml
 .idea/workspace.xml
 bin
 logging.txt
-result1.txt
-expected1.txt
