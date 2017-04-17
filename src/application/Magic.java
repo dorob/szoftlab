@@ -140,6 +140,9 @@ public class Magic {
 		case "YELLOW":{
 			return Color.YELLOW;
 		}
+		case "BLACK":{
+			return Color.BLACK;
+		}
 		default: return null;
 	}
 	}

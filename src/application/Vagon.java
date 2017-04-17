@@ -21,6 +21,8 @@ public class Vagon {
 	public Vagon(Color c){
 		GlobalLogger.log("called: vagon constructor");
 		color=c;
+		if(color == Color.BLACK)
+			isEmpty = true;
 	}
 	public Vagon(){
 		GlobalLogger.log("called: vagon default constructor");
