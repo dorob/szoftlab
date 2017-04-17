@@ -102,7 +102,11 @@ public class Magic {
 			buf.readLine();
 			for(int i = 0; i < numOfVonat; i++){
 				String[] idxs = buf.readLine().split(" ");
+				//az adott mozdony utvonal valtozoja beallitott a valasztott cp 0. sin elemere (default bemenetere)
+				tmp.getVehicles().get(Integer.parseInt(idxs[1])).setUtvonal(cp.get(Integer.parseInt(idxs[0])).getWays().get(0));
+				//a fent emlitett sin mozdony elemenek beallitasa
 				cp.get(Integer.parseInt(idxs[0])).getWays().get(0).mozdony = tmp.getVehicles().get(Integer.parseInt(idxs[1]));
+				
 			}
 			//a palyaba feltolti a controlpontokat
 			tmp.getCp().addAll(cp);

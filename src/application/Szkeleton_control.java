@@ -76,7 +76,7 @@ public class Szkeleton_control {
 		commands.add("log");
 		commands.add("listCP");
 		commands.add("listVonat");
-		System.out.println(commands.size());
+		GlobalLogger.log(commands);
 		menu = new Menu();  ////ezt kiszedni innen h kesobb induljon 
 		
 		try{
@@ -109,7 +109,7 @@ public class Szkeleton_control {
 				else if (parts[0].equals("run")){
 					menu.getJatek().run();
 					}
-				
+				//pl switch vagy build/destroy
 				else if (parts[0].equals("perform")){
 					ControlPoint find = menu.getJatek().getLevel().findCP(Integer.parseInt(parts[1]), Integer.parseInt(parts[2])); //0,0 hogy switchert kapjunk vissza
 					find.perform(null);
