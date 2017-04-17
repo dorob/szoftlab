@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.sun.corba.se.spi.ior.iiop.GIOPVersion;
+
 /**
  * Olyan ControlPoint ahol az utasoknak lehetoseguk van leszallni. A megallok szinnel
  * azonositottak, amegalloban nem all meg a vonat.
@@ -43,7 +45,11 @@ public class Megallo extends ControlPoint{
 		this.color = color;
 	}
 	
-	
+	@Override
+	public Sin giveDirection(Sin prev, Mozdony asker) throws CollideException{
+		this.perform(asker);
+		return super.giveDirection(prev, asker);
+	}
 	/**
 	 * Leszallitja az utasokat ha egyezik a szin. Ha folszallo van, akkor megprobal folszallni, 
 	 * illetve ha az sikeres is volt, akkor innen tobbet nem lehet folszallni
