@@ -1,0 +1,17 @@
+log result5.txt
+test magicMap5.txt
+listCP
+perform 200 200
+listCP
+perform 500 200
+listCP
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+stop
