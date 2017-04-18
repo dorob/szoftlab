@@ -1,0 +1,11 @@
+log result4.txt
+test magicMap4.txt
+listVonat
+listCP
+perform 200 200
+listCP
+run
+listVonat
+run
+listVonat
+stop
