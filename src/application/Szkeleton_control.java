@@ -70,12 +70,31 @@ public class Szkeleton_control {
 		/**
 		 * Ezzel teszteljuk a jatekbol valo kilepest.
 		 */
-		commands.add("exit");
+		commands.add("stop");
 		
+		/**
+		 * Fajlbol olvas es vegez el parancsokat
+		 */
 		commands.add("load");
+		
+		/**
+		 * adott kimenetre elkezd loggolni
+		 */
 		commands.add("log");
+		
+		/**
+		 * Kilistazza a controlpintokat es adataikat
+		 */
 		commands.add("listCP");
+		
+		/**
+		 * Kilistazza a vonatokat és adataikat
+		 */
 		commands.add("listVonat");
+		
+		/**
+		 * Kilistazza az eddig elmentett jatekosokat es eredmenyeiket
+		 */
 		commands.add("newPlayer");
 		GlobalLogger.log(commands);
 		menu = new Menu();  ////ezt kiszedni innen h kesobb induljon 
@@ -100,7 +119,6 @@ public class Szkeleton_control {
 						menu.getJatek().setLevel(magic.loadShit(parts[1]));
 					}
 				}
-				
 				
 				else if (parts[0].equals("stop")){
 					break;

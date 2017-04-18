@@ -1,0 +1,5 @@
+log result6.txt
+test magicMap6.txt
+listVonat
+run
+stop

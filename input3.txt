@@ -1,0 +1,29 @@
+log result3.txt
+test magicMap3.txt
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+listVonat
+run
+stop

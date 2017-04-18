@@ -1,0 +1,88 @@
+
++++++++ LOGGING STARTED +++++++
+----INPUT: test magicMap4.txt
+called: mozdony default constructor
+called: vagon constructor
+called: ControlPoint constructor
+called: ControlPoint constructor
+		-called: Switcher constructor
+called: ControlPoint constructor
+called: ControlPoint constructor
+called: ControlPoint constructor
+		-called: Switcher constructor
+called: ControlPoint constructor
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+called: sin constructor
+sin added
+sin added
+----INPUT: listVonat
+called: Engine -getLevel
+called: palya - listVonat
+Mozdony [ID=0, Jelenlegi SIN: 0, vagonok=[Vagon [color=java.awt.Color[r=255,g=0,b=0], isEmpty=false]]]
+----INPUT: listCP
+called: Engine -getLevel
+called: palya - listCP
+ControlPoint [id=0, ways=[Sin [id=0, mozdonyID=0], Sin [id=4, mozdonyID=null]]]
+Switcher 200;200[aktiv=1, id=1, ways=[Sin [id=0, mozdonyID=0], Sin [id=1, mozdonyID=null], Sin [id=5, mozdonyID=null]]]
+ControlPoint [id=2, ways=[Sin [id=1, mozdonyID=null], Sin [id=2, mozdonyID=null]]]
+ControlPoint [id=3, ways=[Sin [id=2, mozdonyID=null], Sin [id=3, mozdonyID=null]]]
+Switcher 500;500[aktiv=1, id=4, ways=[Sin [id=3, mozdonyID=null], Sin [id=4, mozdonyID=null], Sin [id=6, mozdonyID=null]]]
+ControlPoint [id=5, ways=[Sin [id=5, mozdonyID=null], Sin [id=6, mozdonyID=null]]]
+----INPUT: perform 200 200
+called: Engine -getLevel
+called: palya -findCP
+called: switcher -perform
+called: switcher -switch
+----INPUT: listCP
+called: Engine -getLevel
+called: palya - listCP
+ControlPoint [id=0, ways=[Sin [id=0, mozdonyID=0], Sin [id=4, mozdonyID=null]]]
+Switcher 200;200[aktiv=2, id=1, ways=[Sin [id=0, mozdonyID=0], Sin [id=1, mozdonyID=null], Sin [id=5, mozdonyID=null]]]
+ControlPoint [id=2, ways=[Sin [id=1, mozdonyID=null], Sin [id=2, mozdonyID=null]]]
+ControlPoint [id=3, ways=[Sin [id=2, mozdonyID=null], Sin [id=3, mozdonyID=null]]]
+Switcher 500;500[aktiv=1, id=4, ways=[Sin [id=3, mozdonyID=null], Sin [id=4, mozdonyID=null], Sin [id=6, mozdonyID=null]]]
+ControlPoint [id=5, ways=[Sin [id=5, mozdonyID=null], Sin [id=6, mozdonyID=null]]]
+----INPUT: run
+called: Engine -run
+called: level -checkCompleted
+called: Palya -run
+called: mozdony -move
+called: vagon- move
+called: mozdony -doneMoving
+called: sin -giveNext
+called: controlpoint giveDirection
+----INPUT: listVonat
+called: Engine -getLevel
+called: palya - listVonat
+Mozdony [ID=0, Jelenlegi SIN: 5, vagonok=[Vagon [color=java.awt.Color[r=255,g=0,b=0], isEmpty=false]]]
+----INPUT: run
+called: Engine -run
+called: level -checkCompleted
+called: Palya -run
+called: mozdony -move
+called: vagon- move
+called: mozdony -doneMoving
+called: sin -giveNext
+called: controlpoint giveDirection
+----INPUT: listVonat
+called: Engine -getLevel
+called: palya - listVonat
+Mozdony [ID=0, Jelenlegi SIN: 6, vagonok=[Vagon [color=java.awt.Color[r=255,g=0,b=0], isEmpty=false]]]
+----INPUT: stop
