@@ -70,7 +70,7 @@ public class Szkeleton_control {
 		/**
 		 * Ezzel teszteljuk a jatekbol valo kilepest.
 		 */
-		commands.add("exit");
+		commands.add("stop");
 		
 		/**
 		 * Fajlbol olvas es vegez el parancsokat
