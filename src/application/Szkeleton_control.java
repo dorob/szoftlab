@@ -93,6 +93,11 @@ public class Szkeleton_control {
 		commands.add("listVonat");
 		
 		/**
+		 * Osszehasonlitja soronkent a ket kapott fajlt
+		 */
+		commands.add("compare");
+		
+		/**
 		 * Kilistazza az eddig elmentett jatekosokat es eredmenyeiket
 		 */
 		commands.add("newPlayer");
