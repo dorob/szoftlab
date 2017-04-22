@@ -28,18 +28,20 @@ public class PathIteratorTest {
     	FlatteningPathIterator iter;
         Shape shape;
         ArrayList<Point2D> points;
-        ArrayList<Double> angles;
         private double angle;
         int index=0;
         private Point2D pos;
+
+        double formerangle;
+        private Point2D formerpos;
+        boolean vagon;
         
-        Point formerpoint;
+        
         public PaintPanel(Shape s) {
             this.shape=s;
             box = new Rectangle(0, 0, 20, 10);
             iter=new FlatteningPathIterator(s.getPathIterator(new AffineTransform()), 1);
             points=new ArrayList<Point2D>();
-            angles = new ArrayList<Double>();
             float[] coords=new float[6];
             while (!iter.isDone()) {
                 iter.currentSegment(coords);
@@ -54,13 +56,20 @@ public class PathIteratorTest {
             Timer timer=new Timer(80, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                	if(index < points.size()-1)
+                	if(index < points.size()-1){
+                		formerangle = angle;
                 		angle = angleTo(pos, points.get(index+1));
+                	}
                 	index++;
                     if (index>=points.size()) {
                         index=0;
                     }
+                    formerpos = pos;
                     pos=points.get(index);
+                    
+                    if(index == 2){
+                    	vagon=true;
+                    }
                     repaint();
                 }
             });
@@ -82,19 +91,36 @@ public class PathIteratorTest {
             int y = (getHeight() - shape.getBounds().height) / 2;
             g2d.translate(x, y);
             g2d.draw(shape);
-            
+ 
             AffineTransform at = new AffineTransform();
             if(pos!=null){
             	Rectangle bounds = box.getBounds();
+            	at.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
             	at.rotate(angle, (bounds.width/2), (bounds.height/2));
+            	
             	Path2D player = new Path2D.Double(box, at);
             	
-            	g2d.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
+            //	g2d.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
                 g2d.setColor(Color.RED);
                 g2d.draw(player);
+                try {
+					g2d.transform(at.createInverse());
+				} catch (NoninvertibleTransformException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                g2d.draw(player);
+                if(vagon){
+                	at.translate(formerpos.getX() - (bounds.width / 2), formerpos.getY() - (bounds.height / 2));
+                	at.rotate(formerangle, (bounds.width/2), (bounds.height/2));
+                	
+                	Path2D player2 = new Path2D.Double(box, at);
+                	
+               
+                    g2d.setColor(Color.BLACK);
+                    g2d.draw(player2);
+                }
             }
-            g2d.dispose();
-           
         }
     }
         public static void applyQualityRenderingHints(Graphics2D g2d) {
