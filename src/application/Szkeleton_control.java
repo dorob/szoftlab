@@ -46,10 +46,6 @@ public class Szkeleton_control {
 	 * @param con 
 	 */
 	public void Init(Szkeleton_control con){
-		System.out.println("EVERY TIME YOU START THE APPLICATION YOU MUST START WITH THE 'init' COMMAND!!"
-				+ "\n\r To start logging into a file, type in: log 'filename'"
-				+ "\n\r To see the valid command, type in: help"
-				+ "\n\r To read test input from file, navigate into its folder and type in: load 'filename'\n\r");
 		ArrayList<String> commands= new ArrayList<String>(); // itt taroljuk a megvalosithato parancsokat
 		/**
 		 * Ezzel tesztelhetjuk a toplista megtekinteset.
@@ -91,6 +87,11 @@ public class Szkeleton_control {
 		 * Kilistazza a vonatokat és adataikat
 		 */
 		commands.add("listVonat");
+		
+		/**
+		 * Osszehasonlitja soronkent a ket kapott fajlt
+		 */
+		commands.add("compare");
 		
 		/**
 		 * Kilistazza az eddig elmentett jatekosokat es eredmenyeiket

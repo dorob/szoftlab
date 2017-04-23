@@ -48,8 +48,8 @@ public class Scoreboard implements Serializable{
 	public void load(){
 		Scoreboard e = null;
 		try {
-	         FileInputStream fileIn = new FileInputStream("Scoreboard.ser");
-	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         FileInputStream fileIn = new FileInputStream("Scoreboard.ser");	         
+	         ObjectInputStream in = new ObjectInputStream(fileIn);	         
 	         e = (Scoreboard) in.readObject();
 	         in.close();
 	         fileIn.close();
