@@ -12,6 +12,7 @@ import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.*;
 import java.awt.*;
@@ -134,21 +135,22 @@ public class Engine extends JPanel{
 		return;
 	}
 		
+	ArrayList<Shape> tmp = new ArrayList<Shape>();
 	
 	protected void paintComponent(Graphics g) {
        	super.paintComponent(g);
            Graphics2D g2d = (Graphics2D) g.create();
            applyQualityRenderingHints(g2d);
            g2d.setColor(Color.blue);
+           for(ControlPoint c : this.level.getCp())
+        	  for(Sin ss : c.getWays())
+        		  g2d.draw(ss.gorbe);
            //minden mozdny kirajz
            for(Mozdony m : this.level.getVehicles()){
 		        shape = m.getUtvonal().gorbe;
 	        	pos = m.pos;
 	        	angle = m.angle;
 	        	
-		        int x = (getWidth() - shape.getBounds().width) / 2; //ovalgenyok kozee
-		        int y = (getHeight() - shape.getBounds().height) / 2;
-		        g2d.translate(x, y);
 		        g2d.draw(shape);
 		           
 		        AffineTransform at = new AffineTransform();
