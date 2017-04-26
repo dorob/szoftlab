@@ -2,6 +2,7 @@ package application;
 
 import java.awt.Color;
 import java.awt.geom.CubicCurve2D;
+import java.awt.geom.QuadCurve2D;
 /**
  * A palyan levo utak megnevezese, amin a vonatok kozlekednek illetve, amik osszekotik az adott controlpointokat. Minden sin tulajdonkepp egy Bezier gorbe,
  *  melyet vegpontjai es kontrollpontjai hataroznak meg. 
@@ -20,7 +21,7 @@ public class Sin {
 		this.id = id;
 	}
 
-	private CubicCurve2D gorbe;
+	public QuadCurve2D gorbe;
 	public ControlPoint controlpoint1;
 	public ControlPoint controlpoint2;
 	public Mozdony mozdony;
@@ -39,6 +40,9 @@ public class Sin {
 		num++;
 		controlpoint1=a;
 		controlpoint2=b;
+		gorbe = new QuadCurve2D.Float(controlpoint1.hely.x, controlpoint1.hely.y, 
+				(Math.abs(controlpoint2.hely.x-controlpoint1.hely.x)/2), (Math.abs(controlpoint2.hely.y-controlpoint1.hely.y/2)+60),
+				controlpoint2.hely.x, controlpoint2.hely.y);
 	}
 	
 	/**

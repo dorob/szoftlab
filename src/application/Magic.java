@@ -1,7 +1,7 @@
 package application;
 
 import java.awt.Color;
-
+import java.awt.geom.QuadCurve2D;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -87,10 +87,10 @@ public class Magic {
 			 */
 			int numOfSins = Integer.parseInt(buf.readLine());
 			for(int i = 0; i < numOfSins; i++){
-				Sin stmp = new Sin();
+				
 				String[] idxs = buf.readLine().split(" ");
-				stmp.controlpoint1 = cp.get(Integer.parseInt(idxs[0]));
-				stmp.controlpoint2 = cp.get(Integer.parseInt(idxs[1]));
+				Sin stmp = new Sin(cp.get(Integer.parseInt(idxs[0])), cp.get(Integer.parseInt(idxs[1])));
+				
 				cp.get(Integer.parseInt(idxs[0])).addWay(stmp);
 				cp.get(Integer.parseInt(idxs[1])).addWay(stmp);
 			}
