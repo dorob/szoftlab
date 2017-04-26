@@ -6,9 +6,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Path2D;
-import java.awt.geom.Point2D;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -147,22 +144,23 @@ public class Engine extends JPanel{
         		  g2d.draw(ss.gorbe);
            //minden mozdny kirajz
            for(Mozdony m : this.level.getVehicles()){
-		        shape = m.getUtvonal().gorbe;
 	        	pos = m.pos;
 	        	angle = m.angle;
-	        	
-		        g2d.draw(shape);
+
 		           
 		        AffineTransform at = new AffineTransform();
 		        if(pos!=null){
 		        	Rectangle bounds = box.getBounds();
 		           	at.rotate(angle, (bounds.width/2), (bounds.height/2));
-		           	Path2D player = new Path2D.Double(box, at);
+		           	
 		           	
 		           	g2d.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
+		           	Path2D player = new Path2D.Double(box, at);
 		               g2d.setColor(Color.RED);
 		               g2d.draw(player);
+		            g2d.translate((pos.getX() - (bounds.width / 2))*-1, -1*(pos.getY() - (bounds.height / 2)));
 		           }
+		     
 	           }
 	           g2d.dispose();
     }
@@ -192,6 +190,7 @@ public class Engine extends JPanel{
 	}
 	public void setLevel(Palya level) {
 		this.level = level;
+		repaint();
 	}
 	public Scoreboard getToplista() {
 		return toplista;

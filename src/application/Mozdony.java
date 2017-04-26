@@ -29,9 +29,9 @@ public class Mozdony {
 	 * A mozdony adott sinen valo koordinatai
 	 */
 	public  ArrayList<Point2D> points;
-	int index=0;
-	double angle;
-	Point2D pos;
+	public int index=0;
+	public double angle;
+	public Point2D pos;
 	
 	/**
 	 * Mozdony konstruktor
@@ -53,7 +53,6 @@ public class Mozdony {
 				angle = angleTo(pos, points.get(index+1));
 			index++;
 			if(index >= points.size()){
-				System.out.println("-_D!///=DDDDDDDDDDDDDDONE++++++++++");
 				doneMoving();
 			}
 			pos = points.get(index);
