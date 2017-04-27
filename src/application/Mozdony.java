@@ -50,7 +50,7 @@ public class Mozdony {
 	public void move() throws CollideException{
 		GlobalLogger.log("called: mozdony -move");
 		try{ 
-			for(Vagon m: vagonok) m.move();
+			for(Vagon m: vagonok) m.move(); // ez a resz folos szerintem. nemkel vagon move nmcsinal semit
 			//tartsunk csak annyi pontot ahany vagon van
 			if(pointsack.size() >= vagonok.size())
 				pointsack.remove(0);

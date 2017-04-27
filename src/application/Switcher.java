@@ -66,7 +66,7 @@ public class Switcher extends ControlPoint{
 
 	@Override
 	public String toString() {
-		return "Switcher "+ this.hely.x +";"+ this.hely.y + "[aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
+		return "Switcher";
 	}
 	
 }

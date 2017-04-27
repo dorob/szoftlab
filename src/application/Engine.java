@@ -23,13 +23,14 @@ import java.awt.geom.*;
  * @author Tsurhe
  *
  */
-public class Engine extends JPanel{
+public class Engine extends JPanel implements ActionListener{
 	private Palya level;
 	private Scoreboard toplista;
 	private String nev = "player";
 	private int time = 0;
 	private int palya = 1;
-	
+	private ArrayList<JButton> sButtons;
+	private ArrayList<JButton> aButtons;
 	
 	Shape shape;
 	Rectangle box = new Rectangle(0, 0, 20, 10);
@@ -43,6 +44,7 @@ public class Engine extends JPanel{
 	 */
 	public Engine(){
 		GlobalLogger.log("called: Engine constructor");
+		this.setLayout(null);
 		toplista = new Scoreboard();
 		toplista.load();
 		
@@ -132,8 +134,6 @@ public class Engine extends JPanel{
 		return;
 	}
 		
-	ArrayList<Shape> tmp = new ArrayList<Shape>();
-	
 	protected void paintComponent(Graphics g) {
 		try {
 		super.paintComponent(g);
@@ -184,7 +184,18 @@ public class Engine extends JPanel{
 				   g2d.setColor(mm.getColor());
 				   g2d.fill(mm.alak);
 			   }
+			   
+			   else if(cp.toString().equals("Switcher")){
+				   g2d.setColor(new Color(255, 219, 112));
+				   g2d.fill(cp.alak);
+			   }
+			   else if(cp.toString().equals("Alagut")){
+				   g2d.setColor(new Color(216, 100, 197));
+				   g2d.fill(cp.alak);
+				   
+			   }
 		   }
+		   
            
            		g2d.dispose();
 			}catch (NoninvertibleTransformException e) {
@@ -205,7 +216,35 @@ public class Engine extends JPanel{
 
     }
 	
-
+	public void initButtons(){
+		sButtons = new ArrayList<JButton>();
+		aButtons = new ArrayList<JButton>();
+		for(int i = 0; i < level.getCp().size(); i++){
+			if(level.getCp().get(i).toString().equals("Switcher")){	
+				JButton tmp = new JButton(Integer.toString(((Switcher) level.getCp().get(i)).aktiv));
+				tmp.setMargin(new Insets(0, 0, 0, 0));
+				tmp.setOpaque(false);
+				tmp.setContentAreaFilled(false);
+				tmp.setBorderPainted(false);
+				tmp.addActionListener(this);
+				tmp.putClientProperty("index", i); //mocsok megoldas hogy tarolja az indexet hogz kihey tartozik
+				tmp.setBounds(level.getCp().get(i).hely.x-10, level.getCp().get(i).hely.y-10, 20, 20);
+				this.add(tmp);
+			}
+			if(level.getCp().get(i).toString().equals("Alagut")){
+				JButton tmp = new JButton(Integer.toString(((Switcher) level.getCp().get(i)).aktiv));
+				tmp.setMargin(new Insets(0, 0, 0, 0));
+				tmp.setOpaque(false);
+				tmp.setContentAreaFilled(false);
+				tmp.setBorderPainted(false);
+				tmp.addActionListener(this);
+				tmp.putClientProperty("index", i); //mocsok megoldas hogy tarolja az indexet hogz kihey tartozik
+				tmp.setBounds(level.getCp().get(i).hely.x-10, level.getCp().get(i).hely.y-10, 20, 20);
+				this.add(tmp);
+			}
+		}
+	}
+	
 	
 	
 	
@@ -236,6 +275,21 @@ public class Engine extends JPanel{
 	}
 	public void setTime(int time) {
 		this.time = time;
+	}
+
+	
+	
+	//gomb
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		try {
+		int idx = (int) ((JButton)ae.getSource()).getClientProperty( "index" ); //k
+		level.getCp().get(idx).perform(null);
+		((JButton)ae.getSource()).setText(Integer.toString(((Switcher)level.getCp().get(idx)).aktiv)); //kk
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 

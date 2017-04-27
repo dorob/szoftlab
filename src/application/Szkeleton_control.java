@@ -118,6 +118,7 @@ public class Szkeleton_control {
 				else if (parts[0].equals("test")){
 					if(parts[1]!=null){
 						menu.getJatek().setLevel(magic.loadShit(parts[1]));
+						menu.getJatek().initButtons();
 					}
 				}
 				
