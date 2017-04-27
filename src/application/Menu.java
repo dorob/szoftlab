@@ -20,7 +20,7 @@ private Engine jatek;
 		JScrollPane scroll = new JScrollPane(jatek);
 		frame.getContentPane().add(scroll);
 		
-		frame.setSize(600, 600);
+		frame.setSize(700, 700);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 		

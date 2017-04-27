@@ -30,7 +30,7 @@ public class ControlPoint {
 	 */
 	public ControlPoint(int parseInt, int parseInt2) {
 		GlobalLogger.log("called: ControlPoint constructor");
-		alak = new Rectangle(parseInt-5, parseInt-5, 10, 10);
+		alak = new Rectangle(parseInt-5, parseInt2-5, 10, 10);
 		hely = new Point(parseInt, parseInt2);
 		id = num;
 		num++;
