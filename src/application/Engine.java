@@ -15,6 +15,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.geom.*;
 
 
@@ -23,14 +29,23 @@ import java.awt.geom.*;
  * @author Tsurhe
  *
  */
-public class Engine extends JPanel implements ActionListener{
+public class Engine extends JPanel implements ActionListener, MouseWheelListener{
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private Palya level;
 	private Scoreboard toplista;
 	private String nev = "player";
 	private int time = 0;
 	private int palya = 1;
-	private ArrayList<JButton> sButtons;
-	private ArrayList<JButton> aButtons;
+
 	
 	Shape shape;
 	Rectangle box = new Rectangle(0, 0, 20, 10);
@@ -38,16 +53,21 @@ public class Engine extends JPanel implements ActionListener{
 	int index = 0;
 	double angle;
 	Timer timer;
-	
+	public double zoom = 1d;
 	/**
 	 * Engine konstruktora
 	 */
 	public Engine(){
 		GlobalLogger.log("called: Engine constructor");
 		this.setLayout(null);
+		try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
+        }
 		toplista = new Scoreboard();
 		toplista.load();
-		
+		this.addMouseWheelListener(this);
 	}
 	
 	/**
@@ -136,10 +156,13 @@ public class Engine extends JPanel implements ActionListener{
 		
 	protected void paintComponent(Graphics g) {
 		try {
-		super.paintComponent(g);
+		
            Graphics2D g2d = (Graphics2D) g.create();
+           g2d.scale(zoom, zoom);
+           super.paintComponent(g2d);
            applyQualityRenderingHints(g2d);
            g2d.setColor(Color.blue);
+           
            //sinek kirajozlasa
            for(ControlPoint c : this.level.getCp())
         	  for(Sin ss : c.getWays())
@@ -192,7 +215,6 @@ public class Engine extends JPanel implements ActionListener{
 			   else if(cp.toString().equals("Alagut")){
 				   g2d.setColor(new Color(216, 100, 197));
 				   g2d.fill(cp.alak);
-				   
 			   }
 		   }
 		   
@@ -217,8 +239,6 @@ public class Engine extends JPanel implements ActionListener{
     }
 	
 	public void initButtons(){
-		sButtons = new ArrayList<JButton>();
-		aButtons = new ArrayList<JButton>();
 		for(int i = 0; i < level.getCp().size(); i++){
 			if(level.getCp().get(i).toString().equals("Switcher")){	
 				JButton tmp = new JButton(Integer.toString(((Switcher) level.getCp().get(i)).aktiv));
@@ -290,6 +310,20 @@ public class Engine extends JPanel implements ActionListener{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent mwe) {
+		if(mwe.getWheelRotation() < 0)
+			zoom+=0.02;
+		else 
+			zoom -= 0.02;
+		if(zoom < 0)
+			zoom = 0;
+		
+		
+		repaint();
 	}
 	
 
