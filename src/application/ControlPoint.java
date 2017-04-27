@@ -3,6 +3,7 @@ package application;
 
 import java.awt.Shape;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 //import javafx.geometry.Point2D;
@@ -27,8 +28,9 @@ public class ControlPoint {
 	 * @param parseInt elso koordinataja a CP-nek.
 	 * @param parseInt2 masodik koordinataja a CP-nek
 	 */
-	public ControlPoint(Shape object, int parseInt, int parseInt2) {
+	public ControlPoint(int parseInt, int parseInt2) {
 		GlobalLogger.log("called: ControlPoint constructor");
+		alak = new Rectangle(parseInt-5, parseInt-5, 10, 10);
 		hely = new Point(parseInt, parseInt2);
 		id = num;
 		num++;

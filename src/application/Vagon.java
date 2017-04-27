@@ -43,6 +43,7 @@ public class Vagon {
 	public boolean getDown(Color c){
 		GlobalLogger.log("called: vagon -getDown");
 		if(c==color){
+			color=Color.WHITE; //A KESZ VONATOK FEHEREK LESZNEK YOLO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			isEmpty=true;
 			return true;
 		}

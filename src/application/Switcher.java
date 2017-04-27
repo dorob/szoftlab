@@ -19,8 +19,8 @@ public class Switcher extends ControlPoint{
 	 * @param parseInt2 Az y koordinataja
 	 * @param aktiv_ Az aktiv sin szamat tartalmazza
 	 */
-	public Switcher(Shape shape, int parseInt, int parseInt2, int aktiv_) {
-		super(shape, parseInt, parseInt2);
+	public Switcher(int parseInt, int parseInt2, int aktiv_) {
+		super(parseInt, parseInt2);
 		aktiv=aktiv_;
 		GlobalLogger.log("		-called: Switcher constructor");
 	}

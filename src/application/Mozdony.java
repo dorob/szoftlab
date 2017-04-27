@@ -28,10 +28,12 @@ public class Mozdony {
 	/**
 	 * A mozdony adott sinen valo koordinatai
 	 */
-	public  ArrayList<Point2D> points;
+	public  ArrayList<Point2D> points= new ArrayList<Point2D>();
 	public int index=0;
 	public double angle;
 	public Point2D pos;
+	public ArrayList<Point2D> pointsack = new ArrayList<Point2D>();
+	public ArrayList<Double> anglesack = new ArrayList<Double>();
 	
 	/**
 	 * Mozdony konstruktor
@@ -48,9 +50,20 @@ public class Mozdony {
 	public void move() throws CollideException{
 		GlobalLogger.log("called: mozdony -move");
 		try{ 
-			for(Vagon m: vagonok) m.move(); 
-			if(index < points.size()-1)
+			for(Vagon m: vagonok) m.move();
+			//tartsunk csak annyi pontot ahany vagon van
+			if(pointsack.size() >= vagonok.size())
+				pointsack.remove(0);
+			//bedobjuk a vagonoknak
+			pointsack.add(points.get(index));
+			
+			if(index < points.size()-1){
 				angle = angleTo(pos, points.get(index+1));
+				if(anglesack.size() >= vagonok.size())
+					anglesack.remove(0);
+				anglesack.add(angle);
+			}
+			
 			index++;
 			if(index >= points.size()){
 				doneMoving();
@@ -106,8 +119,8 @@ public class Mozdony {
 	 */
 	public void calcPos(){
 		if(utvonal!=null){
-			points = new ArrayList<Point2D>();
-			FlatteningPathIterator iter=new FlatteningPathIterator(utvonal.gorbe.getPathIterator(new AffineTransform()), 1);
+			points.clear();
+			FlatteningPathIterator iter=new FlatteningPathIterator(utvonal.gorbe.getPathIterator(new AffineTransform()), 0.5); // a szam csokkentesevel imabba a mozgas (kisebb reszekre bontja)
 			float[] coords=new float[6];
             while (!iter.isDone()) {
                 iter.currentSegment(coords);

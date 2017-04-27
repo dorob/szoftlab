@@ -135,34 +135,61 @@ public class Engine extends JPanel{
 	ArrayList<Shape> tmp = new ArrayList<Shape>();
 	
 	protected void paintComponent(Graphics g) {
-       	super.paintComponent(g);
+		try {
+		super.paintComponent(g);
            Graphics2D g2d = (Graphics2D) g.create();
            applyQualityRenderingHints(g2d);
            g2d.setColor(Color.blue);
+           //sinek kirajozlasa
            for(ControlPoint c : this.level.getCp())
         	  for(Sin ss : c.getWays())
         		  g2d.draw(ss.gorbe);
+          
            //minden mozdny kirajz
            for(Mozdony m : this.level.getVehicles()){
+        	   g2d.setColor(Color.PINK);
 	        	pos = m.pos;
 	        	angle = m.angle;
-
-		           
 		        AffineTransform at = new AffineTransform();
 		        if(pos!=null){
 		        	Rectangle bounds = box.getBounds();
-		           	at.rotate(angle, (bounds.width/2), (bounds.height/2));
-		           	
-		           	
-		           	g2d.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
-		           	Path2D player = new Path2D.Double(box, at);
-		               g2d.setColor(Color.RED);
-		               g2d.draw(player);
-		            g2d.translate((pos.getX() - (bounds.width / 2))*-1, -1*(pos.getY() - (bounds.height / 2)));
-		           }
-		     
-	           }
-	           g2d.dispose();
+		        	at.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
+		        	at.rotate(angle, (bounds.width/2), (bounds.height/2));
+				    g2d.transform(at);       	
+				    //tenyleges mozdonyrajzolas
+		           	g2d.fill(box);          
+		           	//takaritas kovi elem rajzolasahoz
+					g2d.transform(at.createInverse());
+					
+		           	//vagonok rajzolas
+		           	for(int i =0; i< m.getVagonok().size(); i++){
+		           		if(i < m.pointsack.size()){
+		           			g2d.setColor(m.getVagonok().get(i).getColor());
+		           			at = new AffineTransform();
+		           			int j = m.anglesack.size()-i-1; // enelkul forditott sorrendbe rajzolta a vagonokat
+		           			at.translate(m.pointsack.get(j).getX() - (bounds.width / 2), m.pointsack.get(j).getY() - (bounds.height / 2));
+		           			at.rotate(m.anglesack.get(j), (bounds.width/2), (bounds.height/2));
+		           			g2d.transform(at);
+		           			g2d.fill(box);
+		           			g2d.transform(at.createInverse());
+		           		}
+		           	}
+		        }
+           }
+           
+           //megallo kirajzolas
+		   for(ControlPoint cp : this.level.getCp()){
+			   if(cp.toString().equals("Megallo")){
+				   Megallo mm = (Megallo) cp; //hogy kinyerjuk a szinet
+				   g2d.setColor(mm.getColor());
+				   g2d.fill(mm.alak);
+			   }
+		   }
+           
+           		g2d.dispose();
+			}catch (NoninvertibleTransformException e) {
+				e.printStackTrace();
+			}
     }
 	
 	public void applyQualityRenderingHints(Graphics2D g2d) {

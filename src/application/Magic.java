@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.geom.QuadCurve2D;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -32,6 +33,7 @@ public class Magic {
 	 *
 	 */
 	Palya tmp = new Palya();
+	Rectangle rekt = new Rectangle(0, 0, 10, 10);
 	public Palya loadShit(String filename){
 		try{
 		FileReader fr = new FileReader(filename);
@@ -64,19 +66,19 @@ public class Magic {
 				switch (attrs[0]){
 					case "CP":{
 
-						cp.add(new ControlPoint(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2])));
+						cp.add(new ControlPoint(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2])));
 						break;
 					}
 					case "Megallo":{
-						cp.add(new Megallo(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3]), Boolean.valueOf(attrs[4])));
+						cp.add(new Megallo(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3]), Boolean.valueOf(attrs[4])));
 						break;
 					}
 					case "Switcher":{
-						cp.add(new Switcher(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
+						cp.add(new Switcher(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
 						break;
 					}
 					case "Alagut":{
-						cp.add(new Alagut(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
+						cp.add(new Alagut(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
 						break;
 					}
 				}
