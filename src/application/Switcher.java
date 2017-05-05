@@ -4,6 +4,7 @@ package application;
 //import javafx.scene.shape.Shape;
 
 import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 import java.awt.Point;
 /**
  * Valtokat reprezentalja, Sin szakaszok kozotti kapcsolatokat allit, ezzel a jatekos iranyithatja, hogy melyik uton haladjon tovabb a vonat.
@@ -21,6 +22,7 @@ public class Switcher extends ControlPoint{
 	 */
 	public Switcher(int parseInt, int parseInt2, int aktiv_, int r, int g, int b) {
 		super(parseInt, parseInt2);
+		super.alak = new Ellipse2D.Double(parseInt-8, parseInt2-8, 16, 16);
 		aktiv=aktiv_;
 		rgbb[0] = r;
 		rgbb[1] = g;

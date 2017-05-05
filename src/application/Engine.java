@@ -211,7 +211,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		        }
            }
            
-           //megallo kirajzolas
+           //controlpointok kirajzolas
 		   for(ControlPoint cp : this.level.getCp()){
 			   if(cp.toString().equals("Megallo")){
 				   Megallo mm = (Megallo) cp; //hogy kinyerjuk a szinet

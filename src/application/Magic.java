@@ -89,12 +89,19 @@ public class Magic {
 			
 			/**
 			 * sinek beolvasasa es kontrolpontokkal valo osszekapcsolasa
+			 * a sinek utan meg kell adni a letrejott uj sin 3. controlpontjat ami a ket vegpont kozott van es a gorbeseget biztositja
+			 * 
+			 * ha nincs megadva akkor magatol kalkulja ami minden esetbe jo kiveve ha a 2 pont linearisan egymas utan van (pl 100 100- 200, 200)
 			 */
 			int numOfSins = Integer.parseInt(buf.readLine());
 			for(int i = 0; i < numOfSins; i++){
-				
+				Sin stmp;
 				String[] idxs = buf.readLine().split(" ");
-				Sin stmp = new Sin(cp.get(Integer.parseInt(idxs[0])), cp.get(Integer.parseInt(idxs[1])));
+				if(idxs.length > 2)
+					stmp = new Sin(cp.get(Integer.parseInt(idxs[0])), cp.get(Integer.parseInt(idxs[1])), 
+						Integer.parseInt(idxs[2]), Integer.parseInt(idxs[3]));
+				else
+					stmp = new Sin(cp.get(Integer.parseInt(idxs[0])), cp.get(Integer.parseInt(idxs[1])));
 				
 				cp.get(Integer.parseInt(idxs[0])).addWay(stmp);
 				cp.get(Integer.parseInt(idxs[1])).addWay(stmp);

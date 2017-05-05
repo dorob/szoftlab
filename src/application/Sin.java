@@ -41,7 +41,19 @@ public class Sin {
 		controlpoint1=a;
 		controlpoint2=b;
 		gorbe = new QuadCurve2D.Float(controlpoint1.hely.x, controlpoint1.hely.y, 
-				(Math.abs(controlpoint2.hely.x-controlpoint1.hely.x)/2), (Math.abs(controlpoint2.hely.y-controlpoint1.hely.y/2)+60),
+				((b.hely.x+a.hely.x)/2)+Math.abs((b.hely.y-a.hely.y)/2),
+				((b.hely.y+a.hely.y)/2)+Math.abs((b.hely.x-a.hely.x)/2),
+				controlpoint2.hely.x, controlpoint2.hely.y);
+	}
+	
+	public Sin(ControlPoint a, ControlPoint b,int x,int y){
+		GlobalLogger.log("called: sin constructor");
+		id = num;
+		num++;
+		controlpoint1=a;
+		controlpoint2=b;
+		gorbe = new QuadCurve2D.Float(controlpoint1.hely.x, controlpoint1.hely.y, 
+				x, y,
 				controlpoint2.hely.x, controlpoint2.hely.y);
 	}
 	

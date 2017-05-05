@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 //import javafx.geometry.Point2D;
@@ -30,6 +31,8 @@ public class Megallo extends ControlPoint{
 	 */	
 	public Megallo(int parseInt, int parseInt2, Color szin, boolean getUp_) {
 		super(parseInt, parseInt2);
+		//megallok nagyobbak legyenek
+		super.alak= new Rectangle(parseInt-10, parseInt2-10, 20, 20);
 		color=szin;
 		getUp=getUp_;
 		GlobalLogger.log("	-called: megallo constructor");
