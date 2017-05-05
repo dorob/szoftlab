@@ -21,8 +21,8 @@ public class Alagut extends Switcher{
 	 * @param shape Az alakja
 	 * @param tmp A pozicioja
 	 */
-	public Alagut(int parseInt, int parseInt2, int aktiv_) {
-		super(parseInt, parseInt2, aktiv_);
+	public Alagut(int parseInt, int parseInt2, int aktiv_, int r, int g, int b) {
+		super(parseInt, parseInt2, aktiv_, r, g, b);
 		GlobalLogger.log("		-called: Alagut constructor");
 	}
 	

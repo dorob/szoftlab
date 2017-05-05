@@ -11,7 +11,7 @@ import java.awt.Point;
  */
 public class Switcher extends ControlPoint{
 	protected int aktiv;
-	
+	public int[] rgbb = new int[3];
 	/**
 	 * Switcher konstruktora
 	 * @param shape Az alakja
@@ -19,9 +19,12 @@ public class Switcher extends ControlPoint{
 	 * @param parseInt2 Az y koordinataja
 	 * @param aktiv_ Az aktiv sin szamat tartalmazza
 	 */
-	public Switcher(int parseInt, int parseInt2, int aktiv_) {
+	public Switcher(int parseInt, int parseInt2, int aktiv_, int r, int g, int b) {
 		super(parseInt, parseInt2);
 		aktiv=aktiv_;
+		rgbb[0] = r;
+		rgbb[1] = g;
+		rgbb[2] = b;
 		GlobalLogger.log("		-called: Switcher constructor");
 	}
 	

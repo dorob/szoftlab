@@ -22,6 +22,7 @@ public class ControlPoint {
 	protected Shape alak;
 	protected Point hely;
 	protected ArrayList<Sin> ways = new ArrayList<Sin>();
+
 	/**
 	 * ControlPoint konstruktor, ami beallitja helyenek koordinatait.
 	 * @param object controlpoint kinezete.

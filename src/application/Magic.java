@@ -70,15 +70,18 @@ public class Magic {
 						break;
 					}
 					case "Megallo":{
+						
 						cp.add(new Megallo(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3]), Boolean.valueOf(attrs[4])));
 						break;
 					}
-					case "Switcher":{
-						cp.add(new Switcher(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
+					case "Switcher":{ //switcher es alagut utan 3 atrr kell a rgb szinuk kattintashzo amik EGYEDIEK LEGYENEK
+						cp.add(new Switcher(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3]),
+								Integer.parseInt(attrs[4]), Integer.parseInt(attrs[5]), Integer.parseInt(attrs[6])));
 						break;
 					}
-					case "Alagut":{
-						cp.add(new Alagut(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
+					case "Alagut":{ 
+						cp.add(new Alagut(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3]),
+								Integer.parseInt(attrs[4]), Integer.parseInt(attrs[5]), Integer.parseInt(attrs[6])));
 						break;
 					}
 				}

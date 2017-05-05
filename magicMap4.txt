@@ -3,10 +3,10 @@
 RED
 6
 CP 100 100
-Switcher 200 200 1
+Switcher 200 200 1 80 10 200
 CP 300 300
 CP 400 400
-Switcher 500 500 1
+Switcher 500 500 1 80 10 100
 CP 600 600
 7
 0 1
