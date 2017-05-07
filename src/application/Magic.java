@@ -1,7 +1,8 @@
 package application;
 
 import java.awt.Color;
-
+import java.awt.Rectangle;
+import java.awt.geom.QuadCurve2D;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class Magic {
 	 *
 	 */
 	Palya tmp = new Palya();
+	Rectangle rekt = new Rectangle(0, 0, 10, 10);
 	public Palya loadShit(String filename){
 		try{
 		FileReader fr = new FileReader("magicMap2.txt");
@@ -64,19 +66,22 @@ public class Magic {
 				switch (attrs[0]){
 					case "CP":{
 
-						cp.add(new ControlPoint(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2])));
+						cp.add(new ControlPoint(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2])));
 						break;
 					}
 					case "Megallo":{
-						cp.add(new Megallo(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3]), Boolean.valueOf(attrs[4])));
+						
+						cp.add(new Megallo(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), szin(attrs[3]), Boolean.valueOf(attrs[4])));
 						break;
 					}
-					case "Switcher":{
-						cp.add(new Switcher(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
+					case "Switcher":{ //switcher es alagut utan 3 atrr kell a rgb szinuk kattintashzo amik EGYEDIEK LEGYENEK
+						cp.add(new Switcher(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3]),
+								Integer.parseInt(attrs[4]), Integer.parseInt(attrs[5]), Integer.parseInt(attrs[6])));
 						break;
 					}
-					case "Alagut":{
-						cp.add(new Alagut(null, Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3])));
+					case "Alagut":{ 
+						cp.add(new Alagut(Integer.parseInt(attrs[1]), Integer.parseInt(attrs[2]), Integer.parseInt(attrs[3]),
+								Integer.parseInt(attrs[4]), Integer.parseInt(attrs[5]), Integer.parseInt(attrs[6])));
 						break;
 					}
 				}
@@ -84,13 +89,20 @@ public class Magic {
 			
 			/**
 			 * sinek beolvasasa es kontrolpontokkal valo osszekapcsolasa
+			 * a sinek utan meg kell adni a letrejott uj sin 3. controlpontjat ami a ket vegpont kozott van es a gorbeseget biztositja
+			 * 
+			 * ha nincs megadva akkor magatol kalkulja ami minden esetbe jo kiveve ha a 2 pont linearisan egymas utan van (pl 100 100- 200, 200)
 			 */
 			int numOfSins = Integer.parseInt(buf.readLine());
 			for(int i = 0; i < numOfSins; i++){
-				Sin stmp = new Sin();
+				Sin stmp;
 				String[] idxs = buf.readLine().split(" ");
-				stmp.controlpoint1 = cp.get(Integer.parseInt(idxs[0]));
-				stmp.controlpoint2 = cp.get(Integer.parseInt(idxs[1]));
+				if(idxs.length > 2)
+					stmp = new Sin(cp.get(Integer.parseInt(idxs[0])), cp.get(Integer.parseInt(idxs[1])), 
+						Integer.parseInt(idxs[2]), Integer.parseInt(idxs[3]));
+				else
+					stmp = new Sin(cp.get(Integer.parseInt(idxs[0])), cp.get(Integer.parseInt(idxs[1])));
+				
 				cp.get(Integer.parseInt(idxs[0])).addWay(stmp);
 				cp.get(Integer.parseInt(idxs[1])).addWay(stmp);
 			}

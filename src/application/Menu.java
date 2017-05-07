@@ -1,5 +1,8 @@
 package application;
 
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+
 public class Menu {
 	
 private Engine jatek;
@@ -11,6 +14,16 @@ private Engine jatek;
 	public void Init(){
 		GlobalLogger.log("called: engine -init");
 		jatek = new Engine();
+		
+		JFrame frame = new JFrame("GO GRAPHIC BIIITHC");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JScrollPane scroll = new JScrollPane(jatek);
+		frame.getContentPane().add(scroll);
+		
+		frame.setSize(700, 700);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+		
 	}
 	public Engine getJatek() {
 		return jatek;

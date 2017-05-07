@@ -4,6 +4,7 @@ package application;
 //import javafx.scene.shape.Shape;
 
 import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 import java.awt.Point;
 /**
  * Valtokat reprezentalja, Sin szakaszok kozotti kapcsolatokat allit, ezzel a jatekos iranyithatja, hogy melyik uton haladjon tovabb a vonat.
@@ -11,7 +12,7 @@ import java.awt.Point;
  */
 public class Switcher extends ControlPoint{
 	protected int aktiv;
-	
+	public int[] rgbb = new int[3];
 	/**
 	 * Switcher konstruktora
 	 * @param shape Az alakja
@@ -19,9 +20,13 @@ public class Switcher extends ControlPoint{
 	 * @param parseInt2 Az y koordinataja
 	 * @param aktiv_ Az aktiv sin szamat tartalmazza
 	 */
-	public Switcher(Shape shape, int parseInt, int parseInt2, int aktiv_) {
-		super(shape, parseInt, parseInt2);
+	public Switcher(int parseInt, int parseInt2, int aktiv_, int r, int g, int b) {
+		super(parseInt, parseInt2);
+		super.alak = new Ellipse2D.Double(parseInt-8, parseInt2-8, 16, 16);
 		aktiv=aktiv_;
+		rgbb[0] = r;
+		rgbb[1] = g;
+		rgbb[2] = b;
 		GlobalLogger.log("		-called: Switcher constructor");
 	}
 	
@@ -66,7 +71,7 @@ public class Switcher extends ControlPoint{
 
 	@Override
 	public String toString() {
-		return "Switcher "+ this.hely.x +";"+ this.hely.y + "[aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
+		return "Switcher";
 	}
 	
 }

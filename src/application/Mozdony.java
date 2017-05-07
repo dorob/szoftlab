@@ -1,6 +1,9 @@
 package application;
 
 import java.awt.Color;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.FlatteningPathIterator;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 /**
@@ -22,6 +25,15 @@ public class Mozdony {
 	 */
 	private static int numme=0;
 	
+	/**
+	 * A mozdony adott sinen valo koordinatai
+	 */
+	public  ArrayList<Point2D> points= new ArrayList<Point2D>();
+	public int index=0;
+	public double angle;
+	public Point2D pos;
+	public ArrayList<Point2D> pointsack = new ArrayList<Point2D>();
+	public ArrayList<Double> anglesack = new ArrayList<Double>();
 	
 	/**
 	 * Mozdony konstruktor
@@ -37,13 +49,39 @@ public class Mozdony {
 	 */
 	public void move() throws CollideException{
 		GlobalLogger.log("called: mozdony -move");
-		for(Vagon m: vagonok) m.move(); 
 		try{ 
-			doneMoving();
+			for(Vagon m: vagonok) m.move(); // ez a resz folos szerintem. nemkel vagon move nmcsinal semit
+			//tartsunk csak annyi pontot ahany vagon van
+			if(pointsack.size() >= vagonok.size())
+				pointsack.remove(0);
+			//bedobjuk a vagonoknak
+			pointsack.add(points.get(index));
+			
+			if(index < points.size()-1){
+				angle = angleTo(pos, points.get(index+1));
+				if(anglesack.size() >= vagonok.size())
+					anglesack.remove(0);
+				anglesack.add(angle);
+			}
+			
+			index++;
+			if(index >= points.size()){
+				doneMoving();
+			}
+			pos = points.get(index);
 		}catch(CollideException e){
 		throw e;
 		}
 	}
+	
+	
+	
+	protected double angleTo(Point2D from, Point2D to) {
+        double angle = Math.atan2(to.getY() - from.getY(), to.getX() - from.getX());
+        return angle;
+    }
+	
+	
 	/**
 	 * Ezzel vizsgalhatjuk avonatok utkozeset.
 	 * @return utkozik e a vonat.
@@ -73,8 +111,28 @@ public class Mozdony {
 			throw new CollideException("tele van a sin");
 		utvonal = s;
 		utvonal.mozdony = this;
+		this.calcPos();
 	}
 
+	/**
+	 * kiszamolja a konkret koordinatakat
+	 */
+	public void calcPos(){
+		if(utvonal!=null){
+			points.clear();
+			FlatteningPathIterator iter=new FlatteningPathIterator(utvonal.gorbe.getPathIterator(new AffineTransform()), 0.5); // a szam csokkentesevel imabba a mozgas (kisebb reszekre bontja)
+			float[] coords=new float[6];
+            while (!iter.isDone()) {
+                iter.currentSegment(coords);
+                double x=coords[0];
+                double y=coords[1];
+                points.add(new Point2D.Double(x, y));
+                iter.next();
+            }
+		}
+		pos = points.get(0);
+		index = 0;
+	}
 
 	/**
 	 * Mikor a megalloba er ezt a fuggvenyt hivja a vonat, 
@@ -147,6 +205,7 @@ public class Mozdony {
 
 	public void setUtvonal(Sin utvonal) {
 		this.utvonal = utvonal;
+		this.calcPos();
 	}
 	
 	public boolean isDone() {

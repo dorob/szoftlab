@@ -3,6 +3,7 @@ package application;
 
 import java.awt.Shape;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 //import javafx.geometry.Point2D;
@@ -21,14 +22,16 @@ public class ControlPoint {
 	protected Shape alak;
 	protected Point hely;
 	protected ArrayList<Sin> ways = new ArrayList<Sin>();
+
 	/**
 	 * ControlPoint konstruktor, ami beallitja helyenek koordinatait.
 	 * @param object controlpoint kinezete.
 	 * @param parseInt elso koordinataja a CP-nek.
 	 * @param parseInt2 masodik koordinataja a CP-nek
 	 */
-	public ControlPoint(Shape object, int parseInt, int parseInt2) {
+	public ControlPoint(int parseInt, int parseInt2) {
 		GlobalLogger.log("called: ControlPoint constructor");
+		alak = new Rectangle(parseInt-5, parseInt2-5, 10, 10);
 		hely = new Point(parseInt, parseInt2);
 		id = num;
 		num++;

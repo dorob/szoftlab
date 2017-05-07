@@ -2,11 +2,10 @@ package application;
 
 import java.awt.Shape;
 import java.awt.geom.Point2D;
+import java.awt.geom.RoundRectangle2D;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-//import javafx.geometry.Point2D;
-//import javafx.scene.shape.Shape;
 
 /**
  * Olyan ControlPoint, amelyre alagut szaj epitheto, illetve bonthato le. Ahol alagut van,
@@ -23,8 +22,9 @@ public class Alagut extends Switcher{
 	 * @param shape Az alakja
 	 * @param tmp A pozicioja
 	 */
-	public Alagut(Shape shape, int parseInt, int parseInt2, int aktiv_) {
-		super(shape, parseInt, parseInt2, aktiv_);
+	public Alagut(int parseInt, int parseInt2, int aktiv_, int r, int g, int b) {
+		super(parseInt, parseInt2, aktiv_, r, g, b);
+		super.alak = new RoundRectangle2D.Double(parseInt-4, parseInt2-6, 8, 12, 5, 5);
 		GlobalLogger.log("		-called: Alagut constructor");
 	}
 	
@@ -76,7 +76,10 @@ public class Alagut extends Switcher{
 	 */
 	public void build(){
 	GlobalLogger.log("called: Alagut build");
-		Palya.newSin=new Sin(Palya.openAlagut1, Palya.openAlagut2);
+	//a ketto koze pont olyan kiteressel hogy vizszintes es fuggoleges 2 pont eseten is felkort rajzoljon egy kis ivu gorbe helyett
+		Palya.newSin=new Sin(Palya.openAlagut1, Palya.openAlagut2, 
+				((Palya.openAlagut2.hely.x+Palya.openAlagut1.hely.x)/2)+Math.abs((Palya.openAlagut2.hely.y-Palya.openAlagut1.hely.y)/2),
+				((Palya.openAlagut2.hely.y+Palya.openAlagut1.hely.y)/2)+Math.abs((Palya.openAlagut2.hely.x-Palya.openAlagut1.hely.x)/2));
 		Palya.openAlagut1.getWays().add(Palya.newSin);
 		Palya.openAlagut2.getWays().add(Palya.newSin);
 		((Alagut) Palya.openAlagut1).Switch();
@@ -112,7 +115,7 @@ public class Alagut extends Switcher{
 
 	@Override
 	public String toString() {
-		return "Alagut " + this.hely.x +";"+ this.hely.y +"[aktiv=" + aktiv + ", id=" + id + ", ways=" + ways + "]";
+		return "Alagut";
 	}
 
 

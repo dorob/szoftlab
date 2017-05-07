@@ -35,7 +35,8 @@ public class PathIteratorTest {
         double formerangle;
         private Point2D formerpos;
         boolean vagon;
-        
+        double regiangle;
+        private Point2D regipos;
         
         public PaintPanel(Shape s) {
             this.shape=s;
@@ -56,10 +57,16 @@ public class PathIteratorTest {
             Timer timer=new Timer(80, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                	if(formerpos!=null){
+                		regiangle = formerangle;
+                		regipos=formerpos;
+                	}
                 	if(index < points.size()-1){
                 		formerangle = angle;
                 		angle = angleTo(pos, points.get(index+1));
                 	}
+                	
+                		
                 	index++;
                     if (index>=points.size()) {
                         index=0;
@@ -67,7 +74,7 @@ public class PathIteratorTest {
                     formerpos = pos;
                     pos=points.get(index);
                     
-                    if(index == 2){
+                    if(regipos!=null){
                     	vagon=true;
                     }
                     repaint();
@@ -111,8 +118,8 @@ public class PathIteratorTest {
 				}
                 g2d.draw(player);
                 if(vagon){
-                	at.translate(formerpos.getX() - (bounds.width / 2), formerpos.getY() - (bounds.height / 2));
-                	at.rotate(formerangle, (bounds.width/2), (bounds.height/2));
+                	at.translate(regipos.getX() - (bounds.width / 2), regipos.getY() - (bounds.height / 2));
+                	at.rotate(regiangle, (bounds.width/2), (bounds.height/2));
                 	
                 	Path2D player2 = new Path2D.Double(box, at);
                 	

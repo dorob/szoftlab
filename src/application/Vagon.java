@@ -12,6 +12,7 @@ public class Vagon {
 	
 	private ArrayList<Point2D>koor;
 	private Color color;
+	private Color formerc;
 	public boolean isEmpty = false;
 	
 	
@@ -43,6 +44,8 @@ public class Vagon {
 	public boolean getDown(Color c){
 		GlobalLogger.log("called: vagon -getDown");
 		if(c==color){
+			formerc=color;
+			color=Color.WHITE; //A KESZ VONATOK FEHEREK LESZNEK YOLO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			isEmpty=true;
 			return true;
 		}
@@ -55,7 +58,8 @@ public class Vagon {
 	 */
 	public boolean getUp(Color c){
 		GlobalLogger.log("called: vagon -getUp");
-		if(c==color){ 
+		if(c==formerc){
+			color = c;
 			isEmpty=false;
 			return true;
 		}

@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 //import javafx.geometry.Point2D;
@@ -28,18 +29,18 @@ public class Megallo extends ControlPoint{
 	 * @param col A megallo szine.
 	 * @param getUp_ A megalloban vannak-e felszallo utasok.
 	 */	
-	public Megallo(Shape object, int parseInt, int parseInt2, Color szin, boolean getUp_) {
-		// TODO Auto-generated constructor stub
-		super(object, parseInt, parseInt2);
+	public Megallo(int parseInt, int parseInt2, Color szin, boolean getUp_) {
+		super(parseInt, parseInt2);
+		//megallok nagyobbak legyenek
+		super.alak= new Rectangle(parseInt-10, parseInt2-10, 20, 20);
 		color=szin;
 		getUp=getUp_;
 		GlobalLogger.log("	-called: megallo constructor");
 	}
 
 	public Color getColor(){ 
-	//	System.out.println("called: Megallo -getColor");
 		GlobalLogger.log("called: Megallo -getColor");
-		return Color.GREEN;
+		return color;
 		}
 	public void setColor(Color color){
 		this.color = color;
@@ -58,24 +59,7 @@ public class Megallo extends ControlPoint{
 	@Override
 	public void perform(Mozdony m){
 		boolean passengers;
-//		System.out.println("called: megallo perform -leszallas");
 		GlobalLogger.log("called: megallo -perform -leszallas");
-		/*try{
-		BufferedReader tmp = new BufferedReader(new InputStreamReader(System.in));
-		GlobalLogger.log("Could the passengers get up (they found empty places)? y/n");
-		if(tmp.readLine().equals("y")){
-				m.stationArrive(color, true);
-				//getup =true
-		}
-		else 
-			m.stationArrive(color, false);
-				
-		
-		
-		}catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		passengers = m.stationArrive(color, getUp);
 		if(passengers == true)
 			getUp = false;
@@ -83,7 +67,7 @@ public class Megallo extends ControlPoint{
 
 	@Override
 	public String toString() {
-		return "Megallo [color=" + color + ", getUp=" + getUp + ", id=" + id + ", ways=" + ways + "]";
+		return "Megallo";
 	}
 
 	public boolean isGetUp() {
