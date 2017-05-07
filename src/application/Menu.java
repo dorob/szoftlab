@@ -1,68 +1,117 @@
 package application;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.util.Collections;
 
 import javax.swing.*;
+import javax.swing.plaf.LayerUI;
+
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 
-public class Menu {
+public class Menu extends JFrame implements ActionListener{
 	
 private Engine jatek;
-private JFrame frame;
-private JPanel menuPanel;
-private JButton start;
-private JButton score;
-private JButton exit;
+private JPanel pMenu;
+private JPanel pMain;
+private JPanel pScore;
+private JButton bStart;
+private JButton bScore;
+private JButton bExit;
 
-
+JPanel tmp;
 	public Menu(){
+		super("Szoftlab");
 		GlobalLogger.log("called: Menu constructor");
 		Init();
 	}
 
 	public void Init(){
 		GlobalLogger.log("called: engine -init");
-		frame = new JFrame("SzoftLab");
-		jatek = new Engine();
-		menuPanel= new JPanel();
+
+		jatek= new Engine();
+		JPanel tar = new JPanel();
+		tar.add(jatek);
+		LayerUI<JComponent> layerUI = new Overpaint();
+		JLayer<JComponent> jlayer = new JLayer<JComponent>(jatek, layerUI);
+		jlayer.addMouseListener(jatek);
+		jlayer.addMouseWheelListener(jatek);
 		
+		
+		pMenu= new JPanel();
+		pMain=new JPanel();
+		
+		pMain.setOpaque(true);
+		pScore = new JPanel();
+		pMain.setLayout(new CardLayout());
 		JLabel label= new JLabel();
 		label.setText("Szoftech Jatek");
 		label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 		label.setFont(new Font(label.getFont().getName(),Font.BOLD ,60 ));
-		start = new JButton();
-		start.setAlignmentX(JButton.CENTER_ALIGNMENT);
-		start.setText("Start");
-		score = new JButton();
-		score.setAlignmentX(JButton.CENTER_ALIGNMENT);
-		score.setText("ScoreBoard");
-		exit = new JButton();
-		exit.setAlignmentX(JButton.CENTER_ALIGNMENT);
-		exit.setText("Exit");
+
+		bStart = new JButton();
+		bStart.setAlignmentX(JButton.CENTER_ALIGNMENT);
+		bStart.setText("Start");
+		bStart.setActionCommand("start");
+		bStart.addActionListener(this);
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(960, 540);
-        frame.setLocationRelativeTo(null);
-		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.PAGE_AXIS));
-		menuPanel.add(Box.createRigidArea(new Dimension(0, 100)));
-		menuPanel.add(label);
-		menuPanel.add(Box.createRigidArea(new Dimension(0, 100)));
-		menuPanel.add(start);
-		menuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-		menuPanel.add(score);
-		menuPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-		menuPanel.add(exit);
-		frame.add(menuPanel, BorderLayout.CENTER);
+		bScore = new JButton();
+		bScore.setAlignmentX(JButton.CENTER_ALIGNMENT);
+		bScore.setText("ScoreBoard");
+		bScore.setActionCommand("scores");
+		bScore.addActionListener(this);
 		
+		bExit = new JButton();
+		bExit.setAlignmentX(JButton.CENTER_ALIGNMENT);
+		bExit.setText("Exit");
+		bExit.setActionCommand("exit");
+		bExit.addActionListener(this);
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(960, 540);
+        this.setLocationRelativeTo(null);
         
-        
-        frame.setResizable(false);
-        frame.setVisible(true);
+		pMenu.setLayout(new BoxLayout(pMenu, BoxLayout.PAGE_AXIS));
+		pMenu.add(Box.createRigidArea(new Dimension(0, 100)));
+		pMenu.add(label);
+		pMenu.add(Box.createRigidArea(new Dimension(0, 100)));
+		pMenu.add(bStart);
+		pMenu.add(Box.createRigidArea(new Dimension(0, 10)));
+		pMenu.add(bScore);
+		pMenu.add(Box.createRigidArea(new Dimension(0, 10)));
+		pMenu.add(bExit);
+		
+		pMain.add(pMenu, "menu");
+		pMain.add(jlayer, "temp");
+		
+		pScore.setLayout(new BoxLayout(pScore, BoxLayout.PAGE_AXIS));
+		JLabel label1 = new JLabel("ScoreBoard");
+		label1.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		label1.setFont(new Font(label1.getFont().getName(), Font.BOLD, 30));
+		JButton back = new JButton("Menu");
+		back.setActionCommand("menu");
+		back.setAlignmentX(JButton.CENTER_ALIGNMENT);
+		back.addActionListener(this);
+		pScore.add(label1, BorderLayout.NORTH);
+		
+		pScore.add(back, BorderLayout.SOUTH);
+		
+		pMain.add(pScore, "score");
+		pMain.add(jatek, "engine");
+        this.setContentPane(pMain);
+        this.setResizable(true);
+        this.setVisible(true);
 		
 		JScrollPane scroll = new JScrollPane(jatek);
-		frame.getContentPane().add(scroll);
+		this.getContentPane().add(scroll);
 		
 		
 		
@@ -77,4 +126,50 @@ private JButton exit;
 		Menu menu = new Menu();
 		
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		CardLayout cl = (CardLayout) pMain.getLayout();
+		if(e.getActionCommand().equals("menu")) {
+			cl.show(pMain, "menu");
+			
+		}
+		else if(e.getActionCommand().equals("start")) {
+			cl.show(pMain, "temp");
+			jatek.requestFocusInWindow();
+			jatek.run();
+			
+
+			//cl.show(pMain, "menu");
+		}
+		else if(e.getActionCommand().equals("scores")) {
+			ReInitScoreBoard();
+			cl.show(pMain, "score");
+		}
+		else if(e.getActionCommand().equals("exit")) {
+			System.exit(0);
+		}
+	
+		
+	}
+	
+
+	private void ReInitScoreBoard(){
+		
+		Scoreboard tmp;
+		tmp=jatek.getToplista();
+		Collections.sort(tmp.getHelyezes());
+		if(pScore.getComponentCount()==3) pScore.remove(2);
+		
+		DefaultListModel<String> model = new DefaultListModel<String>();
+		for(Player p:tmp.getHelyezes()){
+		    model.addElement(p.toString());
+		}
+		JList<String> lTmp = new JList<String>(model);
+		JScrollPane sp = new JScrollPane(lTmp);
+		
+		pScore.add(sp, BorderLayout.CENTER);
+		
+	}
+
 }
