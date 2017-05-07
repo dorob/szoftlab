@@ -31,7 +31,9 @@ private JButton bExit;
 	public void Init(){
 		GlobalLogger.log("called: engine -init");
 
-		jatek = new Engine();
+		jatek= new Engine();
+		
+		
 		pMenu= new JPanel();
 		pMain=new JPanel();
 		pScore = new JPanel();
@@ -72,11 +74,22 @@ private JButton bExit;
 		pMenu.add(Box.createRigidArea(new Dimension(0, 10)));
 		pMenu.add(bExit);
 		
-		InitScoreBoard();
 		pMain.add(pMenu, "menu");
-		pMain.add(jatek, "engine");
-		pMain.add(pScore, "score");
 		
+		pScore.setLayout(new BoxLayout(pScore, BoxLayout.PAGE_AXIS));
+		JLabel label1 = new JLabel("ScoreBoard");
+		label1.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+		label1.setFont(new Font(label1.getFont().getName(), Font.BOLD, 30));
+		JButton back = new JButton("Menu");
+		back.setActionCommand("menu");
+		back.setAlignmentX(JButton.CENTER_ALIGNMENT);
+		back.addActionListener(this);
+		pScore.add(label1, BorderLayout.NORTH);
+		
+		pScore.add(back, BorderLayout.SOUTH);
+		
+		pMain.add(pScore, "score");
+		pMain.add(jatek, "engine");
 		
         this.setContentPane(pMain);
         this.setResizable(false);
@@ -104,11 +117,15 @@ private JButton bExit;
 		CardLayout cl = (CardLayout) pMain.getLayout();
 		if(e.getActionCommand().equals("menu")) {
 			cl.show(pMain, "menu");
+			
 		}
 		if(e.getActionCommand().equals("start")) {
 			cl.show(pMain, "engine");
+			jatek.nextLevel();
+			cl.show(pMain, "menu");
 		}
 		if(e.getActionCommand().equals("scores")) {
+			ReInitScoreBoard();
 			cl.show(pMain, "score");
 		}
 		if(e.getActionCommand().equals("exit")) {
@@ -117,19 +134,23 @@ private JButton bExit;
 	
 		
 	}
-	private void InitScoreBoard(){
-		pScore.setLayout(new BoxLayout(pScore, BoxLayout.PAGE_AXIS));
-		JLabel label1 = new JLabel("ScoreBoard");
-		label1.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-		label1.setFont(new Font(label1.getFont().getName(), Font.BOLD, 30));
-		JButton back = new JButton("Menu");
-		back.setActionCommand("menu");
-		back.setAlignmentX(JButton.CENTER_ALIGNMENT);
-		back.addActionListener(this);
+	
+
+	private void ReInitScoreBoard(){
 		
-		Scoreboard tmp= new Scoreboard();
-		tmp.load();
-		pScore.add(label1, BorderLayout.NORTH);
-		pScore.add(back, BorderLayout.SOUTH);
+		Scoreboard tmp;
+		tmp=jatek.getToplista();
+		if(pScore.getComponentCount()==3) pScore.remove(2);
+		
+		DefaultListModel<String> model = new DefaultListModel<String>();
+		for(Player p:tmp.getHelyezes()){
+		    model.addElement(p.toString());
+		}
+		JList<String> lTmp = new JList<String>(model);
+		JScrollPane sp = new JScrollPane(lTmp);
+		
+		pScore.add(sp, BorderLayout.CENTER);
+		
 	}
+
 }
