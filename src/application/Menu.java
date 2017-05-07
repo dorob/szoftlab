@@ -43,7 +43,7 @@ private JButton exit;
 		exit.setText("Exit");
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(700, 700);
+		frame.setSize(960, 540);
         frame.setLocationRelativeTo(null);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.PAGE_AXIS));
 		menuPanel.add(Box.createRigidArea(new Dimension(0, 100)));
