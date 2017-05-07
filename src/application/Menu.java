@@ -7,9 +7,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.Collections;
 
 import javax.swing.*;
+import javax.swing.plaf.LayerUI;
+
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 
 public class Menu extends JFrame implements ActionListener{
@@ -22,7 +27,7 @@ private JButton bStart;
 private JButton bScore;
 private JButton bExit;
 
-
+JPanel tmp;
 	public Menu(){
 		super("Szoftlab");
 		GlobalLogger.log("called: Menu constructor");
@@ -33,10 +38,18 @@ private JButton bExit;
 		GlobalLogger.log("called: engine -init");
 
 		jatek= new Engine();
+		JPanel tar = new JPanel();
+		tar.add(jatek);
+		LayerUI<JComponent> layerUI = new Overpaint();
+		JLayer<JComponent> jlayer = new JLayer<JComponent>(jatek, layerUI);
+		jlayer.addMouseListener(jatek);
+		jlayer.addMouseWheelListener(jatek);
 		
 		
 		pMenu= new JPanel();
 		pMain=new JPanel();
+		
+		pMain.setOpaque(true);
 		pScore = new JPanel();
 		pMain.setLayout(new CardLayout());
 		JLabel label= new JLabel();
@@ -76,6 +89,7 @@ private JButton bExit;
 		pMenu.add(bExit);
 		
 		pMain.add(pMenu, "menu");
+		pMain.add(jlayer, "temp");
 		
 		pScore.setLayout(new BoxLayout(pScore, BoxLayout.PAGE_AXIS));
 		JLabel label1 = new JLabel("ScoreBoard");
@@ -91,9 +105,8 @@ private JButton bExit;
 		
 		pMain.add(pScore, "score");
 		pMain.add(jatek, "engine");
-		
         this.setContentPane(pMain);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setVisible(true);
 		
 		JScrollPane scroll = new JScrollPane(jatek);
@@ -120,16 +133,19 @@ private JButton bExit;
 			cl.show(pMain, "menu");
 			
 		}
-		if(e.getActionCommand().equals("start")) {
-			cl.show(pMain, "engine");
-			jatek.nextLevel();
-			cl.show(pMain, "menu");
+		else if(e.getActionCommand().equals("start")) {
+			cl.show(pMain, "temp");
+			jatek.requestFocusInWindow();
+			jatek.run();
+			
+
+			//cl.show(pMain, "menu");
 		}
-		if(e.getActionCommand().equals("scores")) {
+		else if(e.getActionCommand().equals("scores")) {
 			ReInitScoreBoard();
 			cl.show(pMain, "score");
 		}
-		if(e.getActionCommand().equals("exit")) {
+		else if(e.getActionCommand().equals("exit")) {
 			System.exit(0);
 		}
 	

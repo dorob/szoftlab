@@ -35,12 +35,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	
 	
 	
-	
-	
-	
-	
-	
-	
 	private Palya level;
 	private Scoreboard toplista;
 	private String nev = "player";
@@ -60,8 +54,9 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	 * Engine konstruktora
 	 */
 	public Engine(){
+		super();
 		GlobalLogger.log("called: Engine constructor");
-		this.setLayout(null);
+		
 		try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
@@ -71,6 +66,8 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		toplista.load();
 		this.addMouseWheelListener(this);
 		this.addMouseListener(this);
+		this.requestFocusInWindow();
+		this.setVisible(true);
 	}
 	
 	/**
@@ -78,7 +75,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	 */
 	public void run(){
 		GlobalLogger.log("called: Engine -run");
-	
+		
 		if(level.checkCompleted()){
 			GlobalLogger.log("  level completed");
 			if(!nextLevel()){
@@ -89,6 +86,8 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 			try {
 				level.run();
 				repaint();
+				invalidate();
+				paintComponent(this.getGraphics());
 			} catch (CollideException e) {
 				GlobalLogger.log(e.getMessage());
 				this.exit();
@@ -156,23 +155,22 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		GlobalLogger.log("called: Engine -exit");
 		return;
 	}
-		
-	protected void paintComponent(Graphics g) {
+	
+	@Override
+	public void paintComponent(Graphics g) {
 		try {
-			
-		    
-		    
-		    
            Graphics2D g2d = (Graphics2D) g.create();
    //        g2d.scale(zoom, zoom);
            super.paintComponent(g2d);
            applyQualityRenderingHints(g2d);
-           imageBuffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+           imageBuffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+           
 		   Graphics2D g2 = imageBuffer.createGraphics();
+		   g2.setBackground(Color.LIGHT_GRAY);
 		   applyQualityRenderingHints(g2);
            g2.setColor(Color.lightGray);
            g2.scale(zoom, zoom);
-           g2.fillRect(0, 0, getWidth(), getHeight());
+        //   g2.fillRect(0, 0, getWidth(), getHeight());
            g2.setColor(Color.BLUE);
            //sinek kirajozlasa
            for(ControlPoint c : this.level.getCp())
@@ -209,6 +207,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		           		}
 		           	}
 		        }
+		        System.out.println("-----rajz");
            }
            
            //controlpointok kirajzolas
@@ -234,6 +233,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		   }
 		   
            g2d.drawImage(imageBuffer, 0, 0, this);
+           Overpaint.bf=imageBuffer;
            		g2d.dispose();
 			}catch (NoninvertibleTransformException e) {
 				e.printStackTrace();
@@ -340,7 +340,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 			zoom -= 0.1;
 		if(zoom < 0)
 			zoom = 0;	
-		repaint();
+		this.paintComponent(getGraphics());
 	}
 
 	@Override
@@ -388,6 +388,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 			}
 		}
 		}
+		this.paintComponent(getGraphics());
 	}
 
 	@Override
