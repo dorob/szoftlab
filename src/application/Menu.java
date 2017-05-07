@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 
 import javax.swing.*;
 
@@ -140,6 +141,7 @@ private JButton bExit;
 		
 		Scoreboard tmp;
 		tmp=jatek.getToplista();
+		Collections.sort(tmp.getHelyezes());
 		if(pScore.getComponentCount()==3) pScore.remove(2);
 		
 		DefaultListModel<String> model = new DefaultListModel<String>();

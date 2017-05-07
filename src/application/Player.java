@@ -36,9 +36,9 @@ public class Player implements Comparable<Player>, Serializable{
 	public int compareTo(Player o) {
 	//	System.out.println("players compared");
 		GlobalLogger.log("players compared");
-		if (ertek< o.ertek) return 1;
+		if (ertek< o.ertek) return -1;
 		
-		if(ertek > o.ertek) return -1;
+		if(ertek > o.ertek) return 1;
 		return 0;
 	}
 	
