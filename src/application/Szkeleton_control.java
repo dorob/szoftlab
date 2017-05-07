@@ -84,7 +84,7 @@ public class Szkeleton_control {
 		commands.add("listCP");
 		
 		/**
-		 * Kilistazza a vonatokat és adataikat
+		 * Kilistazza a vonatokat ï¿½s adataikat
 		 */
 		commands.add("listVonat");
 		
@@ -162,7 +162,6 @@ public class Szkeleton_control {
 			e.printStackTrace();
 		}
 	}
-
 
 	/**
 	 * Fajlbol beolvassa a prarancsokat, es elvegzi oket
