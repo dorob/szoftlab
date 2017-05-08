@@ -28,7 +28,7 @@ Alagut 775 400 1 80 10 254
 Megallo 535 285 1 YELLOW false
 Switcher 385 257 1 80 10 165
 Switcher 226 449 1 80 10 170
-Megallo 300 340 1 BLACK false
+Megallo 300 340 1 GREEN false
 19
 0 1 240 110
 1 2 
