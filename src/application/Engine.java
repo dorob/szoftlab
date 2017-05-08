@@ -108,7 +108,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		GlobalLogger.log("called: Engine -nextLevel");		
 		try {
 	         FileInputStream fileIn = new FileInputStream("level"+palya+".ser");
-	         System.out.println("level"+palya+".ser");
 	         palya++;
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
 	         level = (Palya) in.readObject();
@@ -117,7 +116,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	         GlobalLogger.log("called: Palya -load");
 	         
 	      }catch(IOException i) {
-	        i.printStackTrace();
 	    	  return false;	         
 	      }catch(ClassNotFoundException c) {
 	         System.out.println("Palya class not found");	         
@@ -247,6 +245,10 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 			}
     }
 	
+	/**
+	 * szepiti a megjelenest
+	 * @param g2d a grafikus felulet amin elvegzi
+	 */
 	public void applyQualityRenderingHints(Graphics2D g2d) {
 
         g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
@@ -259,41 +261,8 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
         g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
 
     }
-/*
-	private ArrayList<JButton> butt = new ArrayList<JButton>();
-	public void initButtons(){
-		for(int i = 0; i < level.getCp().size(); i++){
-			if(level.getCp().get(i).toString().equals("Switcher")){	
-				JButton tmp = new JButton(Integer.toString(((Switcher) level.getCp().get(i)).aktiv));
-				tmp.setMargin(new Insets(0, 0, 0, 0));
-				tmp.setOpaque(false);
-				tmp.setContentAreaFilled(false);
-				tmp.setBorderPainted(false);
-				tmp.addActionListener(this);
-				tmp.putClientProperty("index", i); //mocsok megoldas hogy tarolja az indexet hogz kihey tartozik
-				tmp.setBounds(level.getCp().get(i).hely.x-10, level.getCp().get(i).hely.y-10, 20, 20);
-				butt.add(tmp);
-				this.add(tmp);
-			}
-			if(level.getCp().get(i).toString().equals("Alagut")){
-				JButton tmp = new JButton(Integer.toString(((Switcher) level.getCp().get(i)).aktiv));
-				tmp.setMargin(new Insets(0, 0, 0, 0));
-				tmp.setOpaque(false);
-				tmp.setContentAreaFilled(false);
-				tmp.setBorderPainted(false);
-				tmp.addActionListener(this);
-				tmp.putClientProperty("index", i); //mocsok megoldas hogy tarolja az indexet hogz kihey tartozik
-				tmp.setBounds(level.getCp().get(i).hely.x-10, level.getCp().get(i).hely.y-10, 20, 20);
-				butt.add(tmp);
-				this.add(tmp);
-			}
-		}
-	}
-	*/
 	
-	
-	
-	
+
 	//Generalt fv.-nyek.
 	public Palya getLevel() {
 		GlobalLogger.log("called: Engine -getLevel");
@@ -336,7 +305,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				time++;
-				System.out.println(time);
 			}
 			
 		});
@@ -357,7 +325,9 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		}
 	}
 
-
+/**
+ * Gorgetessel zoomolas
+ */
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent mwe) {
 		if(mwe.getWheelRotation() < 0)
@@ -374,6 +344,12 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		
 	}
 
+	/**
+	 * ket szint osszehasonlit
+	 * @param array1 egyik szin
+	 * @param array2 masik szin
+	 * @return Igaz ha egyforma
+	 */
 	public boolean compareArrays(int[] array1, int[] array2) {
 	    for (int i = 0; i < array1.length; i++)
 	        if(array1[i] != array2[i])
@@ -383,24 +359,26 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Kattintassal vezerelhetok a valtok es alagutak, ezeket itt hivja meg
+	 */
 	@Override
 	public void mousePressed(MouseEvent ke) {
 		int rgb = imageBuffer.getRGB(ke.getX(), ke.getY());
+		//az rg erteket szet kell bontani
 		int red = (rgb >> 16) & 0x000000FF;
 		int green = (rgb >>8 ) & 0x000000FF;
 		int blue = (rgb) & 0x000000FF;
 	
-		if(red != 192 || green != 192 || blue != 192){
+		
 		int comp[] = {red, green, blue};
 		for(ControlPoint cp : level.getCp()){
 			if( cp.toString().equals("Switcher") || cp.toString().equals("Alagut")){
@@ -413,13 +391,12 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 				}
 			}
 		}
-		}
+		//miutan megvaltozott igy ujra ki kell rajzolni
 		this.paintComponent(getGraphics());
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 	
