@@ -41,6 +41,7 @@ private JButton bExit;
 		jatek= new Engine();
 		JPanel tar = new JPanel();
 		tar.add(jatek);
+		tar.setIgnoreRepaint(true);
 		LayerUI<JComponent> layerUI = new Overpaint();
 		JLayer<JComponent> jlayer = new JLayer<JComponent>(jatek, layerUI);
 		jlayer.addMouseListener(jatek);
@@ -128,6 +129,7 @@ private JButton bExit;
 		
 	}
 
+	Timer back;
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		CardLayout cl = (CardLayout) pMain.getLayout();
@@ -138,10 +140,24 @@ private JButton bExit;
 		else if(e.getActionCommand().equals("start")) {
 			cl.show(pMain, "temp");
 			jatek.requestFocusInWindow();
-			jatek.paintComponent(getGraphics());
+			//jatek.paintComponent(getGraphics());
 			jatek.work();
+			/**
+			 * 3mp kent megnezi vege van e a jateknak
+			 */
+			back = new Timer(3000, new ActionListener(){
 
-			//cl.show(pMain, "menu");
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(jatek.done){
+						cl.show(pMain, "menu");
+						back.stop();
+					}
+				}
+				
+			});
+			back.start();
+			
 		}
 		else if(e.getActionCommand().equals("scores")) {
 			ReInitScoreBoard();

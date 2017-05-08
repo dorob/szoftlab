@@ -51,7 +51,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	Timer count;
 	public double zoom = 1d;
 	BufferedImage imageBuffer; 
-	
+	public boolean done = false;
 	
 	
 	/**
@@ -157,7 +157,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	 */
 	public void exit(){
 		GlobalLogger.log("called: Engine -exit");
-		return;
+		this.done = true;
 	}
 	
 	@Override
@@ -345,7 +345,12 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		run();
+		if(!done)
+			run();
+		else {
+			this.timer.stop();
+			this.count.stop();
+		}
 	}
 
 
