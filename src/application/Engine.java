@@ -52,7 +52,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	public double zoom = 1d;
 	BufferedImage imageBuffer; 
 	public boolean done = false;
-	
+	Color backGround = new Color(229,255,229);
 	
 	/**
 	 * Engine konstruktora
@@ -164,17 +164,17 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	public void paintComponent(Graphics g) {
 		try {
            Graphics2D g2d = (Graphics2D) g.create();
-   //        g2d.scale(zoom, zoom);
-           super.paintComponent(g2d);
            applyQualityRenderingHints(g2d);
            imageBuffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
            
 		   Graphics2D g2 = imageBuffer.createGraphics();
 		   g2.setBackground(Color.LIGHT_GRAY);
 		   applyQualityRenderingHints(g2);
-           g2.setColor(Color.lightGray);
+		   g2.setColor(backGround);
+		   g2.fillRect(0, 0, getWidth(), getWidth());
+		  
+           
            g2.scale(zoom, zoom);
-        //   g2.fillRect(0, 0, getWidth(), getHeight());
            g2.setColor(Color.BLUE);
            //sinek kirajozlasa
            for(ControlPoint c : this.level.getCp())
@@ -224,14 +224,14 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 			   else if(cp.toString().equals("Switcher")){
 				   g2.setColor(new Color(((Switcher)cp).rgbb[0], ((Switcher)cp).rgbb[1], ((Switcher)cp).rgbb[2]));
 				   g2.fill(cp.alak);
-				   g2.setColor(Color.white);
-				   g2.drawString(Integer.toString(((Switcher)cp).aktiv), cp.hely.x, cp.hely.y);
+				   g2.setColor(Color.black);
+				   g2.drawString(Integer.toString(((Switcher)cp).aktiv), cp.hely.x, cp.hely.y-10);
 			   }
 			   else if(cp.toString().equals("Alagut")){
 				   g2.setColor(new Color(((Switcher)cp).rgbb[0], ((Switcher)cp).rgbb[1], ((Switcher)cp).rgbb[2]));
 				   g2.fill(cp.alak);
-				   g2.setColor(Color.white);
-				   g2.drawString("A:"+Integer.toString(((Switcher)cp).aktiv), cp.hely.x, cp.hely.y);
+				   g2.setColor(Color.black);
+				   g2.drawString("A: "+Integer.toString(((Switcher)cp).aktiv), cp.hely.x, cp.hely.y-10);
 			   }
 		   }
 		   
