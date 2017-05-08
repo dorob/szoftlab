@@ -108,7 +108,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		GlobalLogger.log("called: Engine -nextLevel");		
 		try {
 	         FileInputStream fileIn = new FileInputStream("level"+palya+".ser");
-	         System.out.println(palya);
+	         System.out.println("level"+palya+".ser");
 	         palya++;
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
 	         level = (Palya) in.readObject();
