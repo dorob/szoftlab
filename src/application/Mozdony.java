@@ -6,6 +6,7 @@ import java.awt.geom.FlatteningPathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.Collections;
 /**
  * A palyan mozgo vonatok "vezetoje". Minden vonat 1 mozdonybol es tetszoleges szamu vagonbol all.
  * @author Tsurhe
@@ -101,22 +102,25 @@ public class Mozdony {
 	/**
 	 * Hozzaad a vonat utvonalahoz egy sint
 	 * @param s A hozzaadando sin.
+	 * @param reverse 
 	 * @throws CollideException Ha vannak mar a sinen akkor utkozunk ralepeskor
 	 */
-	public void addWay(Sin s) throws CollideException{
+	public void addWay(Sin s, boolean reverse) throws CollideException{
 		ways = utvonal;
 		ways.mozdony = null;
 		if(s.mozdony != null)
 			throw new CollideException("tele van a sin");
 		utvonal = s;
 		utvonal.mozdony = this;
-		this.calcPos();
+		this.calcPos(reverse);
+			
 	}
 
 	/**
 	 * kiszamolja a konkret koordinatakat
+	 * @param reverse 
 	 */
-	public void calcPos(){
+	public void calcPos(boolean reverse){
 		if(utvonal!=null){
 			points.clear();
 			FlatteningPathIterator iter=new FlatteningPathIterator(utvonal.gorbe.getPathIterator(new AffineTransform()), 0.15); // a szam csokkentesevel imabba a mozgas (kisebb reszekre bontja)
@@ -129,6 +133,8 @@ public class Mozdony {
                 iter.next();
             }
 		}
+		if(reverse)
+			Collections.reverse(points);
 		pos = points.get(0);
 		index = 0;
 	}
@@ -204,7 +210,8 @@ public class Mozdony {
 
 	public void setUtvonal(Sin utvonal) {
 		this.utvonal = utvonal;
-		this.calcPos();
+		this.calcPos(false);
+		System.out.println("-------------------------------------------");
 	}
 	
 	public boolean isDone() {

@@ -66,13 +66,19 @@ public class Sin {
 	 */
 	public void giveNext(Mozdony asker) throws CollideException{
 		try{
+			boolean reverse = false;
 			GlobalLogger.log("called: sin -giveNext");
 			Sin next;
-			if(mozdony.getWays()==null || controlpoint1.id == mozdony.getWays().controlpoint2.id) //cp2.id a vege nm 1 mer kulonben visszavezeti
+			if(mozdony.getWays()==null || controlpoint1.id == mozdony.getWays().controlpoint2.id){ //cp2.id a vege nm 1 mer kulonben visszavezeti
 				next = controlpoint2.giveDirection(this, asker);
-			else
+				if(next.controlpoint2.id == controlpoint2.id) // pl switcher a 2. idju de lehet amit ad az ellentetes iranyu
+					reverse =true;
+			}
+			else{
 				next = controlpoint1.giveDirection(this, asker);
-			mozdony.addWay(next);
+				reverse = true;
+			}
+			asker.addWay(next, reverse);
 		}catch(CollideException e){
 			throw e;
 		}
