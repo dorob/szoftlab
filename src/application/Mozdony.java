@@ -215,7 +215,6 @@ public class Mozdony implements Serializable{
 	public void setUtvonal(Sin utvonal) {
 		this.utvonal = utvonal;
 		this.calcPos(false);
-		System.out.println("-------------------------------------------");
 	}
 	
 	public boolean isDone() {
