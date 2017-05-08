@@ -78,9 +78,8 @@ public class Alagut extends Switcher {
 	public void build(){
 	GlobalLogger.log("called: Alagut build");
 	//a ketto koze pont olyan kiteressel hogy vizszintes es fuggoleges 2 pont eseten is felkort rajzoljon egy kis ivu gorbe helyett
-		Palya.newSin=new Sin(Palya.openAlagut1, Palya.openAlagut2, 
-				((Palya.openAlagut2.hely.x+Palya.openAlagut1.hely.x)/2)+Math.abs((Palya.openAlagut2.hely.y-Palya.openAlagut1.hely.y)/2),
-				((Palya.openAlagut2.hely.y+Palya.openAlagut1.hely.y)/2)+Math.abs((Palya.openAlagut2.hely.x-Palya.openAlagut1.hely.x)/2));
+		Palya.newSin=new Sin(Palya.openAlagut1, Palya.openAlagut2);
+		Palya.newSin.setHide(true);
 		Palya.openAlagut1.getWays().add(Palya.newSin);
 		Palya.openAlagut2.getWays().add(Palya.newSin);
 		((Alagut) Palya.openAlagut1).Switch();
