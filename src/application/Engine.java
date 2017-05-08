@@ -79,7 +79,11 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	 */
 	public void run(){
 		GlobalLogger.log("called: Engine -run");
-		
+		if(level == null)
+			if(!nextLevel()){
+				this.exit();
+				return;
+				}
 		if(level.checkCompleted()){
 			GlobalLogger.log("  level completed");
 			if(!nextLevel()){
@@ -89,8 +93,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		else{
 			try {
 				level.run();
-		//		repaint();
-		//		invalidate();
 				paintComponent(this.getGraphics());
 			} catch (CollideException e) {
 				GlobalLogger.log(e.getMessage());
@@ -106,6 +108,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		GlobalLogger.log("called: Engine -nextLevel");		
 		try {
 	         FileInputStream fileIn = new FileInputStream("level"+palya+".ser");
+	         System.out.println("level"+palya+".ser");
 	         palya++;
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
 	         level = (Palya) in.readObject();
@@ -114,7 +117,8 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	         GlobalLogger.log("called: Palya -load");
 	         
 	      }catch(IOException i) {
-	         return false;	         
+	        i.printStackTrace();
+	    	  return false;	         
 	      }catch(ClassNotFoundException c) {
 	         System.out.println("Palya class not found");	         
 	      }		

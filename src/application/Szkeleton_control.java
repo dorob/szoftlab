@@ -121,8 +121,8 @@ public class Szkeleton_control {
 					}
 				}
 				
-				else if (parts[0].equals("stop")){
-					break;
+				else if (parts[0].equals("save")){
+					menu.getJatek().getLevel().save(parts[1]);
 					}
 				
 				else if (parts[0].equals("run")){
