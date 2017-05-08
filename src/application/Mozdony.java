@@ -50,7 +50,6 @@ public class Mozdony {
 	public void move() throws CollideException{
 		GlobalLogger.log("called: mozdony -move");
 		try{ 
-			for(Vagon m: vagonok) m.move(); // ez a resz folos szerintem. nemkel vagon move nmcsinal semit
 			//tartsunk csak annyi pontot ahany vagon van
 			if(pointsack.size() >= vagonok.size())
 				pointsack.remove(0);
@@ -120,7 +119,7 @@ public class Mozdony {
 	public void calcPos(){
 		if(utvonal!=null){
 			points.clear();
-			FlatteningPathIterator iter=new FlatteningPathIterator(utvonal.gorbe.getPathIterator(new AffineTransform()), 0.5); // a szam csokkentesevel imabba a mozgas (kisebb reszekre bontja)
+			FlatteningPathIterator iter=new FlatteningPathIterator(utvonal.gorbe.getPathIterator(new AffineTransform()), 0.15); // a szam csokkentesevel imabba a mozgas (kisebb reszekre bontja)
 			float[] coords=new float[6];
             while (!iter.isDone()) {
                 iter.currentSegment(coords);

@@ -60,7 +60,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	public Engine(){
 		super();
 		GlobalLogger.log("called: Engine constructor");
-		timer = new Timer(200, this);
+		timer = new Timer(120, this);
 		try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {

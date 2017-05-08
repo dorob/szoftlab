@@ -32,10 +32,11 @@ public class Vagon {
 	
 	/**
 	 * Ezzel a fuggvennyel mozgatjuk a vagonokat
-	 */
+	 
 	public void move(){
 		GlobalLogger.log("called: vagon- move");
 	}
+	*/
 	
 	/**
 	 * Ezen keresztul kerdezzuk meg, hogy le akarnak-e szallni az utasok az adott vagonrol
