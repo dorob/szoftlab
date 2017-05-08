@@ -45,7 +45,7 @@ public class Vagon {
 		GlobalLogger.log("called: vagon -getDown");
 		if(c==color){
 			formerc=color;
-			color=Color.WHITE; //A KESZ VONATOK FEHEREK LESZNEK YOLO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			color=Color.WHITE; //A KESZ VONATOK FEHEREK LESZNEK 
 			isEmpty=true;
 			return true;
 		}

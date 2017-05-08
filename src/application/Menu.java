@@ -27,7 +27,8 @@ private JButton bStart;
 private JButton bScore;
 private JButton bExit;
 
-JPanel tmp;
+
+
 	public Menu(){
 		super("Szoftlab");
 		GlobalLogger.log("called: Menu constructor");
@@ -137,8 +138,8 @@ JPanel tmp;
 		else if(e.getActionCommand().equals("start")) {
 			cl.show(pMain, "temp");
 			jatek.requestFocusInWindow();
-			jatek.run();
-			
+			jatek.paintComponent(getGraphics());
+			jatek.work();
 
 			//cl.show(pMain, "menu");
 		}

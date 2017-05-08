@@ -48,15 +48,19 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 	int index = 0;
 	double angle;
 	Timer timer;
+	Timer count;
 	public double zoom = 1d;
 	BufferedImage imageBuffer; 
+	
+	
+	
 	/**
 	 * Engine konstruktora
 	 */
 	public Engine(){
 		super();
 		GlobalLogger.log("called: Engine constructor");
-		
+		timer = new Timer(200, this);
 		try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
@@ -85,8 +89,8 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		else{
 			try {
 				level.run();
-				repaint();
-				invalidate();
+		//		repaint();
+		//		invalidate();
 				paintComponent(this.getGraphics());
 			} catch (CollideException e) {
 				GlobalLogger.log(e.getMessage());
@@ -207,7 +211,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		           		}
 		           	}
 		        }
-		        System.out.println("-----rajz");
            }
            
            //controlpointok kirajzolas
@@ -234,7 +237,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		   
            g2d.drawImage(imageBuffer, 0, 0, this);
            Overpaint.bf=imageBuffer;
-           		g2d.dispose();
+        //   		g2d.dispose();
 			}catch (NoninvertibleTransformException e) {
 				e.printStackTrace();
 			}
@@ -315,20 +318,34 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		this.time = time;
 	}
 
+	/**
+	 * Jatek Inditasa
+	 */
+	public void work(){
+		// this.nextLevel(); ha majd mar vannak palyak ser-ber
+		timer.start();
+		/**
+		 * Anonim osztallyal ido szamitas
+		 */
+		count = new Timer(1000, new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				time++;
+				System.out.println(time);
+			}
+			
+		});
+		count.start();
+		
+	}
 	
-	
-	//gomb
+	/**
+	 * A thread kezelese (mozgatas)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-	/*	try {
-		int idx = (int) ((JButton)ae.getSource()).getClientProperty( "index" ); //k
-		level.getCp().get(idx).perform(null);
-		((JButton)ae.getSource()).setText(Integer.toString(((Switcher)level.getCp().get(idx)).aktiv)); //kk
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		*/
+		run();
 	}
 
 
