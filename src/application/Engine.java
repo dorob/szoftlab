@@ -96,7 +96,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 				paintComponent(this.getGraphics());
 			} catch (CollideException e) {
 				GlobalLogger.log(e.getMessage());
-				JOptionPane.showMessageDialog(null, e.getMessage(), "Game Over", JOptionPane.INFORMATION_MESSAGE);
 				this.exit();
 			}
 		}
@@ -109,7 +108,6 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		GlobalLogger.log("called: Engine -nextLevel");		
 		try {
 	         FileInputStream fileIn = new FileInputStream("level"+palya+".ser");
-	         System.out.println("level"+palya+".ser");
 	         palya++;
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
 	         level = (Palya) in.readObject();
