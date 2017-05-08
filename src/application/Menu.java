@@ -117,6 +117,7 @@ private JButton bExit;
 		
 		JOptionPane pName = new JOptionPane();
 		String name = pName.showInputDialog("Irja be a nevet!");
+		if(name.trim() != "")
 		jatek.setNev(name);
 		
 		
