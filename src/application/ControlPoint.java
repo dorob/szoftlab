@@ -2,6 +2,7 @@ package application;
 
 
 import java.awt.Shape;
+import java.io.Serializable;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -16,7 +17,12 @@ import java.util.ArrayList;
  * @author Tsurhe
  *
  */
-public class ControlPoint {
+public class ControlPoint implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected int id;
 	public static int num = 0;
 	protected Shape alak;
