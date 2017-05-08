@@ -2,19 +2,18 @@ package application;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
+
 import java.util.Collections;
 
 import javax.swing.*;
 import javax.swing.plaf.LayerUI;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 
 
 public class Menu extends JFrame implements ActionListener{
@@ -26,7 +25,10 @@ private JPanel pScore;
 private JButton bStart;
 private JButton bScore;
 private JButton bExit;
-
+private JPanel tar;
+LayerUI<JComponent> layerUI;
+JLayer<JComponent> jlayer;
+String name;
 
 
 	public Menu(){
@@ -39,11 +41,11 @@ private JButton bExit;
 		GlobalLogger.log("called: engine -init");
 
 		jatek= new Engine();
-		JPanel tar = new JPanel();
+		tar = new JPanel();
 		tar.add(jatek);
 		tar.setIgnoreRepaint(true);
-		LayerUI<JComponent> layerUI = new Overpaint();
-		JLayer<JComponent> jlayer = new JLayer<JComponent>(jatek, layerUI);
+		layerUI = new Overpaint();
+		jlayer = new JLayer<JComponent>(jatek, layerUI);
 		jlayer.addMouseListener(jatek);
 		jlayer.addMouseWheelListener(jatek);
 		
@@ -116,7 +118,7 @@ private JButton bExit;
 		this.getContentPane().add(scroll);
 		
 		JOptionPane pName = new JOptionPane();
-		String name = pName.showInputDialog("Irja be a nevet!");
+		name = pName.showInputDialog("Irja be a nevet!");
 		if(name.trim() != "")
 		jatek.setNev(name);
 		
@@ -143,8 +145,11 @@ private JButton bExit;
 		}
 		else if(e.getActionCommand().equals("start")) {
 			cl.show(pMain, "temp");
+			if(jatek.done){
+				this.dispose();
+				Menu.main(null);
+			}
 			jatek.requestFocusInWindow();
-			//jatek.paintComponent(getGraphics());
 			jatek.work();
 			/**
 			 * 3mp kent megnezi vege van e a jateknak
