@@ -96,7 +96,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 				paintComponent(this.getGraphics());
 			} catch (CollideException e) {
 				GlobalLogger.log(e.getMessage());
-				JOptionPane.showMessageDialog(null, e.getMessage(), "Game Over", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, e.getMessage(), "Game Over!", JOptionPane.INFORMATION_MESSAGE);
 				this.exit();
 			}
 		}
