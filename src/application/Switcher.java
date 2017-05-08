@@ -55,7 +55,7 @@ public class Switcher extends ControlPoint{
 		else if(prev.equals(ways.get(aktiv)))
 			return ways.get(0);
 		//ha egyik iranybol se jon akkor utkoznie kell mert nincs arra nyitva valto
-		else throw new CollideException("utkozes");
+		else throw new CollideException("A mozdony kisiklott mivel a valto nem a helyes iranyba allt");
 	}
 	
 	/**

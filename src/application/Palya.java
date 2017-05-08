@@ -2,6 +2,7 @@ package application;
 
 
 
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -90,7 +91,7 @@ public class Palya implements Serializable{
 		try{
 			for(Mozdony m: vehicles) 
 			m.move(); 	
-		}catch(CollideException e){
+		}catch(CollideException e) {
 			throw e;
 		}
 	}

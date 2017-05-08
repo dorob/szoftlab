@@ -110,10 +110,8 @@ public class Mozdony implements Serializable{
 	public void addWay(Sin s, boolean reverse) throws CollideException{
 		ways = utvonal;
 		ways.mozdony = null;
-		if(s.mozdony != null) {
-			JOptionPane.showMessageDialog(null, "A vonatok ütköztek, hatalmas károkat okoztál a társaságnak, ezért kirúgtak", "Game Over", JOptionPane.INFORMATION_MESSAGE);
-			throw new CollideException("tele van a sin");
-		}
+		if(s.mozdony != null)
+			throw new CollideException("A vonatok utkoztek");
 		utvonal = s;
 		utvonal.mozdony = this;
 		this.calcPos(reverse);
