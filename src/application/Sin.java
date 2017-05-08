@@ -3,12 +3,13 @@ package application;
 import java.awt.Color;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.QuadCurve2D;
+import java.io.Serializable;
 /**
  * A palyan levo utak megnevezese, amin a vonatok kozlekednek illetve, amik osszekotik az adott controlpointokat. Minden sin tulajdonkepp egy Bezier gorbe,
  *  melyet vegpontjai es kontrollpontjai hataroznak meg. 
  * @author Tsurhe
  */
-public class Sin {
+public class Sin implements Serializable{
 	private int id;
 	/**
 	 * A sinek egyedi azonositasahoz haszalt szamlalo

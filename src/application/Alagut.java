@@ -5,6 +5,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
 
 /**
@@ -13,7 +14,7 @@ import java.io.InputStreamReader;
  * @author Tsurhe
  *
  */
-public class Alagut extends Switcher{
+public class Alagut extends Switcher {
 	//ez nem kell
 	//private boolean isBuilt=false;
 	

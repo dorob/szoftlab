@@ -5,6 +5,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.FlatteningPathIterator;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 /**
@@ -12,7 +13,7 @@ import java.util.Collections;
  * @author Tsurhe
  *
  */
-public class Mozdony {
+public class Mozdony implements Serializable{
 	
 	private ArrayList<Vagon> vagonok = new ArrayList<Vagon>();
 	private Sin ways; //elozo ut amin voltam

@@ -2,13 +2,14 @@ package application;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Az utasok nyilvantartasat es kezeleset vegzi, valamint koveti a mozdonyt, amihez tartozik.
  * @author Tsurhe
  */
-public class Vagon {
+public class Vagon implements Serializable{
 	
 	private ArrayList<Point2D>koor;
 	private Color color;
