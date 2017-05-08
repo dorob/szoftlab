@@ -50,7 +50,7 @@ private JButton bExit;
 		
 		pMenu= new JPanel();
 		pMain=new JPanel();
-		
+			
 		pMain.setOpaque(true);
 		pScore = new JPanel();
 		pMain.setLayout(new CardLayout());
@@ -115,6 +115,9 @@ private JButton bExit;
 		JScrollPane scroll = new JScrollPane(jatek);
 		this.getContentPane().add(scroll);
 		
+		JOptionPane pName = new JOptionPane();
+		String name = pName.showInputDialog("Irja be a nevet!");
+		jatek.setNev(name);
 		
 		
 	}
