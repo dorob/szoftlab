@@ -8,6 +8,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.JOptionPane;
 /**
  * A palyan mozgo vonatok "vezetoje". Minden vonat 1 mozdonybol es tetszoleges szamu vagonbol all.
  * @author Tsurhe
@@ -109,8 +110,10 @@ public class Mozdony implements Serializable{
 	public void addWay(Sin s, boolean reverse) throws CollideException{
 		ways = utvonal;
 		ways.mozdony = null;
-		if(s.mozdony != null)
+		if(s.mozdony != null) {
+			JOptionPane.showMessageDialog(null, "A vonatok ütköztek, hatalmas károkat okoztál a társaságnak, ezért kirúgtak", "Game Over", JOptionPane.INFORMATION_MESSAGE);
 			throw new CollideException("tele van a sin");
+		}
 		utvonal = s;
 		utvonal.mozdony = this;
 		this.calcPos(reverse);

@@ -108,6 +108,7 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
 		GlobalLogger.log("called: Engine -nextLevel");		
 		try {
 	         FileInputStream fileIn = new FileInputStream("level"+palya+".ser");
+	         System.out.println("level"+palya+".ser");
 	         palya++;
 	         ObjectInputStream in = new ObjectInputStream(fileIn);
 	         level = (Palya) in.readObject();
@@ -185,34 +186,36 @@ public class Engine extends JPanel implements ActionListener, MouseWheelListener
           
            //minden mozdny kirajz
            for(Mozdony m : this.level.getVehicles()){
-        	   g2.setColor(Color.PINK);
-	        	pos = m.pos;
-	        	angle = m.angle;
-		        AffineTransform at = new AffineTransform();
-		        if(pos!=null){
-		        	Rectangle bounds = box.getBounds();
-		        	at.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
-		        	at.rotate(angle, (bounds.width/2), (bounds.height/2));
-				    g2.transform(at);       	
-				    //tenyleges mozdonyrajzolas
-		           	g2.fill(box);          
-		           	//takaritas kovi elem rajzolasahoz
-					g2.transform(at.createInverse());
-					
-		           	//vagonok rajzolas
-		           	for(int i =0; i< m.getVagonok().size(); i++){
-		           		if(i < m.pointsack.size()){
-		           			g2.setColor(m.getVagonok().get(i).getColor());
-		           			at = new AffineTransform();
-		           			int j = m.anglesack.size()-i-1; // enelkul forditott sorrendbe rajzolta a vagonokat
-		           			at.translate(m.pointsack.get(j).getX() - (bounds.width / 2), m.pointsack.get(j).getY() - (bounds.height / 2));
-		           			at.rotate(m.anglesack.get(j), (bounds.width/2), (bounds.height/2));
-		           			g2.transform(at);
-		           			g2.fill(box);
-		           			g2.transform(at.createInverse());
-		           		}
-		           	}
-		        }
+        	   if(!m.getUtvonal().isHide()){
+	        	   g2.setColor(Color.PINK);
+		        	pos = m.pos;
+		        	angle = m.angle;
+			        AffineTransform at = new AffineTransform();
+			        if(pos!=null){
+			        	Rectangle bounds = box.getBounds();
+			        	at.translate(pos.getX() - (bounds.width / 2), pos.getY() - (bounds.height / 2));
+			        	at.rotate(angle, (bounds.width/2), (bounds.height/2));
+					    g2.transform(at);       	
+					    //tenyleges mozdonyrajzolas
+			           	g2.fill(box);          
+			           	//takaritas kovi elem rajzolasahoz
+						g2.transform(at.createInverse());
+						
+			           	//vagonok rajzolas
+			           	for(int i =0; i< m.getVagonok().size(); i++){
+			           		if(i < m.pointsack.size()){
+			           			g2.setColor(m.getVagonok().get(i).getColor());
+			           			at = new AffineTransform();
+			           			int j = m.anglesack.size()-i-1; // enelkul forditott sorrendbe rajzolta a vagonokat
+			           			at.translate(m.pointsack.get(j).getX() - (bounds.width / 2), m.pointsack.get(j).getY() - (bounds.height / 2));
+			           			at.rotate(m.anglesack.get(j), (bounds.width/2), (bounds.height/2));
+			           			g2.transform(at);
+			           			g2.fill(box);
+			           			g2.transform(at.createInverse());
+			           		}
+			           	}
+			        }
+        	   }
            }
            
            //controlpointok kirajzolas

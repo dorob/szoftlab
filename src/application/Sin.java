@@ -26,7 +26,7 @@ public class Sin implements Serializable{
 	public ControlPoint controlpoint1;
 	public ControlPoint controlpoint2;
 	public Mozdony mozdony;
-	
+	private boolean hide=false;
 	/**
 	 * Sin konstruktora
 	 */
@@ -85,6 +85,9 @@ public class Sin implements Serializable{
 		}
 	}
 	
+	/**
+	 * Sin kiiroja
+	 */
 	@Override
 	public String toString() {
 		if(mozdony != null)
@@ -92,6 +95,14 @@ public class Sin implements Serializable{
 		else
 			return "Sin [id=" + id + ", mozdonyID=" + mozdony + "]";
 	}
+	public boolean isHide() {
+		return hide;
+	}
+	public void setHide(boolean hide) {
+		this.hide = hide;
+	}
+	
+	
 }
 	
 	
